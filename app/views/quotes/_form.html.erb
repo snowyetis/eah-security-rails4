@@ -1,0 +1,40 @@
+<div class="container">
+ <div class="row">
+   <h2>Register for Access to EAH Security</h2>
+   <p>
+     An administrator will review your application. Upon approval an e-mail will be sent to the e-mail account you have signed up
+     with.
+   </p>
+    <div class="col-md-12 col-lg-12">
+      <section class="reigster-form">
+        <%= form_for(@quote, html: { method: :put, role: "register" })  do |f| %>
+        <div class="form-group">
+          <%= f.label :quote_type, class: "control-label" %><br />
+          <%= f.text_field :quote_type, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :status, class: "control-label" %><br />
+          pending: <%= f.check_box :pending, class: "form-control" %>
+          rejected:<%= f.check_box :rejected, class: "form-control" %>
+          approved:<%= f.check_box :approved, class: "form-control" %>
+        </div>
+        <%= f.fields_for(:questionaire) do |q| %>
+        <div class="form-group">
+          <%= q.label :product_type, class: "control-label" %><br />
+          <%= q.text_field :product_type, class: "form-control" %>
+        </div>
+        <% end %>
+        <%= f.fields_for(:quote_detail) do |qd| %>
+          <div class="form-group">
+            Admin <%= qd.label :quote_comments, class: "control-label" %><br />
+            <%= qd.text_field :quote_comments, class: "form-control" %>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.submit "Submit", class: "btn btn-primary btn-lg btn-block" %>
+        </div>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</div>

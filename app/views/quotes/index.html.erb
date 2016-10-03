@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Quote Maintenance</h1>
+
+<table class="table table-bordered table-striped table-hover" id="quotes-table">
+  <thead>
+    <tr>
+      <th>Quote Type</th>
+      <th>Submitted By</th>
+      <th>Pending</th>
+      <th>Rejected</th>
+      <th>Approved</th>
+      <% if current_admin %>
+        <th>
+          <center>
+            <i class="glyphicon glyphicon-eye-open"></i>
+          </center>
+        </th>
+      <% end %>
+      <% if current_admin %>
+        <th>
+          <center>
+            <i class="glyphicon glyphicon-pencil"></i>
+          </center>
+        </th>
+      <% end %>
+      <% if current_admin %>
+        <th>
+          <center>
+            <i class="glyphicon glyphicon-fire"></i>
+          </center>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody class="table-hover">
+    <% @quotes.each do |quote| %>
+      <tr>
+        <td>
+          <%= quote.quote_type %>
+        </td>
+        <% if user_signed_in? %>
+          <td>
+            <%= current_user.first_name + " " + current_user.last_name %>
+          </td>
+        <% end %>
+        <% if admin_signed_in? %>
+          <td>
+            <%= quote.user.first_name + " " + quote.user.last_name %>
+          </td>
+        <% end %>
+        <td>
+          <%= quote.pending %>
+        </td>
+        <td>
+          <%= quote.rejected %>
+        </td>
+        <td>
+          <%= quote.approved %>
+        </td>
+        <% if current_admin %>
+          <td>
+            <%= link_to 'View', quote %>
+          </td>
+        <% end %>
+        <% if current_admin %>
+          <td>
+            <%= link_to 'Edit', edit_quote_path(quote) %>
+          </td>
+        <% end %>
+        <% if current_admin %>
+          <td>
+            <%= link_to 'Delete', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

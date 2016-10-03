@@ -1,0 +1,1 @@
+json.array! @quote_details, partial: 'quote_details/quote_detail', as: :quote_detail

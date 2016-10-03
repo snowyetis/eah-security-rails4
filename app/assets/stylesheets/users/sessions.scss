@@ -1,0 +1,80 @@
+// body {
+// 	background: url(http://i.imgur.com/GHr12sH.jpg) no-repeat center center fixed;
+//     -webkit-background-size: cover;
+//     -moz-background-size: cover;
+//     -o-background-size: cover;
+//     background-size: cover;
+// }
+
+.login-form {
+	margin-top: 60px;
+}
+
+form[role=login] {
+	color: #5d5d5d;
+	background: #f2f2f2;
+	padding: 26px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+	form[role=login] img {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 35px;
+	}
+	form[role=login] input,
+	form[role=login] button {
+		font-size: 18px;
+		margin: 16px 0;
+	}
+	form[role=login] > div {
+		text-align: center;
+	}
+
+.form-links {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 50px;
+}
+	.form-links a {
+		color: #fff;
+	}
+
+.form-remember-control {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  margin-left: 25px;
+  font-weight: bold;
+}
+
+.form-remember-label {
+  margin: 4px 0px -27px 0px;
+  margin-top: 1px \9;
+  line-height: normal;
+}
+
+.btn-success {
+  width: 100%;
+}
+
+.col-xs-12 {
+  padding: 10px 0 10px 0;
+}
+
+.col-md-3 {
+  margin: 0 0 0 27px;
+  float: left;
+}
+
+@media (max-width: 975px) {
+  .col-md-3 {
+    margin: 0 0 0 0;
+    float: none;
+  }
+
+  .btn-success {
+    width: 96%;
+  }
+}

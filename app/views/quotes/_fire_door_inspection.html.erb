@@ -1,0 +1,33 @@
+<!-- Modal -->
+  <div class="modal fade" id="fire_door_inspection" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Services start at $99. Request a quote to learn more.</p>
+          <%= form_for(@quote) do |f| %>
+            <div class="form-group">
+              <%= f.hidden_field :user_id %>
+              <%= f.hidden_field :quote_type, value: "fire door inspection" %>
+              <%= f.hidden_field :pending, value: "true" %>
+            </div>
+            <%= f.fields_for(:quote_detail) do |qd| %>
+              <%= qd.hidden_field :quote_comments, value: "Details created!" %>
+            <% end %>
+            <%= f.fields_for(:questionaire) do |q| %>
+              <%= q.hidden_field :product_type, value: "fire door inspection" %>
+              <%= q.label :comments, class: "control-label" %>
+              <%= q.text_area :comments, class: "form-control" %>
+            <% end %>
+        </div>
+        <div class="modal-footer">
+            <%= f.submit "Submit Quote", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

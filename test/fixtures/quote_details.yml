@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quote: 
+  quote_comments: MyString
+  approved_by: MyString
+  rejected_by: MyString
+  rejected_reason: 
+  extestimate: 9.99
+
+two:
+  quote: 
+  quote_comments: MyString
+  approved_by: MyString
+  rejected_by: MyString
+  rejected_reason: 
+  extestimate: 9.99
