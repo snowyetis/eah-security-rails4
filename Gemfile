@@ -16,6 +16,9 @@ gem 'devise'
 gem 'font-awesome-sass'
 gem 'mysql2'
 
+gem 'unicorn', '~> 5.1'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
