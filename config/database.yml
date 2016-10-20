@@ -27,4 +27,4 @@ production:
   pool: 5
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASS'] %>
-  host: localhost
+  host: eahsecurity
