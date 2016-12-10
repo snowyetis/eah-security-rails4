@@ -15,8 +15,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'mysql2'
-gem 'unicorn', '~> 5.1'
-
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
