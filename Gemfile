@@ -15,7 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'mysql2'
-
+gem 'nginx'
 gem 'unicorn', '~> 5.1'
 
 
