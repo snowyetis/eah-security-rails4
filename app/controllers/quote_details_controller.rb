@@ -69,6 +69,6 @@ class QuoteDetailsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_detail_params
-      params.fetch(:quote_detail, {:quote_id, :quote_comments, :approved_by, :rejected_by, :rejected_reason, :estimate})
+      params.require(:quote_detail).permit(:quote_id, :quote_comments, :approved_by, :rejected_by, :rejected_reason, :estimate)
     end
 end
