@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003025413) do
+ActiveRecord::Schema.define(version: 20170119062634) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
@@ -78,15 +78,13 @@ ActiveRecord::Schema.define(version: 20161003025413) do
   end
 
   create_table "sales", force: :cascade do |t|
-    t.integer  "quote_id_id"
+    t.integer  "quote_id"
     t.decimal  "total"
     t.decimal  "tax"
     t.decimal  "labor"
     t.decimal  "parts_cost"
     t.datetime "date_sold"
   end
-
-  add_index "sales", ["quote_id_id"], name: "index_sales_on_quote_id_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
