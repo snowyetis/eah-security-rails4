@@ -17,11 +17,15 @@ class ApplicationController < ActionController::Base
   #  end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |u|
-   u.permit(:sign_up, keys: [:first_name, :last_name,
-     :address, :city, :state, :zip, :affiliation, :phone])
+      accessible = [ :first_name, :last_name, :address, :city, :state, :zip, :affiliation, :email]
+      accessible << [ :password, :password_confirmation ]
     end
-  end
+
+  #   devise_parameter_sanitizer_for(:sign_up) do |u|
+  #  u.permit(:sign_up, keys: [:first_name, :last_name,
+  #    :address, :city, :state, :zip, :affiliation, :phone])
+  #   end
+
 
   # def authenticate_user!
   #   if user_signed_in?
