@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, except: [:index, :show]
+  # before_action :authenticate_admin!, except: [:index, :show]
 
   # GET /quotes
   # GET /quotes.json

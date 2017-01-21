@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 col-lg-12">
-      <section class="reigster-form">
+      <section class="quote-block">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">
               Quote Information for
-              <span class="badge">
+              <span class="badge ">
                 #  <%= @quote.id %>
               </span>
             </h3>
@@ -31,7 +31,8 @@
                 <span class="label label-warning">
                   Pending...
                 </span>
-              <% else %>
+              <% end %>
+              <% if @quote.approved %>
                 <span class="label label-success">
                   Approved
                 </span>
@@ -56,5 +57,7 @@
   </div>
 </div>
 
+<% if current_admin %>
 <%= link_to 'Edit', edit_quote_path(@quote) %> |
+<% end %>
 <%= link_to 'Back', quotes_path %>
