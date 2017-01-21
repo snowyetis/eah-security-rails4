@@ -51,7 +51,9 @@ before_filter :configure_account_update_params, only: [:update]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) << [:email, :password, :password_confirmation, :first_name, :last_name, :address, :city, :state, :zip, :affiliation]
+    # devise_parameter_sanitizer.for(:sign_up) << [:email, :password, :password_confirmation, :first_name, :last_name, :address, :city, :state, :zip, :affiliation]
+    accessible = [ :first_name, :last_name, :address, :city, :state, :zip, :affiliation, :email]
+    accessible << [ :password, :password_confirmation ]
   end
 
   # If you have extra params to permit, append them to the sanitizer.
