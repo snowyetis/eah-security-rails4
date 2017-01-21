@@ -1,54 +1,75 @@
 <div class="container">
-  <div class="row">
-    <div class="col-lg-12 panel__wrapper--b panel__bg--b panel__wrapper panel__bg--b-mktg">
-      <div class="panel__inner panel__inner--b">
-        <div class="col-md-6 col-xs-12">
-          <div class="panel panel-default tall-panel panel-block">
-              <div class="panel-body panel__header-inner panel__header-text">
-                <h3>
-                  Locksmithing
-               </h3>
-               <p>
-                 We support all of your locksmithing needs. Including emergency services.
-              </p>
-                <span class="header__clear-button--blue header__clear-button">
-                  <a id="locksmith_button">Learn More</a>
-              </span>
-              </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <div class="panel panel-default half-panel panel-block">
-              <div class="panel-body panel__header-inner panel__header-text">
-                 <h3>
-                   Safes
-                 </h3>
-                 <p>
-                   Protect your home, business or organization with a large selection
-                   of security solutions.
-                 </p>
-                 <span class="header__clear-button--blue header__clear-button">
-                  <a id="security_button">Learn More</a>
-                 </span>
-              </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-xs-12">
-          <div class="panel panel-default half-panel panel-block">
-              <div class="panel-body panel__header-inner panel__header-text">
-                <h3>
-                  Security Systems
-                </h3>
-                <p>From cameras to alarms. Let us secure your home or business</p>
-                <span class="header__clear-button--blue header__clear-button">
-                  <a  id="fire_door_inspection_button">Learn More</a>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="headline-bg pricing-headline-bg">
     </div>
+  <div class="row">
+    <section class="pricing section section-on-bg">
+        <div class="container">
+            <h2 class="title text-center">EAH Security <span class="highlight"></span></h2>
+            <p class="intro text-center">Experienced locksmiths and security consultants for over 35 years</p>
+             <div class="price-cols row">
+                <div class="items-wrapper col-md-10 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
+                    <div class="item price-1 col-md-4 col-sm-4 col-xs-12 text-center">
+                        <div class="item-inner">
+                            <div class="heading">
+                            <h3 class="title">Locksmithing</h3>
+                            </div>
+                            <div class="content">
+                                <ul class="list-unstyled feature-list">
+                                    <li><i class="fa fa-check"></i>Basic Keys - Simple Services</li>
+                                    <li><i class="fa fa-check"></i>Hardware Replacement</li>
+                                    <li><i class="fa fa-check"></i>Access Control - Design - Repair</li>
+                                    <li><i class="fa fa-check"></i>High Security Locks - Highend Services</li>
+                                    <li><i class="fa fa-check"></i>24/7 support</li>
+                                </ul>
+                                <a class="btn btn-cta btn-cta-primary" id="locksmith_button">Learn More</a>
+
+                            </div><!--//content-->
+                        </div><!--//item-inner-->
+                    </div><!--//item-->
+
+                    <div class="item price-2 col-md-4 col-sm-4 col-xs-12 text-center best-buy">
+                        <div class="item-inner">
+                            <div class="heading">
+                            <h3 class="title">Safes</h3>
+                            </div>
+                            <div class="content">
+                                <ul class="list-unstyled feature-list">
+                                    <li><i class="fa fa-check"></i>Servicing</li>
+                                    <li><i class="fa fa-check"></i>Combination Change</li>
+                                    <li><i class="fa fa-check"></i> Opening and Repair</li>
+                                    <li><i class="fa fa-check"></i>Moving</li>
+                                    <li><i class="fa fa-check"></i>Sales</li>
+                                    <li><i class="fa fa-check"></i>24/7 support</li>
+
+                                </ul>
+                                <a class="btn btn-cta btn-cta-primary" id="security_button">Learn More</a>
+                            </div><!--//content-->
+                            <div class="ribbon">
+                                <div class="text">Popular</div>
+                            </div><!--//ribbon-->
+                        </div><!--//item-inner-->
+                    </div><!--//item-->
+
+                    <div class="item price-3 col-md-4 col-sm-4 col-xs-12 text-center">
+                        <div class="item-inner">
+                            <div class="heading">
+                                <h3 class="title">Cameras and Security Systems</h3>
+                            </div>
+                            <div class="content">
+                                <ul class="list-unstyled feature-list">
+                                    <li><i class="fa fa-check"></i>Security Assessments</li>
+                                    <li><i class="fa fa-check"></i>Security Systems</li>
+                                    <li><i class="fa fa-check"></i>Camera Systems</li>
+                                    <li><i class="fa fa-check"></i>24/7 support</li>
+                                </ul>
+                                <a class="btn btn-cta btn-cta-primary" id="fire_door_inspection_button">Learn More</a>
+                            </div><!--//content-->
+                        </div><!--//item-inner-->
+                    </div><!--//item-->
+                </div><!--//items-wrapper-->
+            </div><!--//row-->
+        </div><!--//container-->
+    </section>
     <div class="row">
       <div class="col-xs-12">
         <div class="mid-row-header">
@@ -74,6 +95,7 @@
       <!-- </div> -->
     </div>
   </div>
+</div>
   <%= render "quotes/fire_door_inspection" %>
   <%= render "quotes/security" %>
   <%= render "quotes/locksmith" %>
