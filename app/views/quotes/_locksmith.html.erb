@@ -4,10 +4,24 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
+          <h4 class="modal-title">Locksmithing Services</h4>
         </div>
         <div class="modal-body">
-          <p>Services start at $99. Request a quote to learn more.</p>
+          <h3>Services we offer</h3>
+          <ul>
+            <li>
+              Basic Keys - Simple Services
+            </li>
+            <li>
+              Hardware Replacement
+            </li>
+            <li>
+              Access Control - Design - Repair
+            </li>
+            <li>
+              High Security Locks - Highend Services
+            </li>
+          </ul>
           <%= form_for(@quote) do |f| %>
             <div class="form-group">
               <%= f.hidden_field :user_id %>

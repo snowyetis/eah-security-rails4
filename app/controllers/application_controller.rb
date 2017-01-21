@@ -5,35 +5,14 @@ class ApplicationController < ActionController::Base
   respond_to :html, :json
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_filter :authenticate_user!
 
   protected
-
-  #  def devise_parameter_sanitizer
-  #    if resource_class == User
-  #      User::ParameterSanitizer.new(User, :user, params)
-  #    else
-  #      super # Use the default one
-  #    end
-  #  end
 
   def configure_permitted_parameters
       accessible = [ :first_name, :last_name, :address, :city, :state, :zip, :affiliation, :email]
       accessible << [ :password, :password_confirmation ]
     end
-
-  #   devise_parameter_sanitizer_for(:sign_up) do |u|
-  #  u.permit(:sign_up, keys: [:first_name, :last_name,
-  #    :address, :city, :state, :zip, :affiliation, :phone])
-  #   end
-
-
-  # def authenticate_user!
-  #   if user_signed_in?
-  #     super
-  #   else
-  #     redirect_to new_user_session
-  #   end
-  # end
 
   private
 
