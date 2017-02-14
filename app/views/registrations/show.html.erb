@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <section class="quote-block">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Payment Information
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div class="col-sm-6 lead">
+              <span class="strong-type">
+                Buyer's Name
+              </span>
+                <%= @registration.full_name %>
+            </div>
+            <div class="col-sm-6 lead">
+              <span class="strong-type">
+                Product Type:
+              </span>
+              <%= @registration.product.product_type %>
+            </div>
+            <div class="col-sm-6 lead">
+              <span class="strong-type">
+                Email:
+              </span>
+              <%= @registration.email %>
+            </div>
+            <div class="col-sm-12 lead">
+              <span class="strong-type">
+                Purchase Status
+              </span>
+              <%= @registration.status %>
+            </div>
+            <div class="col-sm-12 lead">
+              <span class="strong-type">
+                Amount Paid
+              </span>
+              <%= @registration.product.price %>
+            </div>
+            <p>
+              <strong>Payment method:</strong>
+              <%= @registration.payment_method.capitalize %>
+            </p>
+            <% if @registration.payment_method == "paypal" %>
+              <p>
+                <strong>Payment status:</strong>
+                <%= @registration.status %>
+              </p>
+              <p>
+                <strong>Paypal Transaction Identifier:</strong>
+                <%= @registration.transaction_id %>
+              </p>
+            <% else %>
+              <p>
+                <strong>Transaction Identifier:</strong>
+                <%= @registration.card.card_transaction.params["transaction_id"] %>
+              </p>
+            <% end %>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

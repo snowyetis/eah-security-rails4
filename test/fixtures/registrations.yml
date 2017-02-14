@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full_name:
+  company: poop inc
+  email: test123@test.com
+  telephone: 4445550000
+
+two:
+  full_name: Joe Test
+  company: test123
+  email: test@test.com
+  telephone: 4445550022

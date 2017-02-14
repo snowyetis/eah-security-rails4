@@ -10,13 +10,11 @@
       <th>Pending</th>
       <th>Rejected</th>
       <th>Approved</th>
-      <% if current_admin %>
         <th>
           <center>
             <i class="glyphicon glyphicon-eye-open"></i>
           </center>
         </th>
-      <% end %>
       <% if current_admin %>
         <th>
           <center>
@@ -58,11 +56,11 @@
         <td>
           <%= quote.approved %>
         </td>
-        <% if current_admin %>
+
           <td>
-            <%= link_to 'View', quote %>
+            <%= link_to 'View', quote, show_quote_path, remote: true %>
           </td>
-        <% end %>
+
         <% if current_admin %>
           <td>
             <%= link_to 'Edit', edit_quote_path(quote) %>
@@ -77,3 +75,6 @@
     <% end %>
   </tbody>
 </table>
+
+<div id="showQuote">
+</div>

@@ -13,6 +13,12 @@ class QuotesController < ApplicationController
     end
   end
 
+  def show_quote
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # GET /quotes/1
   # GET /quotes/1.json
   def show

@@ -10,7 +10,7 @@
   <header id="header" class="header navbar-fixed-top">
         <div class="container">
             <h1 class="logo">
-                <a href="index.html"><span class="logo-icon"></span><span class="text">EAH Security</span></a>
+                <a href="index.html"><span class="logo-icon"></span><span class="text">EAHS</span></a>
             </h1><!--//logo-->
             <nav class="main-nav navbar-right" role="navigation">
                 <div class="navbar-header">
@@ -23,7 +23,9 @@
                 </div><!--//navbar-header-->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item"><a href="index.html">Home</a></li>
+                        <li class="nav-item">
+                          <%= link_to "Home", home_index_path %>
+                        </li>
                         <li class="nav-item dropdown">
                           <% if admin_signed_in? %>
                             <li class="dropdown">
@@ -80,7 +82,7 @@
             </nav><!--//main-nav-->
         </div><!--//container-->
     </header>
-  
+
   <%= render "layouts/messages_and_content" %>
 </body>
 </html>
