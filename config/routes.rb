@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :quote_details
   root to: 'home#about'
 
-  resources :sales, :quotes, :questionaires, :registrations
+  resources :sales, :quotes, :questionaires
 
   get 'home/index', to: 'home#index'
   get 'home/exit', to: 'home#exit'
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     # patch "admins/:id", to: "admins/registrations#approve_user", as: "approve_user"
   end
 
-  post "/registrations/:id" => "registrations#show"
-  post "/hook" => "regstrations#hook"
+  # post "/registrations/:id" => "registrations#show"
+  # post "/hook" => "regstrations#hook"
 
 end

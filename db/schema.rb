@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170119065032) do
+ActiveRecord::Schema.define(version: 20170121184004) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
@@ -33,6 +33,33 @@ ActiveRecord::Schema.define(version: 20170119065032) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
+  create_table "card_transactions", force: :cascade do |t|
+    t.integer  "card_id"
+    t.string   "action"
+    t.integer  "amount"
+    t.boolean  "success"
+    t.string   "authorization"
+    t.string   "message"
+    t.text     "params"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "card_transactions", ["card_id"], name: "index_card_transactions_on_card_id"
+
+  create_table "cards", force: :cascade do |t|
+    t.integer  "registration_id"
+    t.string   "ip_address"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "card_type"
+    t.date     "card_expires_on"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "cards", ["registration_id"], name: "index_cards_on_registration_id"
+
   create_table "homes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -42,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170119065032) do
     t.string   "product_type"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.decimal  "price"
   end
 
   create_table "questionaires", force: :cascade do |t|
@@ -76,6 +104,22 @@ ActiveRecord::Schema.define(version: 20170119065032) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "registrations", force: :cascade do |t|
+    t.string   "full_name"
+    t.string   "company"
+    t.string   "email"
+    t.string   "telephone"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.text     "notification_params"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.datetime "purchased_at"
+    t.integer  "product_id"
+  end
+
+  add_index "registrations", ["product_id"], name: "index_registrations_on_product_id"
 
   create_table "sales", force: :cascade do |t|
     t.integer  "quote_id"

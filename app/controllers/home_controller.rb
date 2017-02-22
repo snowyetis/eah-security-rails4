@@ -1,9 +1,19 @@
 class HomeController < ApplicationController
+  before_action  :authenticate_user!, :send_quote_request
+
 
   def index
-    @quote = current_user.quotes.new
-    @questionaire = @quote.build_questionaire
-    @quote_detail = @quote.build_quote_detail
+
+    if !current_user.blank?
+      @quote = current_user.quotes.new
+      @questionaire = @quote.build_questionaire
+      @quote_detail = @quote.build_quote_detail
+    else
+      @quote = Quote.new
+      @questionaire = @quote.build_questionaire
+      @quote_detail = @quote.build_quote_detail
+    end
+
   end
 
   def submit_questionaire
@@ -14,22 +24,19 @@ class HomeController < ApplicationController
     else
       flash[:danger] = "Error!"
     end
-
   end
 
   def about
-
   end
 
   def pending
-
   end
 
   def exit
-
   end
 
   def send_quote_request
+
     @role = Role.find(params[:id])
     case @role.Id
       when 1
