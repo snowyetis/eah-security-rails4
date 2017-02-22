@@ -1,9 +1,6 @@
 class HomeController < ApplicationController
-  before_action  :authenticate_user!, :send_quote_request
-
 
   def index
-
     if !current_user.blank?
       @quote = current_user.quotes.new
       @questionaire = @quote.build_questionaire
@@ -36,18 +33,22 @@ class HomeController < ApplicationController
   end
 
   def send_quote_request
-
-    @role = Role.find(params[:id])
-    case @role.Id
-      when 1
-        QuoteMailer.fire_door_quote_request
-      when 2
-        QuoteMailer.security_solutions_quote_request
-      when 3
-        QuoteMailer.locksmith_quote_request
+    if user_signed_in?
+      @role = Role.find(params[:id])
+      case @role.Id
+        when 1
+          QuoteMailer.fire_door_quote_request
+        when 2
+          QuoteMailer.security_solutions_quote_request
+        when 3
+          QuoteMailer.locksmith_quote_request
+        else
+          flash[:error] = "Not found"
+        end
       else
-        flash[:error] = "Not found"
+        flash[:error] = "You must be a registered user before requesting a quote."
       end
+
   end
 
     private

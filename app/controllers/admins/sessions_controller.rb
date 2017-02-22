@@ -1,6 +1,9 @@
 class Admins::SessionsController < Devise::SessionsController
 before_filter :configure_sign_in_params, only: [:create]
-before_filter :authenticate_admin!
+
+# Prevent user from hitting admin.
+before_filter :authenticate_user!
+before_action :set_admin_flag
 
   # GET /resource/sign_in
   def new
@@ -32,6 +35,12 @@ before_filter :authenticate_admin!
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(:sign_in)
+  end
+
+  private
+
+  def set_admin_flag
+    @adminFlag = true
   end
 
 end

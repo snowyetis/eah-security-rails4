@@ -1,6 +1,8 @@
 class Users::SessionsController < Devise::SessionsController
   before_filter :configure_sign_in_params, only: [:create]
-  before_filter :authenticate_admin!
+  # Prevent admin from hittinf user.
+ before_filter :authenticate_admin!
+ before_filter :set_admin_flag
 
   # GET /resource/sign_in
   def new
@@ -24,4 +26,11 @@ class Users::SessionsController < Devise::SessionsController
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(:sign_in)
   end
+
+  private
+
+  def set_admin_flag
+    @adminFlag = false
+  end
+
 end

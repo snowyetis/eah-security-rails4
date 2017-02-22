@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :quotes
   has_many :quote_details, through: :quotes
   has_many :questionaires
-  
+
 
   # Include default devise modules. Others available are:
   # :timeoutable and :omniauthable :confirmable

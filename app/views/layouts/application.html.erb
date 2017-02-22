@@ -69,12 +69,26 @@
                             <li class="dropdown">
                               <a href="#" class="data-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
                               <ul class="dropdown-login">
-                                <li>
-                                  <%= render "users/sessions/new" %>
-                                </li>
+                                <% if @adminFlag %>
+                                  <li>
+                                    <%= render "admins/sessions/new" %>
+                                  </li>
+                                  <% else %>
+                                    <li>
+                                      <%= render "users/sessions/new" %>
+                                    </li>
+                                  <% end %>
                               </ul>
                               </li>
-                              <li class="nav-item nav-item-cta last"><a class="btn btn-cta btn-cta-secondary" href="signup.html">Sign Up</a></li>
+                              <% if @adminFlag %>
+                                <li class="nav-item nav-item-cta last">
+                                  <%= link_to 'Sign Up',  new_admin_registration_path, class: "btn btn-cta btn-cta-secondary" %>
+                                </li>
+                              <% else %>
+                                  <li>
+                                    <%= link_to 'Sign Up',  new_user_registration_path, class: "btn btn-cta btn-cta-secondary" %>
+                                  </li>
+                                <% end %>
                             </ul>
                           <% end %>
                     </ul><!--//nav-->
@@ -82,7 +96,6 @@
             </nav><!--//main-nav-->
         </div><!--//container-->
     </header>
-
   <%= render "layouts/messages_and_content" %>
 </body>
 </html>
