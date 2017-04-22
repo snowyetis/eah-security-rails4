@@ -1,10 +1,13 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :set_quote, only: [:show, :update, :destroy]
   # before_action :authenticate_admin!, except: [:index, :show]
+  add_breadcrumb "Quotes", :quotes_path
 
   # GET /quotes
   # GET /quotes.json
   def index
+    add_breadcrumb "Our Services", quotes_path
+
     if current_admin
       @quotes = Quote.all
       @users = User.all
@@ -14,6 +17,7 @@ class QuotesController < ApplicationController
   end
 
   def show_quote
+    add_breadcrumb "View Quote", quote_path
     respond_to do |format|
       format.js
     end
@@ -26,27 +30,46 @@ class QuotesController < ApplicationController
 
   # GET /quotes/new
   def new
+    add_breadcrumb "Create a Quote", new_quote_path
+
     @quote = Quote.new
     @quote.quote_detail.questionaire.build
+
   end
 
   # GET /quotes/1/edit
   def edit
+    add_breadcrumb "Edit a Quote", edit_quote_path
+
+    @quote = Quote.find(params[:id])
+    @questionaire = @quote.questionaire
+    @quote_detail = @quote.quote_detail
+    # @quote_detail = @quote.build_quote_detail
+    @product = Product.find_by(id: @quote.product_id)
+
   end
 
   # POST /quotes
   # POST /quotes.json
   def create
-    @quote = current_user.quotes.build(quote_params)
 
-    respond_to do |format|
-      if @quote.save
-        format.html { redirect_to @quote, notice: 'Quote was successfully created.' }
-        format.json { render :show, status: :created, location: @quote }
-      else
-        format.html { render :new }
-        format.json { render json: @quote.errors, status: :unprocessable_entity }
+    if current_admin.blank? && current_user.blank?
+      flash[:notice] = 'You must be logged in to send a quote.'
+      redirect_to home_index_path
+    else
+
+        @quote = current_user.quotes.build(quote_params)
+
+      respond_to do |format|
+        if @quote.save
+          format.html { redirect_to @quote, notice: 'Quote was successfully created.' }
+          format.json { render :show, status: :created, location: @quote }
+        else
+          format.html { render :new }
+          format.json { render json: @quote.errors, status: :unprocessable_entity }
+        end
       end
+
     end
   end
 
@@ -83,6 +106,6 @@ class QuotesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_params
       # params.fetch(:quote)
-      params.require(:quote).permit(:quote_type, :user_id, :approved, :pending, :rejected, quote_detail_attributes: [:quote_comments], questionaire_attributes: [ :user_id, :quote_id, :product_type, :comments])
+      params.require(:quote).permit(:quote_type, :user_id, :approved, :pending, :rejected, :product_id, quote_detail_attributes: [:quote_comments], questionaire_attributes: [ :user_id, :quote_id, :product_type, :comments])
     end
 end

@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
 
-  resources :quote_details
-  root to: 'home#about'
+  resources :product_details
+  resources :quote_details, :products
+
+  authenticated :user do
+    root to: 'home#index', as: 'home'
+  end
+
+  unauthenticated :user do
+    root 'home#about'
+  end
+
+  # TODO: Define routes for the Admin auth and unauth paths. i.e. a dashboard or sign in???
+  # root :to => 'business_account#dashboard', :constraints => lambda { |request| request.env['warden'].user.class.name == 'Business' }, :as => "business_root"
+  # root :to => 'lender_account#dashboard', :constraints => lambda { |request| request.env['warden'].user.class.name == 'Lender' }, :as => "lender_root"
 
   resources :sales, :quotes, :questionaires
 
@@ -11,8 +23,7 @@ Rails.application.routes.draw do
 
   get 'quotes/', to: 'quotes#show_quote'
 
-  post 'home/send_quote_request', to: 'home#send_quote_request'
-  # post 'home/questionaire', to: 'home#questionaire'
+  post 'products/send_quote_request', to: 'products#send_quote_request'
 
   devise_for :users,  controllers: {
                         sessions: 'users/sessions',
@@ -28,6 +39,9 @@ Rails.application.routes.draw do
 
   devise_scope :admin do
     get 'admins/signed_up', to: 'admins/registrations#index'
+    match 'admins/get_approved_users/:approved/:buttonId', to: 'admins/registrations#get_approved_users', via: [:get]
+    # match 'admins/approve_user', to: 'admins/registrations#approve_user', via: [:put]
+    # match 'admins/approve_all_users', to: 'admins/registrations#approve_all_users', via: [:put]
     put 'admins/approve_user', to: 'admins/registrations#approve_user'
     # patch "admins/:id", to: "admins/registrations#approve_user", as: "approve_user"
   end

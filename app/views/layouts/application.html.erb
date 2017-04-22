@@ -2,100 +2,110 @@
 <html>
 <head>
   <title>EAHSecurity</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <header id="header" class="header navbar-fixed-top">
-        <div class="container">
-            <h1 class="logo">
-                <a href="index.html"><span class="logo-icon"></span><span class="text">EAHS</span></a>
-            </h1><!--//logo-->
-            <nav class="main-nav navbar-right" role="navigation">
-                <div class="navbar-header">
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button><!--//nav-toggle-->
-                </div><!--//navbar-header-->
-                <div id="navbar-collapse" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="nav-item">
-                          <%= link_to "Home", home_index_path %>
-                        </li>
-                        <li class="nav-item dropdown">
-                          <% if admin_signed_in? %>
-                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
-                              <ul class="dropdown-menu">
-                                <li>
-                                  <%= link_to "Quotes", quotes_path %>
-                                </li>
-                                <hr />
-                                <li>
-                                  <%= link_to 'Settings', edit_admin_registration_path %>
-                                </li>
-                                <li>
-                                  <%= link_to 'User Index', admins_signed_up_path %>
-                                </li>
-                                <li>
-                                  <%= link_to 'Sign out', destroy_admin_session_path, method: :delete %>
-                                </li>
-                              </ul>
-                            </li>
-                          <% end %>
-                          <% if user_signed_in? %>
-                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as - <%= current_user.email %><b class="caret"></b></a>
-                            <ul class="dropdown-login">
-                              <li>
-                                <%= link_to "View Open Quotes", quotes_path %>
-                              </li>
-                              <hr/>
-                              <li>
-                                <%= link_to "Edit Account Details", edit_user_registration_path %>
-                              </li>
-                              <li>
-                                <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-                              </li>
-                            </ul>
-                          </li>
-                          <% end %>
-                          <% if current_user.blank? && current_admin.blank? %>
-                            <li class="hidden-xs"><p class="navbar-text text-center">|</p></li>
-                            <li class="dropdown">
-                              <a href="#" class="data-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
-                              <ul class="dropdown-login">
-                                <% if @adminFlag %>
-                                  <li>
-                                    <%= render "admins/sessions/new" %>
-                                  </li>
-                                  <% else %>
-                                    <li>
-                                      <%= render "users/sessions/new" %>
-                                    </li>
-                                  <% end %>
-                              </ul>
-                              </li>
-                              <% if @adminFlag %>
-                                <li class="nav-item nav-item-cta last">
-                                  <%= link_to 'Sign Up',  new_admin_registration_path, class: "btn btn-cta btn-cta-secondary" %>
-                                </li>
-                              <% else %>
-                                  <li>
-                                    <%= link_to 'Sign Up',  new_user_registration_path, class: "btn btn-cta btn-cta-secondary" %>
-                                  </li>
-                                <% end %>
-                            </ul>
-                          <% end %>
-                    </ul><!--//nav-->
-                </div><!--//navabr-collapse-->
-            </nav><!--//main-nav-->
-        </div><!--//container-->
-    </header>
-  <%= render "layouts/messages_and_content" %>
+  <div class="am-wrapper am-nosidebar-left">
+    <nav class="navbar navbar-default am-top-header">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="page-title">
+            <span><%= link_to 'EAHS', root_path, class: 'navbar-brand' %></span>
+          </div>
+        </div>
+        <div id="am-navbar-collapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav am-nav-left">
+            <li><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'Our Services', products_path %></li>
+            <% if  !current_user.blank? || !current_admin.blank? %>
+            <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Services <span class="angle-down s7-angle-down"></span></a>
+              <ul role="menu" class="dropdown-menu">
+                  <% if admin_signed_in? %>
+                    <li>
+                      <%= link_to "Quotes", quotes_path %>
+                    </li>
+                    <hr />
+                    <li>
+                      <%= link_to 'Settings', edit_admin_registration_path %>
+                    </li>
+                    <li>
+                      <%= link_to 'Approve User', admins_signed_up_path %>
+                    </li>
+                    <li>
+                      <%= link_to 'Sign out', destroy_admin_session_path, method: :delete %>
+                    </li>
+                  <% end %>
+                  <% if user_signed_in? %>
+                    <li>
+                      <%= link_to "View Open Quotes", quotes_path %>
+                    </li>
+                    <hr/>
+                    <li>
+                      <%= link_to "Edit Account Details", edit_user_registration_path %>
+                    </li>
+                    <li>
+                      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+            <% if current_user.blank? && current_admin.blank? %>
+              <% if @adminFlag %>
+                <li>
+                  <%= link_to 'Sign Up',  new_admin_registration_path %>
+                </li>
+                  <% else %>
+                <li>
+                  <%= link_to 'Sign Up',  new_user_registration_path %>
+                </li>
+              <% end %>
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Sign In / Register
+                <span class="angle-down s7-angle-down"></span></a>
+                <ul role="menu" class="dropdown-menu">
+                    <% if @adminFlag %>
+                      <li style="width: 400px;">
+                        <%= render "admins/sessions/new" %>
+                      </li>
+                    <% else %>
+                      <li style="width: 400px;">
+                        <%= render "users/sessions/new" %>
+                      </li>
+                    <% end %>
+                  </ul>
+              </li>
+            <% end %>
+          </ul>
+          <ul class="nav navbar-nav pull-right">
+            <br />
+            <br />
+          <li>
+          <% if user_signed_in? %>
+              <li>
+                Signed In As: &nbsp; <%= label_tag current_user.email %>
+              </li>
+          <% end %>
+        </li>
+        </div>
+      </div>
+    </nav>
+    <div class="am-content">
+      <div class="page-head">
+        <ol class="breadcrumb">
+          <%= render_breadcrumbs :tag => :li, :separator => "" %>
+        </ol>
+      </div>
+      <div class="main-content">
+        <%= render "layouts/messages_and_content" %>
+
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+  <!--  if current_user.blank? && current_admin.blank?  -->
+
 </body>
 </html>

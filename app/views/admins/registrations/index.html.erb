@@ -1,36 +1,60 @@
-<h2>Users Awaiting Approval</h2>
-<h3>Filters</h3>
-<ul id="filterTabs" class="nav nav-pills">
-  <li class="filter-pill active"  role="tab">
-    <%= link_to "All Users", action: "index", data: { toggle: "pill" } %>
-  </li>
-  <li class="filter-pill" role="tab">
-    <%= link_to "Users Awaiting Approval", action: "index", approved: "false", data: { toggle: "pill" } %>
-  </li>
-</ul>
-<table class="table table-bordered table-striped table-hover" id="registrations-table">
-  <thead>
-    <th>Email</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Affiliation</th>
-    <th>Approved</th>
-  </thead>
-  <tbody class="table-hover">
-    <% @users.each do |user|  %>
-      <tr>
-        <td><%= user.email %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.last_name %></td>
-        <td><%= user.address %></td>
-        <td><%= user.city %></td>
-        <td><%= user.state %></td>
-        <td><%= user.affiliation %></td>
-        <td><%= check_box_tag(:approved, 0, user.approved, id: "appr-chk_" + user.id.to_s, value: user.id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div role="alert" class="alert alert-notice">
+    <div class="icon">
+      <span class="s7-check"></span>
+    </div>
+    <div class="message">
+      <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+        <span aria-hidden="true" class="s7-close"></span>
+      </button>
+          <p id="notice" ><%= notice %></p>
+    </div>
+</div>
+
+<div class="row">
+  <h2>Users Awaiting Approval</h2>
+  <h3>Filters</h3>
+  <div class="col-xs-6">
+    <ul id="filterTabs" class="nav nav-pills">
+      <li class="filter-pill <%= 'active' if  @approvedClass %>" role="tab">
+        <%= link_to "All Users", action: "index", id: 'btnApprove' %>
+      </li>
+      <li class="filter-pill <%= 'active' if @approvedClass == false %>" role="tab" >
+        <%= link_to "Users Awaiting Approval", action: "index", approved: "false", id: 'btnNoApprove' %>
+      </li>
+    </ul>
+  </div>
+  <div class="col-xs-6">
+    <div class="pull-right">
+       <input type="button" id="btn_approve_users" value="Approve Users" class="btn btn-primary <%= 'disabled' if @approvedClass %>" />
+    </div>
+  </div>
+    <table class="table table-bordered table-striped table-hover" id="registrations-table">
+      <thead>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Affiliation</th>
+        <th>Approved</th>
+      </thead>
+      <tbody class="table-hover">
+        <% @users.each do |user|  %>
+            <tr>
+              <td class="hide"><%= hidden_field_tag user.id %></td>
+              <td><%= user.email %></td>
+              <td><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
+              <td><%= user.address %></td>
+              <td><%= user.city %></td>
+              <td><%= user.state %></td>
+              <td><%= user.affiliation %></td>
+              <td>
+                  <%= check_box_tag "chk_box" + user.id.to_s, user.approved, user.approved, id: "user_#{user.id}" %>
+              </td>
+            </tr>
+            <% end %>
+      </tbody>
+    </table>
+</div>

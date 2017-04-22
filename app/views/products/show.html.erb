@@ -1,0 +1,17 @@
+<div class="photo">
+  <%= image_tag @product.product_type.gsub(' ','_').downcase.to_s, class: "img-responsive img-fullWidth" %>
+</div>
+<br />
+<div class="bottom">
+    <div class="user-info">
+      <br />
+      <h2><%= @product.product_type.titleize %></h2>
+      <br />
+      Description of product here. Description of product here. Description of product here. Description of product here.
+      Description of product here. Description of product here. Description of product here. Description of product here.
+      Description of product here. Description of product here. Description of product here. Description of product here.
+      Description of product here. Description of product here. Description of product here. Description of product here.
+    </div>
+    <br />
+    <%= render 'quotes/form', locale: { quote: @quote } %>
+</div>

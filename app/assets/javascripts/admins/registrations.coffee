@@ -1,26 +1,31 @@
-$(document).on 'turbolinks:load', ->
-  $('#registrations-table').on 'click', 'input[type="checkbox"]', (e) ->
-    @id = $(this).val()
-    @approved = false
-    if $(this).is(':checked')
-      @approved = true
-    else
-      @approved = false
+$(document).on 'ready', ->
+  tbl_recs = $('#registrations-table')
+  $('#btn_approve_users').on 'click', ->
+    tbl_recs.find('tr').each (i, row) ->
+      if i != 0
+        targetrow = $(row).find('td')
+        @userid = $(targetrow).eq(0).children().eq(0).attr('id')
+        @apprv_cell = $(targetrow).eq(8).children().is(':checked')
+        if @apprv_cell != false
+          $.ajax
+            type: 'PUT',
+            dataType: 'JSON',
+            url: '/admins/approve_user',
+            data: { id: @userid, approved: @apprv_cell },
+            success: (data) ->
+              console.log data
+              $('#notice').html data.email + ' has been approved successfully'
+              toggleNavButton()
+            error: (jqXHR, textStatus, errorThrown) ->
+              $('#error').html 'There was an error approving the user'
+              console.log textStatus
+  toggleNavButton = () ->
     $.ajax
-      type: 'PUT'
-      url: '/admins/approve_user'
-      data: { id: @id, approved: @approved }
-      success: (data) ->
-        console.log data
-      error: (jqXHR, textStatus, errorThrown) ->
-        console.log textStatus
-    return
-  $(document).on 'click', '#filterTabs', (e) ->
-    e.preventDefault
-    if $(this).find('.filter-pill').hasClass 'active'
-      $(this).find('.filter-pill').removeClass 'active'
-      $(this).find('.filter-pill2').addClass 'active'
-    else
-      $(this).find('.filter-pill').addClass 'active'
-      $(this).find('.filter-pill2').removeClass 'active'
-  return
+     datatype: 'json',
+     type: 'GET',
+     url: '/admins/signed_up?approved=true&id=btnApprove',
+    #  data: {approved: true, id: 'btnApprove' },
+     success: (data) ->
+       console.log data
+     error: (jqXHR, textStatus, errorThrown) ->
+       console.log textStatus

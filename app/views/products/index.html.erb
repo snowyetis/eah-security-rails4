@@ -1,0 +1,25 @@
+<div class="row">
+  <h2>Product Overview</h2>
+    <% @products.first(2).each do |product| %>
+    <div class="col-sm-6 col-md-6 col-lg-6">
+      <div id="productGallery">
+        <%= render partial: 'products_list', locals: {product: product}  %>
+      </div>
+    </div>
+    <% end %>
+    <div id="showProduct">
+    </div>
+</div>
+<div class="row">
+  <% @products.last(1).each do |product| %>
+  <div class="col-xs-12">
+    <div id="productGallery">
+      <%= render partial: 'products_list', locals: {product: product}  %>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<%= render 'quotes/locksmith' %>
+<%= render 'quotes/security' %>
+<%= render 'quotes/fire_door_inspection' %>

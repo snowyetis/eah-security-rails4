@@ -514,6 +514,9 @@ body {
 
 .message-bar-wrapper {
     padding-top:15px;
+    z-index: 99999;
+    position: relative;
+    margin: 15px 0 0 15px;
 }
 
 

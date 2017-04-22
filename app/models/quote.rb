@@ -4,6 +4,7 @@ class Quote < ActiveRecord::Base
   belongs_to :user
   has_one :quote_detail
   has_one :questionaire
+  has_many :products
 
   accepts_nested_attributes_for :questionaire
   accepts_nested_attributes_for :quote_detail

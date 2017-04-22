@@ -1,4 +1,66 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <section class="quote-block">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Quote Information for
+              <span class="badge ">
+                #  <%= @quote.id %>
+              </span>
+            </h3>
+          </div>
+          <div class="panel-body">
+            <div class="col-sm-6 lead">
+              <span class="strong-type">
+                Quote Type:
+              </span>
+                <%= @quote.quote_type %>
+            </div>
+            <div class="col-sm-6 lead">
+              <span class="strong-type">
+                Status:
+              </span>
+              <% if @quote.rejected %>
+                <span class="label label-danger">
+                  Rejected!
+                </span>
+              <% end %>
+              <% if @quote.pending %>
+                <span class="label label-warning">
+                  Pending...
+                </span>
+              <% end %>
+              <% if @quote.approved %>
+                <span class="label label-success">
+                  Approved
+                </span>
+              <% end %>
+            </div>
+            <div class="col-sm-6 lead">
+              <span class="strong-type">
+                Product Type:
+              </span>
+              <%= @quote.questionaire.product_type %>
+            </div>
+            <div class="col-sm-12 lead">
+              <span class="strong-type">
+                Your Comments:
+              </span>
+              <%= @quote.questionaire.comments %>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<% if current_admin %>
+<%= link_to 'Edit', edit_quote_path(@quote) %> |
+<% end %>
+<%= link_to 'Back', quotes_path %>
 
 <%= link_to 'Edit', edit_quote_detail_path(@quote_detail) %> |
 <%= link_to 'Back', quote_details_path %>

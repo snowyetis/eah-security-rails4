@@ -1,102 +1,74 @@
-<div class="container">
-    <div class="headline-bg pricing-headline-bg">
-    </div>
-  <div class="row">
-    <section class="pricing section section-on-bg">
-        <div class="container">
-            <h2 class="title text-center">EAHS <span class="highlight"></span></h2>
-            <h2 class="title text-center">Security and Locksmithing</h2>
-            <p class="intro text-center">Experienced locksmiths and security consultants for over 35 years</p>
-             <div class="price-cols row">
-                <div class="items-wrapper col-md-10 col-sm-12 col-xs-12 col-md-offset-1 col-sm-offset-0 col-xs-offset-0">
-                    <div class="item price-1 col-md-4 col-sm-4 col-xs-12 text-center">
-                        <div class="item-inner">
-                            <div class="heading">
-                            <h3 class="title">Locksmithing</h3>
-                            </div>
-                            <div class="content">
-                                <ul class="list-unstyled feature-list">
-                                    <li><i class="fa fa-check"></i>Basic Keys - Simple Services</li>
-                                    <li><i class="fa fa-check"></i>Hardware Replacement</li>
-                                    <li><i class="fa fa-check"></i>Access Control - Design - Repair</li>
-                                    <li><i class="fa fa-check"></i>High Security Locks - Highend Services</li>
-                                    <li><i class="fa fa-check"></i>24/7 support</li>
-                                </ul>
-                                <a class="btn btn-cta btn-cta-primary" id="locksmith_button">Learn More</a>
+<div class="photo">
+  <%= image_tag "Locksmith-Services", id: "imgBanner", class: "img-responsive" %>
+</div>
+<div class="row pricing-tables">
+  <div class="col-md-3 col-lg-3">
+    <div class="pricing-table pricing-table-primary">
+      <div class="pricing-table-title">Locksmithing</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
+        <li>Basic Keys - Simple Services</li>
+        <li>Hardware Replacement</li>
+        <li>Access Control - Design - Repair</li>
+        <li>High Security Locks - Highend Services</li>
+        <li>24/7 support</li>
+      </ul>
+      <!-- <a class="btn btn-primary" id="locksmith_button">Learn More</a> -->
+      <%= link_to "Locksmith Product Page",  product_path(2), class: "btn btn-primary" %>
 
-                            </div><!--//content-->
-                        </div><!--//item-inner-->
-                    </div><!--//item-->
-
-                    <div class="item price-2 col-md-4 col-sm-4 col-xs-12 text-center best-buy">
-                        <div class="item-inner">
-                            <div class="heading">
-                            <h3 class="title">Safes</h3>
-                            </div>
-                            <div class="content">
-                                <ul class="list-unstyled feature-list">
-                                    <li><i class="fa fa-check"></i>Servicing</li>
-                                    <li><i class="fa fa-check"></i>Combination Change</li>
-                                    <li><i class="fa fa-check"></i> Opening and Repair</li>
-                                    <li><i class="fa fa-check"></i>Moving</li>
-                                    <li><i class="fa fa-check"></i>Sales</li>
-                                    <li><i class="fa fa-check"></i>24/7 support</li>
-
-                                </ul>
-                                <a class="btn btn-cta btn-cta-primary" id="security_button">Learn More</a>
-                            </div><!--//content-->
-                            <div class="ribbon">
-                                <div class="text">Popular</div>
-                            </div><!--//ribbon-->
-                        </div><!--//item-inner-->
-                    </div><!--//item-->
-
-                    <div class="item price-3 col-md-4 col-sm-4 col-xs-12 text-center">
-                        <div class="item-inner">
-                            <div class="heading">
-                                <h3 class="title">Cameras and Security Systems</h3>
-                            </div>
-                            <div class="content">
-                                <ul class="list-unstyled feature-list">
-                                    <li><i class="fa fa-check"></i>Security Assessments</li>
-                                    <li><i class="fa fa-check"></i>Security Systems</li>
-                                    <li><i class="fa fa-check"></i>Camera Systems</li>
-                                    <li><i class="fa fa-check"></i>24/7 support</li>
-                                </ul>
-                                <a class="btn btn-cta btn-cta-primary" id="fire_door_inspection_button">Learn More</a>
-                            </div><!--//content-->
-                        </div><!--//item-inner-->
-                    </div><!--//item-->
-                </div><!--//items-wrapper-->
-            </div><!--//row-->
-        </div><!--//container-->
-    </section>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="mid-row-header">
-          <h2 class="section-header-text">
-            About Us
-          </h2>
-          <p class="section-header-subtext">
-            EAHS is a locksmith and security company with over 35 years of experience.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="row row-background margin-top-medium-indent-left">
-      <div class="col-md-6 col-xs-12">
-        <h2>
-          Contact Us
-        </h2>
-        <div class="col-sm-6">
-          <i class="fa fa-phone pull-left" aria-hidden="true"></i>216-555-5544
-        </div>
-      </div>
-      <!-- <div class="col-md-6 col-xs-12"> -->
-      <!-- </div> -->
+    </div><!--//content-->
+  </div><!--//item-inner-->
+  <div class="col-md-3 col-lg-3 col-md-offset-1 col-lg-offset-1">
+    <div class="pricing-table pricing-table-warning">
+      <div class="pricing-table-title">Safes</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
+        <li>Servicing</li>
+        <li>Combination Change</li>
+        <li> Opening and Repair</li>
+        <li>Moving</li>
+        <li>Sales</li>
+        <li>24/7 support</li>
+      </ul>
+      <!-- <a class="btn btn-warning" id="security_button">Learn More</a> -->
+      <%= link_to "Safes", product_path(3), class: "btn btn-warning" %>
+    </div><!--//content-->
+  </div><!--//item-inner-->
+  <div class="col-md-3 col-lg-3 col-md-offset-1 col-lg-offset-1">
+    <div class="pricing-table pricing-table-success">
+      <div class="pricing-table-title">Cameras and Security Systems</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
+        <li>Security Assessments</li>
+        <li>Security Systems</li>
+        <li>Camera Systems</li>
+        <li>24/7 support</li>
+        <li>&nbsp;</li>
+      </ul>
+      <!-- <a class="btn btn-success" id="fire_door_inspection_button">Learn More</a> -->
+      <%= link_to 'Cameras and Security Systems', product_path(4), class: "btn btn-success" %>
+    </div><!--//content-->
+  </div><!--//item-inner-->
+</div><!--//item-->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="mid-row-header">
+      <h2 class="section-header-text">
+        About Us
+      </h2>
+      <p class="section-header-subtext">
+        EAHS is a locksmith and security company with over 35 years of experience.
+      </p>
     </div>
   </div>
 </div>
-  <%= render "quotes/fire_door_inspection" %>
-  <%= render "quotes/security" %>
-  <%= render "quotes/locksmith" %>
+<div class="row row-background margin-top-medium-indent-left">
+  <div class="col-md-6 col-xs-12">
+    <h2>
+      Contact Us
+    </h2>
+    <div class="col-sm-6">
+      <i class="fa fa-phone pull-left" aria-hidden="true"></i>216-555-5544
+    </div>
+  </div>
+</div>

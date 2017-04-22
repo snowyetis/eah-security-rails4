@@ -1,57 +1,60 @@
-<div class="container">
   <div class="row">
-    <h2>Register for Access to EAH Security</h2>
-    <p>
-      An administrator will review your application. Upon approval an e-mail will be sent to the e-mail account you have signed up
-      with.
-    </p>
     <div class="col-md-12 col-lg-12">
-      <section class="reigster-form">
-        <%= form_for(resource, as: resource_name, url: user_registration_path(resource), role: "register") do |f| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2><strong>Register for Access to EAH Security</strong></h2>
+          <br>
+          <p>
+            An administrator will review your application. Upon approval an e-mail will be sent to the e-mail account you have signed up
+            with.
+          </p>
+        </div>
+        <div class="panel-body">
+        <%= form_for(resource, as: resource_name, url: user_registration_path(resource), html: {role: "form", class: "form" }) do |f| %>
           <%= devise_error_messages! %>
 
             <div class="form-group">
-              <%= f.label :first_name, class: "control-label" %>
+              <%= f.label :first_name  %>
               <%= f.text_field :first_name, class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :last_name, class: "control-label" %>
+              <%= f.label :last_name %>
               <%= f.text_field :last_name, class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :address, class: "control-label" %>
+              <%= f.label :address %>
               <%= f.text_field :address, class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :city, class: "control-label" %>
+              <%= f.label :city %>
               <%= f.text_field :city, class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :state, class: "control-label" %>
+              <%= f.label :state  %>
               <%= f.text_field :state, class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :zip, class: "control-label" %>
+              <%= f.label :zip  %>
               <%= f.text_field :zip, class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :affiliation, class: "control-label" %>
+              <%= f.label :affiliation %>
               <%= f.text_field :affiliation, class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :email, class: "control-label" %><br />
+              <%= f.label :email %><br />
               <%= f.email_field :email, autofocus: true, class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :password, class: "control-label" %>
+              <%= f.label :password %>
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em>
               <% end %><br />
@@ -59,15 +62,15 @@
             </div>
 
             <div class="form-group">
-              <%= f.label :password_confirmation, class: "control-label" %><br />
+              <%= f.label :password_confirmation %><br />
               <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.submit "Register", class: "btn btn-lg btn-primary btn-block" %>
+              <%= f.submit "Register", class: "btn btn-space btn-primary" %>
             </div>
         <% end %>
-      </section>
+      </div>
     </div>
   </div>
 </div>

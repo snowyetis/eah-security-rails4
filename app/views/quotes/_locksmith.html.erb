@@ -30,14 +30,14 @@
             </div>
             <%= f.fields_for(:questionaire) do |q| %>
               <%= q.hidden_field :product_type, value: "key repair" %>
-              <%= q.label :comments, class: "control-label" %>
-              <%= q.text_area :comments, class: "form-control" %>
+              <%= q.label 'Requests' %>
+              <%= q.text_area :comments, class: "form-control", placeholder: "Type your requests here" %>
             <% end %>
         </div>
         <div class="modal-footer">
-            <%= f.submit "Submit Quote", class: "btn btn-primary" %>
-          <% end %>
+            <%= f.submit "Submit for Quote", class: "btn btn-primary" %>
         </div>
+      <% end %>
       </div>
     </div>
   </div>

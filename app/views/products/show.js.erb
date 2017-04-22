@@ -1,0 +1,7 @@
+(function() {
+    // var $product = $('<%= j render partial: "show" %>');
+    // $product.hide().prependTo($product).slideDown();
+    $("#showProduct").html("<%= escape_javascript(render partial: "show", locals: { product: @product } )%>");
+    $("#showProduct").slideDown();
+
+})()

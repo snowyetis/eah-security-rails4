@@ -2,9 +2,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 before_filter :configure_sign_up_params, only: [:create]
 before_filter :configure_account_update_params, only: [:update]
 # before_action :authenticate_user!, except: [:about]
+add_breadcrumb "Home", :home_index_path
+
 
   # GET /resource/sign_up
   def new
+    add_breadcrumb "Create Account", new_user_registration_path
     super
   end
 
@@ -25,6 +28,8 @@ before_filter :configure_account_update_params, only: [:update]
 
   # GET /resource/edit
   def edit
+    add_breadcrumb "Edit Account Details", new_user_registration_path
+
     super
   end
 

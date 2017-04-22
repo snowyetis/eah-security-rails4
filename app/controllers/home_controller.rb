@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  add_breadcrumb "Home", :home_index_path
+
 
   def index
     if !current_user.blank?
@@ -7,10 +9,10 @@ class HomeController < ApplicationController
       @quote_detail = @quote.build_quote_detail
     else
       @quote = Quote.new
+      @products = Product.all
       @questionaire = @quote.build_questionaire
       @quote_detail = @quote.build_quote_detail
     end
-
   end
 
   def submit_questionaire
@@ -30,25 +32,6 @@ class HomeController < ApplicationController
   end
 
   def exit
-  end
-
-  def send_quote_request
-    if user_signed_in?
-      @role = Role.find(params[:id])
-      case @role.Id
-        when 1
-          QuoteMailer.fire_door_quote_request
-        when 2
-          QuoteMailer.security_solutions_quote_request
-        when 3
-          QuoteMailer.locksmith_quote_request
-        else
-          flash[:error] = "Not found"
-        end
-      else
-        flash[:error] = "You must be a registered user before requesting a quote."
-      end
-
   end
 
     private

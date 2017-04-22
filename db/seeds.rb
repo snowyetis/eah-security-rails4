@@ -8,4 +8,5 @@ when "development"
   user.password_confirmation = 'valid_password'
   user.approved = false
   user.save!
+  end
 end

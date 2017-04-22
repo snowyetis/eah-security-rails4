@@ -1,0 +1,3 @@
+(function() {
+  $("#showQuote").html("<%= escape_javascript(render partial: "show", locals: { quote: @quote } )%>");
+})()

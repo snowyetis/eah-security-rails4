@@ -1,0 +1,18 @@
+
+    <div class="photo">
+          <h2><%= product.product_type.titleize %></h2>
+          <%= link_to product_path(product) do %>
+            <%= image_tag product.product_type.gsub(' ','_').downcase.to_s, class: "img-responsive img-fullWidth" %>
+          <% end %>
+      </div>
+    <br />
+    <div class="bottom">
+        <div class="user-info">
+          Description of product here. Description of product here. Description of product here. Description of product here.
+          Description of product here. Description of product here. Description of product here. Description of product here.
+          Description of product here. Description of product here. Description of product here. Description of product here.
+          Description of product here. Description of product here. Description of product here. Description of product here.
+        </div>
+        <%= button_tag 'Create your Quote', id: product.product_type.gsub(' ','_').downcase.to_s, class: 'btn btn-primary', remote: true %>
+        <!-- <a class="btn btn-cta btn-cta-primary" id="locksmith_button">Learn More</a> -->
+  </div>

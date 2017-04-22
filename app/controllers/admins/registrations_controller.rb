@@ -1,6 +1,8 @@
 class Admins::RegistrationsController < Devise::RegistrationsController
-before_filter :configure_sign_up_params, only: [:create]
-before_filter :configure_account_update_params, only: [:update, :approve_user]
+  before_filter :configure_sign_up_params, only: [:create]
+  before_filter :configure_account_update_params, only: [:update, :approve_user]
+  before_action :authenticate_admin!
+  add_breadcrumb "Home", :home_index_path
 
  # before_filter do
  #   redirect_to new_user_session_path unless current_admin
@@ -11,8 +13,15 @@ before_filter :configure_account_update_params, only: [:update, :approve_user]
   def get_approved_users
     if params[:approved] == "false"
       @users = User.where(approved: false)
+      @approvedClass = false
     else
       @users = User.all
+      @approvedClass = true
+    end
+
+    if request.xhr?
+      render js: { }
+      # render json: { users: @users, approvedClass: @approvedClass }
     end
   end
 
@@ -30,23 +39,29 @@ before_filter :configure_account_update_params, only: [:update, :approve_user]
 
     respond_to do |format|
       if @update
-        sign_in @user, :bypass => true
+        bypass_sign_in(@user)
         if @user.approved == true
-          AdminMailer.new_user_approved(@user).deliver
+          AdminMailer.new_user_approved(@user.email).deliver
         end
+        format.js { }
         format.json { render json: @user }
       else
+        format.js {}
         format.json { render json: @user.error }
       end
     end
   end
 
   def index
+    add_breadcrumb "Administrator Home", admins_signed_up_path
+
     get_approved_users
   end
 
   # GET /resource/sign_up
   def new
+    add_breadcrumb "Create Admin Account", admin_new_path
+
     super
   end
 
@@ -57,6 +72,8 @@ before_filter :configure_account_update_params, only: [:update, :approve_user]
 
   # GET /resource/edit
   def edit
+    add_breadcrumb "Edit Admin Account Details", edit_admin_registration_path
+
     super
   end
 

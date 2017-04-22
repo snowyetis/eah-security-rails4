@@ -1,11 +1,8 @@
 <div class="container">
  <div class="row">
    <h2>Payment Form</h2>
-
     <div class="col-md-12 col-lg-12">
       <section class="register-form">
-
-
         <%= form_for(@registration, html: { role: "register" }) do |f| %>
         <%= f.hidden_field :product_id, value: @product.id %>
           <div class="form-group">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170121184004) do
+ActiveRecord::Schema.define(version: 20170403113404) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
@@ -103,7 +103,10 @@ ActiveRecord::Schema.define(version: 20170121184004) do
     t.boolean  "rejected"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "product_id"
   end
+
+  add_index "quotes", ["product_id"], name: "index_quotes_on_product_id"
 
   create_table "registrations", force: :cascade do |t|
     t.string   "full_name"

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Quote Maintenance</h1>
 
 <table class="table table-bordered table-striped table-hover" id="quotes-table">
@@ -7,74 +5,83 @@
     <tr>
       <th>Quote Type</th>
       <th>Submitted By</th>
-      <th>Pending</th>
-      <th>Rejected</th>
-      <th>Approved</th>
-        <th>
-          <center>
-            <i class="glyphicon glyphicon-eye-open"></i>
-          </center>
-        </th>
+      <th>Submitted Date</th>
+      <th><center>Status</center></th>
+      <th>
+        <center>
+          <i class="glyphicon glyphicon-eye-open"></i>
+        </center>
+      </th>
       <% if current_admin %>
-        <th>
-          <center>
-            <i class="glyphicon glyphicon-pencil"></i>
-          </center>
-        </th>
-      <% end %>
-      <% if current_admin %>
-        <th>
-          <center>
-            <i class="glyphicon glyphicon-fire"></i>
-          </center>
-        </th>
+      <th>
+        <center>
+          <i class="glyphicon glyphicon-pencil"></i>
+        </center>
+      </th>
+      <th>
+        <center>
+          <i class="glyphicon glyphicon-fire"></i>
+        </center>
+      </th>
       <% end %>
     </tr>
   </thead>
   <tbody class="table-hover">
     <% @quotes.each do |quote| %>
-      <tr>
-        <td>
-          <%= quote.quote_type %>
-        </td>
-        <% if user_signed_in? %>
-          <td>
-            <%= current_user.first_name + " " + current_user.last_name %>
-          </td>
+    <tr>
+      <td>
+        <%= quote.quote_type %>
+      </td>
+      <% if user_signed_in? %>
+      <td>
+        <%= current_user.first_name + " " + current_user.last_name %>
+      </td>
+      <% end %>
+      <% if admin_signed_in? %>
+      <td>
+        <%= quote.user.first_name + " " + quote.user.last_name %>
+      </td>
+      <% end %>
+      <td><%= quote.created_at.to_formatted_s(:short) %></td>
+      <td>
+        <% if quote.pending %>
+        <center>
+          <label class="label label-warning">Pending</label>
+        </center>
         <% end %>
-        <% if admin_signed_in? %>
-          <td>
-            <%= quote.user.first_name + " " + quote.user.last_name %>
-          </td>
+        <% if quote.rejected %>
+        <center>
+          <label  class="label label-danger">Rejected</label>
+        </center>
         <% end %>
-        <td>
-          <%= quote.pending %>
-        </td>
-        <td>
-          <%= quote.rejected %>
-        </td>
-        <td>
-          <%= quote.approved %>
-        </td>
-
-          <td>
-            <%= link_to 'View', quote %>
-          </td>
-
-        <% if current_admin %>
-          <td>
-            <%= link_to 'Edit', edit_quote_path(quote) %>
-          </td>
+        <% if quote.approved %>
+        <center>
+          <label  class="label label-success">Approved</label>
+        </center>
         <% end %>
-        <% if current_admin %>
-          <td>
-            <%= link_to 'Delete', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </td>
-        <% end %>
-      </tr>
+      </td>
+      <td>
+        <center>
+          <%= link_to 'View', quote_path(quote),  remote: true %>
+        </center>
+      </td>
+      <% if current_admin %>
+      <td>
+        <center>
+          <%= link_to 'Edit', edit_quote_path(quote),   remote: true %>
+        </center>
+      </td>
+      <td>
+        <center>
+          <%= link_to 'Delete', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </center>
+      </td>
+      <% end %>
+    </tr>
     <% end %>
   </tbody>
 </table>
+
 
 <div id="showQuote">
 </div>
