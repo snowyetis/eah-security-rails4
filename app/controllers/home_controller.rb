@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   add_breadcrumb "Home", :home_index_path
 
-
   def index
     if !current_user.blank?
       @quote = current_user.quotes.new
