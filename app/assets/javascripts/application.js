@@ -14,4 +14,5 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery.niftymodals
+//= require smart_listing
 //= require_tree .

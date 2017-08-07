@@ -89,6 +89,9 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.3)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     kgio (2.9.3)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -100,10 +103,10 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.1)
     multi_json (1.12.1)
-    mysql2 (0.3.21)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
+    pg (0.19.0)
     populator (1.0.0)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -148,6 +151,11 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    smart_listing (1.2.0)
+      coffee-rails
+      jquery-rails
+      kaminari (~> 0.17)
+      rails (>= 3.2)
     spring (2.0.0)
       activesupport (>= 4.2)
     sprockets (3.7.0)
@@ -195,11 +203,12 @@ DEPENDENCIES
   jquery
   jquery-rails
   jquery-turbolinks
-  mysql2 (~> 0.3.18)
+  pg
   populator
   rails (= 4.2.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  smart_listing
   spring
   sprockets-rails
   sqlite3

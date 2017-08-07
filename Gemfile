@@ -6,7 +6,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'sprockets-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'jquery'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
@@ -18,6 +17,7 @@ gem 'activemerchant'
 gem 'faker'
 gem 'populator'
 gem 'breadcrumbs_on_rails'
+gem 'smart_listing'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -28,7 +28,7 @@ gem 'breadcrumbs_on_rails'
 
 group :production do
   gem 'unicorn'
-  gem 'mysql2', '~> 0.3.18'
+  gem 'pg'
 end
 
 group :development, :test do
@@ -43,3 +43,5 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+ruby "2.3.1"

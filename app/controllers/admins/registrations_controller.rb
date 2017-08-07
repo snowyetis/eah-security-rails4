@@ -4,6 +4,9 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   before_action :authenticate_admin!
   add_breadcrumb "Home", :home_index_path
 
+  include SmartListing::Helper::ControllerExtensions
+  helper  SmartListing::Helper
+
  # before_filter do
  #   redirect_to new_user_session_path unless current_admin
  # end
@@ -12,17 +15,14 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   def get_approved_users
     if params[:approved] == "false"
-      @users = User.where(approved: false)
       @approvedClass = false
     else
-      @users = User.all
       @approvedClass = true
     end
 
-    if request.xhr?
-      render js: { }
-      # render json: { users: @users, approvedClass: @approvedClass }
-    end
+    users_scope = User.where(approved: @approvedClass)
+    users_scope = users_scope.(email: params[:email]) unless params[:email].blank?
+    @users = smart_listing_create(:users, users_scope, partial: "admins/shared/approvalgrid" )
   end
 
   def approve_user
