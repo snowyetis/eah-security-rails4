@@ -5,9 +5,11 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  # adapter: sqlite3
+  # pool: 5
+  # timeout: 5000
 
 development:
   <<: *default
@@ -33,3 +35,5 @@ test:
 production:
   <<: *default
   adapter: postgresql
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASS'] %>
