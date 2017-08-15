@@ -30,7 +30,6 @@ test:
   # password: <%= ENV['DATABASE_PASS'] %>
   # host: eah_security
 
-  production:
-    <<: *default
-    adapter: postgresql
-    encoding: unicode
+production:
+  <<: *default
+  adapter: postgresql
