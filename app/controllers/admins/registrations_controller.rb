@@ -21,7 +21,16 @@ class Admins::RegistrationsController < Devise::RegistrationsController
     end
 
     users_scope = User.where(approved: @approvedClass)
-    users_scope = users_scope.(email: params[:email]) unless params[:email].blank?
+
+    users_scope = User.where(email: params[:email]) unless params[:email].blank?
+    users_scope = User.where(first_name: params[:first_name]) unless params[:first_name].blank?
+    users_scope = User.where(last_name: params[:last_name]) unless params[:last_name].blank?
+    users_scope = User.where(address: params[:address]) unless params[:address].blank?
+    users_scope = User.where(city: params[:city]) unless params[:city].blank?
+    users_scope = User.where(state: params[:state]) unless params[:state].blank?
+    users_scope = User.where(affiliation: params[:affiliation]) unless params[:affiliation].blank?
+    users_scope = User.where(approved: params[:approved]) if params[:approved] == "1"
+
     @users = smart_listing_create(:users, users_scope, partial: "admins/shared/approvalgrid" )
   end
 

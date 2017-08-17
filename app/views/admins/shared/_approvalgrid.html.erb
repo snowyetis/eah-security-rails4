@@ -1,6 +1,6 @@
 <div class="panel panel-info">
-    <div class="panel-heading">Filter</div>
-    <div class="panel-body">
+  <div class="panel-heading">Filter</div>
+  <div class="panel-body">
     <%= smart_listing_controls_for(:users, {class: "form-inline-center"}) do %>
     <% # Add checkbox to form - switching it submits the form %>
     <% # Add search box to form - it submits the form automatically on text change %>
@@ -12,7 +12,7 @@
     </div>
     <div class="col-lg-4">
       <div class="form-group filter input-append">
-            <%= label_tag :first_name  %>
+        <%= label_tag :first_name  %>
         <%= text_field_tag :first_name, '', class: "search form-control", placeholder: "Search...", autocomplete: :off  %>
       </div>
     </div>
@@ -56,35 +56,35 @@
       </div>
     </div>
     <div class="col-lg-4">
-    <button class="btn btn-primary disabled" type="<%= :submit %>">
-      <span class="glyphicon glyphicon-search"></span>
-      Search
-    </button>
-  </div>
-  <% end %>
-</div>
-<hr />
-<!-- <div class="row"> -->
-  <!-- <div class="col-xs-6"> -->
-    <div class="pull-right">
-       <input type="button" id="btn_approve_users" value="Approve Users" class="btn btn-primary <%= 'disabled' if @approvedClass %>" />
+      <button class="btn btn-primary" type="<%= :submit %>">
+        <span class="glyphicon glyphicon-search"></span>Search
+      </button>
     </div>
+    <% end %>
+  </div>
+  <hr />
+  <!-- <div class="row"> -->
+  <!-- <div class="col-xs-6"> -->
+  <div class="pull-right">
+    <input type="button" id="btn_approve_users" value="Approve Users" class="btn btn-primary" />
+  </div>
+  <br />
   <!-- </div> -->
-<!-- </div> -->
-<% unless smart_listing.empty? %>
-<table class="table table-bordered table-striped table-hover" id="registrations-table">
-  <thead>
-    <th>Email</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Affiliation</th>
-    <th>Approved</th>
-  </thead>
-  <tbody class="table-hover">
-    <% smart_listing.collection.each do |user| %>
+  <!-- </div> -->
+  <% unless smart_listing.empty? %>
+    <table class="table table-bordered table-striped table-hover" id="registrations-table">
+      <thead>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Affiliation</th>
+        <th>Approved</th>
+      </thead>
+      <tbody class="table-hover">
+        <% smart_listing.collection.each do |user| %>
         <tr>
           <td class="hide"><%= hidden_field_tag user.id %></td>
           <td><%= user.email %></td>
@@ -95,14 +95,14 @@
           <td><%= user.state %></td>
           <td><%= user.affiliation %></td>
           <td>
-              <%= check_box_tag "chk_box" + user.id.to_s, user.approved, user.approved, id: "user_#{user.id}" %>
+            <%= check_box_tag "chk_box" + user.id.to_s, user.approved, user.approved, id: "user_#{user.id}" %>
           </td>
         </tr>
         <% end %>
-  </tbody>
-</table>
-<%= smart_listing.paginate %>
-<% else %>
-<p class="warning">No records</p>
-<% end %>
+      </tbody>
+    </table>
+    <%= smart_listing.paginate %>
+  <% else %>
+    <p class="warning">No records</p>
+  <% end %>
 </div>
