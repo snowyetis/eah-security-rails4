@@ -69,7 +69,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    add_breadcrumb "Create Admin Account", admin_new_path
+    # add_breadcrumb "Create Admin Account", admin_new_path
 
     super
   end

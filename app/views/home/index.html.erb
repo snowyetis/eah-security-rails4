@@ -2,16 +2,16 @@
   <%= image_tag "Locksmith-Services", id: "imgBanner", class: "img-responsive" %>
 </div>
 <div class="row pricing-tables">
-  <div class="col-md-4 col-lg-4">
+  <div class="col-md-6 col-lg-6">
     <div class="pricing-table pricing-table-primary">
-      <div class="pricing-table-title">Certified Fire Door Inspection</div>
+      <div class="pricing-table-title">Locksmithing</div>
       <div class="panel-divider panel-divider-xl"></div>
       <ul class="pricing-table-features">
-        <li>Basic Keys - Simple Services</li>
+        <!-- <li>Basic Keys - Simple Services</li>
         <li>Hardware Replacement</li>
         <li>Access Control - Design - Repair</li>
         <li>High Security Locks - Highend Services</li>
-        <li>24/7 support</li>
+        <li>24/7 support</li> -->
       </ul>
       <!-- <a class="btn btn-primary" id="locksmith_button">Learn More</a> -->
       <% if admin_signed_in? || user_signed_in? %>
@@ -19,17 +19,34 @@
       <% end %>
     </div><!--//content-->
   </div><!--//item-inner-->
-  <div class="col-md-4 col-lg-4">
+  <div class="col-md-6 col-lg-6">
+    <div class="pricing-table pricing-table-primary">
+      <div class="pricing-table-title">Certified Fire Door Inspection</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
+        <!-- <li>Basic Keys - Simple Services</li>
+        <li>Hardware Replacement</li>
+        <li>Access Control - Design - Repair</li>
+        <li>High Security Locks - Highend Services</li>
+        <li>24/7 support</li> -->
+      </ul>
+      <!-- <a class="btn btn-primary" id="locksmith_button">Learn More</a> -->
+      <% if admin_signed_in? || user_signed_in? %>
+        <%= link_to "Certified Fire Door Inspection",  product_path(4), class: "btn btn-primary" %>
+      <% end %>
+    </div><!--//content-->
+  </div><!--//item-inner-->
+  <div class="col-md-6 col-lg-6">
     <div class="pricing-table pricing-table-warning">
       <div class="pricing-table-title">Safes</div>
       <div class="panel-divider panel-divider-xl"></div>
       <ul class="pricing-table-features">
-        <li>Servicing</li>
+        <!-- <li>Servicing</li>
         <li>Combination Change</li>
         <li> Opening and Repair</li>
         <li>Moving</li>
         <li>Sales</li>
-        <li>24/7 support</li>
+        <li>24/7 support</li> -->
       </ul>
       <!-- <a class="btn btn-warning" id="security_button">Learn More</a> -->
       <% if admin_signed_in? || user_signed_in? %>
@@ -37,16 +54,16 @@
       <% end %>
     </div><!--//content-->
   </div><!--//item-inner-->
-  <div class="col-md-4 col-lg-4">
+  <div class="col-md-6 col-lg-6">
     <div class="pricing-table pricing-table-success">
       <div class="pricing-table-title">Cameras and Security Assessments</div>
       <div class="panel-divider panel-divider-xl"></div>
       <ul class="pricing-table-features">
-        <li>Security Assessments</li>
+        <!-- <li>Security Assessments</li>
         <li>Security Systems</li>
         <li>Camera Systems</li>
         <li>24/7 support</li>
-        <li>&nbsp;</li>
+        <li>&nbsp;</li> -->
       </ul>
       <!-- <a class="btn btn-success" id="fire_door_inspection_button">Learn More</a> -->
       <% if admin_signed_in? || user_signed_in? %>
