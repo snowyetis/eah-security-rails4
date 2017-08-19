@@ -32,11 +32,6 @@
       <td>
         <%= quote.quote_type %>
       </td>
-      <!-- <# if user_signed_i? %>
-      <td>
-        <%= current_user.first_name + " " + current_user.last_name %>
-      </td>
-      <# end %> -->
       <% if admin_signed_in? %>
       <td>
         <%= quote.user.first_name + " " + quote.user.last_name %>

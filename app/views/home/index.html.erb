@@ -2,7 +2,7 @@
   <%= image_tag "Locksmith-Services", id: "imgBanner", class: "img-responsive" %>
 </div>
 <div class="row pricing-tables">
-  <div class="col-md-3 col-lg-3">
+  <div class="col-md-4 col-lg-4">
     <div class="pricing-table pricing-table-primary">
       <div class="pricing-table-title">Certified Fire Door Inspection</div>
       <div class="panel-divider panel-divider-xl"></div>
@@ -14,12 +14,12 @@
         <li>24/7 support</li>
       </ul>
       <!-- <a class="btn btn-primary" id="locksmith_button">Learn More</a> -->
-      <%= link_to "Certified Fire Door Inspection",  product_path(4), class: "btn btn-primary" %>
-
+      <% if admin_signed_in? || user_signed_in? %>
+        <%= link_to "Certified Fire Door Inspection",  product_path(4), class: "btn btn-primary" %>
+      <% end %>
     </div><!--//content-->
   </div><!--//item-inner-->
-  <div class="col-md-3 col-lg-3 col-md-offset-1 col-lg-offset-1">
-    <div class=""
+  <div class="col-md-4 col-lg-4">
     <div class="pricing-table pricing-table-warning">
       <div class="pricing-table-title">Safes</div>
       <div class="panel-divider panel-divider-xl"></div>
@@ -32,10 +32,12 @@
         <li>24/7 support</li>
       </ul>
       <!-- <a class="btn btn-warning" id="security_button">Learn More</a> -->
-      <%= link_to "Safes", product_path(3), class: "btn btn-warning" %>
+      <% if admin_signed_in? || user_signed_in? %>
+        <%= link_to "Safes", product_path(3), class: "btn btn-warning" %>
+      <% end %>
     </div><!--//content-->
   </div><!--//item-inner-->
-  <div class="col-md-3 col-lg-3 col-md-offset-1 col-lg-offset-1">
+  <div class="col-md-4 col-lg-4">
     <div class="pricing-table pricing-table-success">
       <div class="pricing-table-title">Cameras and Security Assessments</div>
       <div class="panel-divider panel-divider-xl"></div>
@@ -47,7 +49,9 @@
         <li>&nbsp;</li>
       </ul>
       <!-- <a class="btn btn-success" id="fire_door_inspection_button">Learn More</a> -->
-      <%= link_to "Cameras and Secruity Assessments", product_path(2), class: "btn btn-success" %>
+      <% if admin_signed_in? || user_signed_in? %>
+        <%= link_to "Cameras and Secruity Assessments", product_path(2), class: "btn btn-success" %>
+      <% end %>
     </div><!--//content-->
   </div><!--//item-inner-->
 </div><!--//item-->

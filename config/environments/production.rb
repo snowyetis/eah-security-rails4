@@ -14,18 +14,31 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { :host => 'gmail.com' }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              ENV["address"] ,
-    port:                 ENV['port'],
-    domain:               ENV['domain'],
-    user_name:            ENV['user_name'],
-    password:             ENV['password'],
-    authentication:       ENV['authentication'],
-    enable_starttls_auto: true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.default_url_options = { :host => 'gmail.com' }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address:              ENV["address"] ,
+  #   port:                 ENV['port'],
+  #   domain:               ENV['domain'],
+  #   user_name:            ENV['user_name'],
+  #   password:             ENV['password'],
+  #   authentication:       ENV['authentication'],
+  #   enable_starttls_auto: true
+  # }
+
+  config.action_mailer.default_url_options = { host: 'eah-security.herokuapp.com' }
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+
+  ActionMailer::Base.smtp_settings = {
+    :user_name =>  ENV['user_name'],
+    :password =>  ENV['password'],
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
   }
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application

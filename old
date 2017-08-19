@@ -154,3 +154,92 @@ $('#notice').show();
           <p id="notice" ><%= notice %></p>
     </div>
 </div>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="page-title">
+        <span><%= link_to 'EAHS', root_path, class: 'navbar-brand' %></span>
+      </div>
+    </div>
+    <!-- <div id="am-navbar-collapse" class="collapse navbar-collapse"> -->
+    <div class="navbar-collapse collapse" id="navbarResponsive" style="">
+      <!-- <ul class="nav navbar-nav am-nav-left"> -->
+      <ul class="navbar-nav ml-auto">
+        <li><%= link_to 'Home', root_path, class: 'nav-item' %></li>
+        <% if  !current_user.blank? || !current_admin.blank? %>
+        <li><%= link_to 'Our Services', products_path %></li>
+        <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Services <span class="angle-down s7-angle-down"></span></a>
+          <ul role="menu" class="dropdown-menu">
+              <% if admin_signed_in? %>
+                <li>
+                  <%= link_to "Quotes", quotes_path %>
+                </li>
+                <hr />
+                <li>
+                  <%= link_to 'Settings', edit_admin_registration_path %>
+                </li>
+                <li>
+                  <%= link_to 'Approve User', admins_signed_up_path %>
+                </li>
+                <li>
+                  <%= link_to 'Sign out', destroy_admin_session_path, method: :delete %>
+                </li>
+              <% end %>
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to "View Open Quotes", quotes_path %>
+                </li>
+                <hr/>
+                <li>
+                  <%= link_to "Edit Account Details", edit_user_registration_path %>
+                </li>
+                <li>
+                  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+        <% if current_user.blank? && current_admin.blank? %>
+          <% if @adminFlag %>
+            <li>
+              <%= link_to 'Sign Up',  new_admin_registration_path %>
+            </li>
+              <% else %>
+            <li>
+              <%= link_to 'Sign Up',  new_user_registration_path %>
+            </li>
+          <% end %>
+          <li class="dropdown">
+            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Sign In
+            <span class="angle-down s7-angle-down"></span></a>
+            <ul role="menu" class="dropdown-menu">
+                <% if @adminFlag %>
+                  <li style="width: 400px;">
+                    <%= render "admins/sessions/new" %>
+                  </li>
+                <% else %>
+                  <li style="width: 400px;">
+                    <%= render "users/sessions/new" %>
+                  </li>
+                <% end %>
+              </ul>
+          </li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav pull-right">
+        <br />
+        <br />
+      <li>
+      <% if user_signed_in? %>
+          <li>
+            Signed In As: &nbsp; <%= label_tag current_user.email %>
+          </li>
+      <% end %>
+    </li>
+    </div>
+  </div>
+</nav>
