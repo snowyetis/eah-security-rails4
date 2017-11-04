@@ -21,7 +21,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
       @approvedClass = true
     end
 
-      users_scope = User.where(approved: @approvedClass)
+      users_scope = User.where(approved: false)
 
       users_scope = User.where("email LIKE ?", "#{params[:email]}%") unless params[:email].blank?
       users_scope = User.where("first_name LIKE ?", "#{params[:first_name]}%") unless params[:first_name].blank?

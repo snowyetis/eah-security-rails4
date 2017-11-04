@@ -46,15 +46,7 @@
         <%= text_field_tag :affiliation, '', class: "search form-control", placeholder: "Search...", autocomplete: :off  %>
       </div>
     </div>
-    <div class="col-lg-4">
-      <div class="checkbox">
-        <label class="checkbox inline">
-          <%= hidden_field_tag :approved, "0" %>
-          <%= check_box_tag :approved %>
-          <%= "Show approved users only?" %>
-        </label>
-      </div>
-    </div>
+
     <div class="col-lg-4">
       <button class="btn btn-primary" type="<%= :submit %>">
         <span class="glyphicon glyphicon-search"></span>Search
