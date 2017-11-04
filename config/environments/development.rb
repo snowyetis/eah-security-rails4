@@ -2,7 +2,7 @@ Rails.application.configure do
   config.after_initialize do
     ActiveMerchant::Billing::Base.mode = :test  # :production when you will use a real Pro Account
     ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
-    login: "akrowdeesummitcounty_api1.gmail.com",
+    login: ENV['paypal_login'],
     password: "7ELVC5BERKUZABMF",
     signature: "AFcWxV21C7fd0v3bYYYRCpSSRl31A3-7WGyQvexSAEBrh2HsKlh5BnXp"
     )
@@ -56,4 +56,5 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.absolute_site_url = 'http://localhost:3000/'
 
+  ActiveRecord::Base.configurations = Rails.application.config.database_configuration
 end

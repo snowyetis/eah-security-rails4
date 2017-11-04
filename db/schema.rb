@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422180802) do
+ActiveRecord::Schema.define(version: 20170820014044) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
@@ -109,12 +109,14 @@ ActiveRecord::Schema.define(version: 20170422180802) do
     t.boolean  "approved"
     t.boolean  "pending"
     t.boolean  "rejected"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "product_id"
+    t.integer  "requester_type_id"
   end
 
   add_index "quotes", ["product_id"], name: "index_quotes_on_product_id"
+  add_index "quotes", ["requester_type_id"], name: "index_quotes_on_requester_type_id"
 
   create_table "registrations", force: :cascade do |t|
     t.string   "full_name"
@@ -131,6 +133,13 @@ ActiveRecord::Schema.define(version: 20170422180802) do
   end
 
   add_index "registrations", ["product_id"], name: "index_registrations_on_product_id"
+
+  create_table "requester_types", force: :cascade do |t|
+    t.string   "requester_type_name"
+    t.string   "requester_type_code"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
 
   create_table "sales", force: :cascade do |t|
     t.integer  "quote_id"
