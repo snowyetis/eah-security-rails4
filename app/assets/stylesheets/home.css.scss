@@ -1,279 +1,179 @@
-// .row-background {
-//   width: 100%;
-//   height: 100%;
-//   background-color: rgb(255, 71, 26);
-//   color: white;
-// }
-//
-// /* ======= Headline Background & Slideshow ======= */
-// .bg-slider-wrapper {
-//   content: "";
-//   position: absolute;
-//   width: 100%;
-//   top: 0;
-//   left: 0;
-//   height: 780px;
-//   background: #373737;
-// }
-// .bg-slider-wrapper .flexslider {
-//   margin: 0;
-//   -webkit-box-shadow: none;
-//   -moz-box-shadow: none;
-//   box-shadow: none;
-//   border: none;
-//   -webkit-border-radius: 0;
-//   -moz-border-radius: 0;
-//   -ms-border-radius: 0;
-//   -o-border-radius: 0;
-//   border-radius: 0;
-//   -moz-background-clip: padding;
-//   -webkit-background-clip: padding-box;
-//   background-clip: padding-box;
-// }
-// .bg-slider-wrapper .flexslider .slide {
-//   display: block;
-//   height: 780px;
-// }
-// .bg-slider-wrapper .flexslider .slide.slide-1 {
-//   background: #253340 url('../images/keys-blanks-cylinder-key-blank-for-cutting-on-board-in-locksmith-shop-DMKTTH.jpg') no-repeat 50% top;
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
-// }
-// .bg-slider-wrapper .flexslider .slide.slide-2 {
-//   background: #253340 url('../images/background/bg-header-2.jpg') no-repeat 50% top;
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
-// }
-// .bg-slider-wrapper .flexslider .slide.slide-3 {
-//   background: #253340 url('../images/background/bg-header-3.jpg') no-repeat 50% top;
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
-// }
-// .bg-slider-wrapper .flexslider .flex-control-nav {
-//   z-index: 30;
-//   bottom: 30px;
-//   position: relative;
-// }
-// .bg-slider-wrapper .flexslider .flex-control-nav li a {
-//   background: #999;
-// }
-// .bg-slider-wrapper .flexslider .flex-control-nav li a.flex-active {
-//   background: #bfbfbf;
-// }
-// .headline-bg {
-//   position: absolute;
-//   width: 100%;
-//   top: 0;
-//   left: 0;
-//   height: 500px;
-//   background: #253340 url('../assets/images/keys-blanks-cylinder-key-blank-for-cutting-on-board-in-locksmith-shop-DMKTTH.jpg') no-repeat 50% top;
-//   -webkit-background-size: cover;
-//   -moz-background-size: cover;
-//   -o-background-size: cover;
-//   background-size: cover;
-// }
-// .headline-bg.pricing-headline-bg {
-//   background-image: url('../images/background/bg-header-small-2.jpg');
-// }
-// .headline-bg.contact-headline-bg {
-//   background-image: url('../images/background/bg-header-small-3.jpg');
-// }
-// .headline-bg.about-headline-bg {
-//   background-image: url('../images/background/bg-header-small-4.jpg');
-// }
-//
-//
-//
-// .pricing {
-//   padding: 80px 0;
-//   padding-top: 170px;
-//   position: relative;
-//   z-index: 10;
-// }
-// .pricing .title {
-//   font-size: 36px;
-//   font-weight: 300;
-//   margin-top: 0;
-//   margin-bottom: 30px;
-//   color: #fff;
-// }
-// .pricing .intro {
-//   color: #fff;
-//   margin-bottom: 80px;
-// }
-// .pricing .item {
-//   padding: 0;
-//   -webkit-border-radius: 4px;
-//   -moz-border-radius: 4px;
-//   -ms-border-radius: 4px;
-//   -o-border-radius: 4px;
-//   border-radius: 4px;
-//   -moz-background-clip: padding;
-//   -webkit-background-clip: padding-box;
-//   background-clip: padding-box;
-//   -webkit-box-shadow: 0 4px 1px rgba(0, 0, 0, 0.05);
-//   -moz-box-shadow: 0 4px 1px rgba(0, 0, 0, 0.05);
-//   box-shadow: 0 4px 1px rgba(0, 0, 0, 0.05);
-//   margin-bottom: 30px;
-// }
-// .pricing .item.best-buy {
-//   top: -15px;
-//   z-index: 11;
-//   position: relative;
-// }
-// .pricing .item.best-buy .item-inner {
-//   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-//   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-//   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-// }
-// .pricing .item.best-buy .item-inner:hover {
-//   -webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
-//   -moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
-//   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
-// }
-// .pricing .item.best-buy .heading {
-//   padding-top: 45px;
-// }
-// .pricing .item.best-buy .content {
-//   padding-bottom: 45px;
-// }
-// .pricing .item .item-inner {
-//   background: #fff;
-//   -webkit-border-radius: 4px;
-//   -moz-border-radius: 4px;
-//   -ms-border-radius: 4px;
-//   -o-border-radius: 4px;
-//   border-radius: 4px;
-//   -moz-background-clip: padding;
-//   -webkit-background-clip: padding-box;
-//   background-clip: padding-box;
-//   position: relative;
-//   border: 1px solid #eee;
-// }
-// .pricing .item .item-inner:hover {
-//   -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-//   -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-//   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-// }
-// .pricing .item .heading {
-//   margin-top: 0;
-//   padding: 30px 15px;
-//   -webkit-border-top-right-radius: 4px;
-//   -webkit-border-bottom-right-radius: 0;
-//   -webkit-border-bottom-left-radius: 0;
-//   -webkit-border-top-left-radius: 4px;
-//   -moz-border-radius-topright: 4px;
-//   -moz-border-radius-bottomright: 0;
-//   -moz-border-radius-bottomleft: 0;
-//   -moz-border-radius-topleft: 4px;
-//   border-top-right-radius: 4px;
-//   border-bottom-right-radius: 0;
-//   border-bottom-left-radius: 0;
-//   border-top-left-radius: 4px;
-//   -moz-background-clip: padding;
-//   -webkit-background-clip: padding-box;
-//   background-clip: padding-box;
-// }
-// .pricing .item .heading .title {
-//   margin-bottom: 30px;
-//   padding-bottom: 30px;
-//   font-weight: 400;
-//   font-size: 18px;
-//   border-bottom: 1px dashed #eee;
-//   color: #444;
-// }
-// .pricing .item .content {
-//   padding: 30px 15px;
-//   padding-top: 0;
-//   font-size: 14px;
-// }
-// .pricing .item .price-figure {
-//   -webkit-border-radius: 50%;
-//   -moz-border-radius: 50%;
-//   -ms-border-radius: 50%;
-//   -o-border-radius: 50%;
-//   border-radius: 50%;
-//   -moz-background-clip: padding;
-//   -webkit-background-clip: padding-box;
-//   background-clip: padding-box;
-//   margin: 0 auto;
-// }
-// .pricing .item .price-figure .number {
-//   font-size: 42px;
-//   font-weight: bold;
-// }
-// .pricing .item .price-figure .unit {
-//   font-weight: 400;
-//   color: #b3b3b3;
-// }
-// .pricing .item .price-figure .currency {
-//   top: -12px;
-//   right: 2px;
-//   position: relative;
-//   font-family: arial, sans-serif;
-//   color: #666;
-//   font-size: 18px;
-// }
-// .pricing .item .ribbon {
-//   position: absolute;
-//   top: -6px;
-//   right: -6px;
-//   width: 110px;
-//   height: 110px;
-//   overflow: hidden;
-// }
-// .pricing .item .ribbon .text {
-//   position: relative;
-//   left: -8px;
-//   top: 18px;
-//   width: 158px;
-//   padding: 10px 10px;
-//   font-size: 15px;
-//   font-weight: bold;
-//   text-align: center;
-//   text-transform: uppercase;
-//   color: #000;
-//   background-color: #5d80a1;
-//   -webkit-transform: rotate(45deg) translate3d(0, 0, 0);
-//   -moz-transform: rotate(45deg) translate3d(0, 0, 0);
-//   -ms-transform: rotate(45deg) translate3d(0, 0, 0);
-//   -o-transform: rotate(45deg) translate3d(0, 0, 0);
-// }
-// .pricing .item .ribbon .text:before,
-// .pricing .item .ribbon .text:after {
-//   content: '';
-//   position: absolute;
-//   bottom: -5px;
-//   border-top: 5px solid #2e4050;
-//   border-left: 5px solid transparent;
-//   border-right: 5px solid transparent;
-// }
-// .pricing .item .ribbon .text:before {
-//   left: 0;
-// }
-// .pricing .item .ribbon .text:after {
-//   right: 0;
-// }
-// .pricing .item .feature-list {
-//   margin-bottom: 30px;
-// }
-// .pricing .item .feature-list li {
-//   border-bottom: 1px solid #f3f3f3;
-//   padding: 10px;
-// }
-// .pricing .item .feature-list li .fa {
-//   margin-right: 5px;
-//   color: #4a6781;
-// }
-// .pricing .item .feature-list li.disabled {
-//   color: #999;
-// }
-// .pricing .item .feature-list li.disabled .fa {
-//   color: #999;
-// }
+
+/* Portfolio
+---------------------------------*/
+
+.Portfolio-nav {
+  padding: 0;
+  margin: 0 0 45px 0;
+  list-style: none;
+  text-align: center;
+  li {
+    margin: 0 10px;
+    display: inline;
+    a {
+      display: inline-block;
+      padding: 10px 22px;
+      font-size: 12px;
+      line-height: 20px;
+      color: #222222;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-family: 'Montserrat', sans-serif;
+      background: #f7f7f7;
+      margin-bottom: 5px;
+      transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -webkit-transition: all 0.3s ease-in-out;
+      &:hover {
+        background: #7cc576;
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.portfolioContainer {
+  margin: 0 auto;
+  padding-left: 15px;
+}
+
+.Portfolio-box {
+  text-align: center;
+  margin-bottom: 30px;
+  height: 350px;
+  width: 350px;
+  overflow: hidden;
+  float: left;
+  padding: 0;
+  img {
+    margin-bottom: 25px;
+    transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.Portfolio-nav li a.current {
+  background: #7cc576;
+  color: #fff;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* no transition on .isotope container */
+
+.isotope .isotope-item {
+  /* change duration value to whatever you like */
+  -webkit-transition-duration: 0.6s;
+  -moz-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  transition-property: transform, opacity;
+}
+
+.main-section.paddind {
+  padding-bottom: 60px;
+}
+
+/* Clients
+---------------------------------*/
+
+.client-part {
+  background: url(../img/section-bg1.jpg) center center no-repeat;
+  background-size: cover;
+  padding: 55px 0;
+  text-align: center;
+}
+
+.client-part-haead {
+  color: #fdfdfd;
+  font-size: 28px;
+  line-height: 41px;
+  margin: 30px 0 10px;
+  font-family: "" Open Sans ",sans-serif";
+  font-style: italic;
+}
+
+.client {
+  padding: 0;
+  margin: 20px 0 0;
+  list-style: none;
+  text-align: center;
+  li {
+    display: inline;
+    margin: 0 15px;
+    a {
+      display: inline-block;
+      img {
+        margin-bottom: 15px;
+        border-radius: 50%;
+      }
+      &:hover {
+        text-decoration: none;
+      }
+      h3 {
+        color: #ffffff;
+      }
+      span {
+        color: #f1f1f1;
+      }
+    }
+  }
+}
+
+.quote-right {
+  font-style: normal;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto;
+  border: 2px solid #7cc576;
+  border-radius: 50%;
+  display: block;
+  line-height: 68px;
+  text-align: center;
+  font-size: 27px;
+  color: #7cc576;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  &:hover {
+    color: #fff;
+    border: 2px solid #fff;
+  }
+}
+
+.c-logo-part {
+  background: #7cc576;
+  padding: 25px 0;
+  filter: alpha(opacity = 60);
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    li {
+      display: inline;
+      margin: 0 25px;
+    }
+    a {
+      display: inline-block;
+      margin: 0 20px;
+    }
+  }
+}
+
+.main-section.team {
+  padding: 85px 0;
+  h6 {
+    margin-bottom: 40px;
+  }
+}

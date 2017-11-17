@@ -1,0 +1,53 @@
+<section class="main-section" id="service">
+  <div class="container">
+      <%= link_to product_path(products_url) do %>
+        <h2>
+        <%=  @product_top.product_type.titleize %>
+        </h2>
+      <% end %>
+    <h6>Subtitle Text</h6>
+    <div class="row">
+      <div class="col-lg-5 col-sm-6 wow fadeInLeft delay-05s">
+        <div class="service-list">
+          <div class="service-list-col1">
+            <i class="fa-paw"></i>
+          </div>
+          <div class="service-list-col2">
+            <h3>branding &amp; identity</h3>
+            <p>Proin iaculis purus digni consequat sem digni ssim. Donec entum digni ssim.</p>
+          </div>
+        </div>
+        <div class="service-list">
+          <div class="service-list-col1">
+            <i class="fa-gear"></i>
+          </div>
+          <div class="service-list-col2">
+            <h3>web development</h3>
+            <p>Proin iaculis purus consequat sem digni ssim. Digni ssim porttitora .</p>
+          </div>
+        </div>
+        <div class="service-list">
+          <div class="service-list-col1">
+            <i class="fa-apple"></i>
+          </div>
+          <div class="service-list-col2">
+            <h3>mobile design</h3>
+            <p>Proin iaculis purus consequat digni sem digni ssim. Purus donec porttitora entum.</p>
+          </div>
+        </div>
+        <div class="service-list">
+          <div class="service-list-col1">
+            <i class="fa-medkit"></i>
+          </div>
+          <div class="service-list-col2">
+            <h3>24/7 Support</h3>
+            <p>Proin iaculis purus consequat sem digni ssim. Sem porttitora entum.</p>
+          </div>
+        </div>
+      </div>
+      <figure class="col-lg-6 col-sm-5 pull-right text-right wow fadeInUp delay-02s">
+        <%= image_tag @product_top.product_type.gsub(' ','_').downcase.to_s %>
+      </figure>
+    </div>
+  </div>
+</section>

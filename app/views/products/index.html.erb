@@ -1,93 +1,21 @@
-<section class="features" id="features">
+<header class="header" id="header">
   <div class="container">
-    <div class="section-heading text-center">
-      <h2>Unlimited Features, Unlimited Fun</h2>
-      <p class="text-muted">Check out what you can do with this app theme!</p>
-      <hr>
-    </div>
-    <div class="row">
-      <div class="col-lg-4 my-auto">
-        <div class="device-container">
-          <div class="device-mockup iphone6_plus portrait white">
-            <div class="device">
-              <div class="screen">
-                <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                <!-- <img src="img/demo-screen-1.jpg" class="img-fluid" alt=""> -->
-                <% @products.last(1).each do |product| %>
-                  <div id="productGallery">
-                    <%= render partial: 'products_list', locals: {product: product}  %>
-                  </div>
-                <% end %>
-              </div>
-              <div class="button">
-                <!-- You can hook the "home button" to some JavaScript events or just remove it -->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% @products.first(2).each do |product| %>
-      <div class="col-lg-8 my-auto">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="feature-item">
-                <i class="icon-screen-smartphone text-primary"></i>
-                <!-- <h3>Device Mockups</h3> -->
-                <!-- <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p> -->
-                <div id="productGallery">
-                  <%= render partial: 'products_list', locals: {product: product}  %>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="feature-item">
-                <i class="icon-camera text-primary"></i>
-                <!-- <h3>Flexible Use</h3>
-                <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p> -->
-                <div id="productGallery">
-                  <%= render partial: 'products_list', locals: {product: product}  %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="feature-item">
-                <i class="icon-present text-primary"></i>
-                <h3>Free to Use</h3>
-                <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="feature-item">
-                <i class="icon-lock-open text-primary"></i>
-                <h3>Open Source</h3>
-                <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <figure class="logo animated fadeInDown delay-07s">
+      <%= link_to "#" do %>
+        <%= image_tag "EAH-Brand" %>
       <% end %>
-    </div>
+    </figure>
+    <h1 class="animated fadeInDown delay-07s">EAHS</h1>
+    <ul class="we-create animated fadeInUp delay-1s">
+      <li>Welcome to EAHS Locksmith Inc</li>
+    </ul>
+    <% if current_user.blank? %>
+      <a class="link animated fadeInUp delay-1s servicelink" href="#service">Register Now</a>
+    <% end %>
   </div>
-</section>
-<div class="row">
-  <h2>Product Overview</h2>
+</header>
 
-    <div class="col-xs-12">
-
-    </div>
-
-    <div class="col-sm-6 col-md-6 col-lg-6">
-
-    </div>
-    <div id="showProduct">
-    </div>
-</div>
-<div class="row">
-</div>
+<%= render partial: 'products_list', locals: { product_top: @product_top, product_middle: @product_middle, product_bottom: @product_bottom } %>
 
 <%= render 'quotes/locksmith' %>
 <%= render 'quotes/security' %>

@@ -98,7 +98,7 @@
           <%= render_breadcrumbs :tag => :li, :separator => "" %>
         </ol>
       </div>
-      <div class="main-content">
+      <div class="main-content-<%= controller.controller_name %>">
         <%= render "layouts/messages_and_content" %>
         <%= yield %>
       </div>
