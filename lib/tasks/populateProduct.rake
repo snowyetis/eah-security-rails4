@@ -7,21 +7,21 @@ namespace :fillProduct do
 
     product = Product.new
     product.product_type = "locksmith",
-    product.price = "400.50"
+    product.price = "420.50"
 
     product.save!
 
-    product = Product.new
-    product.product_type = "cameras and security assessments",
-    product.price = "400.50"
+    product2 = Product.new
+    product2.product_type = "cameras and security assessments",
+    product2.price = "430.50"
 
 
-    product.save!
+    product2.save!
 
-    product = Product.new
-    product.product_type = "certified fire door inspection",
-    product.price = "400.50"
+    product3 = Product.new
+    product3.product_type = "certified fire door inspection",
+    product3.price = "440.50"
 
-      product.save
+      product3.save
   end
 end
