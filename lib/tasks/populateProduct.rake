@@ -14,7 +14,7 @@ namespace :fillProduct do
     @product.product_details.create!(product_id: @product.id, model_description: "High Security Locks - Highend Services")
     @product.product_details.create!(product_id: @product.id, model_description: "24/7 support")
 
-    @product2 = Product.create!(product_type: "cameras and security assesments", price: "420.50")
+    @product2 = Product.create!(product_type: "cameras and security assessments", price: "420.50")
     @product2.product_details.create!(product_id: @product.id, model_description: "Security Systems")
     @product2.product_details.create!(product_id: @product.id, model_description: "Camera Systems")
     @product2.product_details.create!(product_id: @product.id, model_description: "24/7 support")
