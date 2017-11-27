@@ -3,21 +3,25 @@ namespace :fillProduct do
   task data: :environment do
 
     Product.delete_all
-    ActiveRecord::Base.connection.reset_pk_sequence!('products')
+    # ActiveRecord::Base.connection.reset_pk_sequence!('products')
 
-    product = Product.new
-    product.product_type = "locksmith"
+    @product = Product.create!(product_type: "locksmith", price: "420.50")
+    @product.product_details.create!(product_id: @product.id, model_description: "Hardware Replacement")
+    @product.product_details.create!(product_id: @product.id, model_description: "Access Control - Design - Repair")
+    @product.product_details.create!(product_id: @product.id, model_description: "High Security Locks - Highend Services")
+    @product.product_details.create!(product_id: @product.id, model_description: "24/7 support")
 
-    product.save!
+    @product2 = Product.create!(product_type: "camers and security assesments", price: "420.50")
+    @product2.product_details.create!(product_id: @product.id, model_description: "Security Systems")
+    @product2.product_details.create!(product_id: @product.id, model_description: "Camera Systems")
+    @product2.product_details.create!(product_id: @product.id, model_description: "24/7 support")
 
-    product2 = Product.new
-    product2.product_type = "cameras and security assessments"
+    @product3 = Product.create!(product_type: "certified fire door inspection", price: "420.50")
+    @product3.product_details.create!(product_id: @product.id, model_description: "Hardware Replacement")
+    @product3.product_details.create!(product_id: @product.id, model_description: "Access Control - Design - Repair")
+    @product3.product_details.create!(product_id: @product.id, model_description: "High Security Locks - Highend Services")
+    @product3.product_details.create!(product_id: @product.id, model_description: "24/7 support")
 
-    product2.save!
 
-    product3 = Product.new
-    product3.product_type = "certified fire door inspection"
-
-      product3.save
   end
 end

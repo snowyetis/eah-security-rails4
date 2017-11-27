@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170820014044) do
+ActiveRecord::Schema.define(version: 20171127132309) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
@@ -71,7 +71,10 @@ ActiveRecord::Schema.define(version: 20170820014044) do
     t.string   "product_detail_type"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "product_id"
   end
+
+  add_index "product_details", ["product_id"], name: "index_product_details_on_product_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "product_type"
