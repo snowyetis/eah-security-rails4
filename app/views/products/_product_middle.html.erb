@@ -6,7 +6,7 @@
     <h6>Subtitle Text</h6>
     <div class="row">
       <figure class="col-lg-5 col-sm-4 wow fadeInLeft animated" style="visibility: visible; animation-name: fadeInLeft; -webkit-animation-name: fadeInLeft;">
-        <%= image_tag @product_middle.product_type.gsub(' ','_').downcase.to_s, class: "img-responsive" %>
+        <%= image_tag  image_path(@product_middle.product_type.gsub(' ','_').downcase.to_s), class: "img-responsive" %>
       </figure>
       <div class="col-lg-7 col-sm-8 featured-work">
         <h2>featured work</h2>
