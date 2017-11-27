@@ -12,4 +12,8 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def asset_url asset
+    "#{request.protocol}#{request.host_with_port}#{asset_path(asset)}"
+  end
+
 end
