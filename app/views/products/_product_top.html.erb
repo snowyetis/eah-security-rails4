@@ -45,7 +45,7 @@
         </div>
       </div>
       <figure class="col-lg-6 col-sm-5 pull-right text-right wow fadeInUp delay-02s">
-        <%= image_tag @product_top.product_type.gsub(' ','_').downcase.to_s %>
+        <%= image_tag File.join(@product_top.product_type.gsub(' ','_').downcase.to_s + '.jpg') %>
       </figure>
     </div>
   </div>
