@@ -1,0 +1,107 @@
+<nav class="main-nav-outer" id="primary_nav" >
+  <div class="container">
+    <ul class="main-nav">
+      <li>
+        <a href="#header">Home</a>
+      </li>
+      <li>
+        <%= link_to "Services", "#service" %>
+      </li>
+      <li>
+        <% if user_signed_in? || admin_signed_in? %>
+          <%= link_to "Products", "#Portfolio" %>
+        <% else %>
+          <%= link_to  "Products",  "#Portfolio" %>
+        <% end %>
+      </li>
+      <!-- ICON -->
+      <li class="small-logo">
+        <%= link_to "#header"  do %>
+          <%= image_tag "EAH-Brand", class: "logo" %>
+        <% end %>
+      </li>
+      <!-- CHECK IF THE DUDE LOGGED IN. -->
+      <!-- < if  !current_user.blank? || !current_admin.blank? %> -->
+        <li class="dropdown">
+          <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">
+            <!-- TOGGLE TEXT -->
+            <% if !current_admin.blank? %>
+              <%= link_to_if admin_signed_in?, remote: true do %>
+                EAHS Admin
+              <% end %>
+            <% end %>
+
+            <%= link_to_if user_signed_in?, remote: true do %>
+              My EAHS
+            <% end %>
+
+              <span class="angle-down s7-angle-down"></span>
+          </a>
+          <ul role="menu" class="dropdown-menu">
+            <% if  current_user.blank? || current_admin.blank? %>
+              <%= link_to "Register to access!", new_user_registration_path %>
+            <% end %>
+            <!-- ADMIN OPTIONS -->
+            <% if admin_signed_in? %>
+            <li>
+              <%= link_to "Quotes", quotes_path %>
+            </li>
+            <li>
+              <%= link_to 'Settings', edit_admin_registration_path %>
+            </li>
+            <li>
+              <%= link_to 'Approve User', admins_signed_up_path %>
+            </li>
+            <li>
+              <%= link_to 'Sign out', destroy_admin_session_path, method: :delete %>
+            </li>
+            <% end %>
+            <!-- USER OPTIONS -->
+            <% if user_signed_in? %>
+            <li>
+              <%= link_to "View Open Quotes", quotes_path %>
+            </li>
+            <li>
+              <%= link_to "Edit Account Details", edit_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+      <!-- < end %> <!--  END OF DROPDOWN -->
+      <% if current_user.blank? && current_admin.blank? %>
+        <% if @adminFlag %>
+          <li>
+            <%= link_to 'Admin Register',  new_admin_registration_path %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to 'Sign Up',  new_user_registration_path %>
+          </li>
+        <% end %>
+      <li class="dropdown">
+        <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">
+          Sign In
+          <span class="angle-down s7-angle-down"></span>
+        </a>
+          <ul role="menu" class="dropdown-menu">
+            <% if @adminFlag %>
+              <li style="width: 400px;">
+                <%= render "admins/sessions/new" %>
+              </li>
+            <% else %>
+              <li style="width: 400px;">
+                <%= render "users/sessions/new" %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+    <a class="res-nav_click hidden-xl hidden-lg" href="#">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</nav>

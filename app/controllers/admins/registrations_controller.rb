@@ -1,8 +1,7 @@
 class Admins::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_sign_up_params, only: [:create]
-  before_filter :configure_account_update_params, only: [:update, :approve_user, :deactivate_user]
+  before_filter :configure_account_update_params, only: [:update, :approve_user]
   before_action :authenticate_admin!
-  before_action :change_user_status, only: [:approve_user, :deactivate_user]
   add_breadcrumb "Home", :home_index_path
 
   include SmartListing::Helper::ControllerExtensions
@@ -21,43 +20,36 @@ class Admins::RegistrationsController < Devise::RegistrationsController
       @approvedClass = true
     end
 
-      users_scope = User.where(approved: false)
+    users_scope = User.where(approved: @approvedClass)
 
-      users_scope = User.where("email LIKE ?", "#{params[:email]}%") unless params[:email].blank?
-      users_scope = User.where("first_name LIKE ?", "#{params[:first_name]}%") unless params[:first_name].blank?
-      users_scope = User.where("last_name LIKE ?",  "#{params[:last_name]}%") unless params[:last_name].blank?
-      users_scope = User.where("address LIKE ?",  "#{params[:address]}%") unless params[:address].blank?
-      users_scope = User.where("city LIKE ?", "#{params[:city]}%") unless params[:city].blank?
-      users_scope = User.where("state LIKE ?", "#{params[:state]}%") unless params[:state].blank?
-      users_scope = User.where("affiliation LIKE ?",  "#{params[:affiliation]}%") unless params[:affiliation].blank?
-      users_scope = User.where(approved: params[:approved]) if params[:approved] == "1"
+    users_scope = User.where(email: params[:email]) unless params[:email].blank?
+    users_scope = User.where(first_name: params[:first_name]) unless params[:first_name].blank?
+    users_scope = User.where(last_name: params[:last_name]) unless params[:last_name].blank?
+    users_scope = User.where(address: params[:address]) unless params[:address].blank?
+    users_scope = User.where(city: params[:city]) unless params[:city].blank?
+    users_scope = User.where(state: params[:state]) unless params[:state].blank?
+    users_scope = User.where(affiliation: params[:affiliation]) unless params[:affiliation].blank?
+    users_scope = User.where(approved: params[:approved]) if params[:approved] == "1"
 
-      @users = smart_listing_create(:users, users_scope, partial: "admins/shared/approvalgrid" )
+    @users = smart_listing_create(:users, users_scope, partial: "admins/shared/approvalgrid" )
   end
 
   def approve_user
+    account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
+    # required for settings form to submit when password is left blank
+    if account_update_params[:password].blank?
+      account_update_params.delete("password")
+      account_update_params.delete("password_confirmation")
+    end
+
+    @user = User.find(params[:id])
+    @user.approved = params[:approved]
+    @update = update_resource(@user, account_update_params)
 
     respond_to do |format|
       if @update
         bypass_sign_in(@user)
         if @user.approved == true
-          AdminMailer.new_user_approved(@user.email).deliver
-        end
-        format.js { }
-        format.json { render json: @user }
-      else
-        format.js {}
-        format.json { render json: @user.error }
-      end
-    end
-  end
-
-  def deactivate_user
-
-    respond_to do |format|
-      if @update
-        bypass_sign_in(@user)
-        if !@user.approved
           AdminMailer.new_user_approved(@user.email).deliver
         end
         format.js { }
@@ -77,7 +69,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    # add_breadcrumb "Create Admin Account", admin_new_path
+    add_breadcrumb "Create Admin Account", admin_new_path
 
     super
   end
@@ -151,19 +143,6 @@ class Admins::RegistrationsController < Devise::RegistrationsController
     def user_params
       params.require(:users).permit(:id, :approved)
       puts "Param set"
-    end
-
-    def change_user_status
-      account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
-      # required for settings form to submit when password is left blank
-      if account_update_params[:password].blank?
-        account_update_params.delete("password")
-        account_update_params.delete("password_confirmation")
-      end
-
-      @user = User.find(params[:id])
-      @user.approved = params[:approved]
-      @update = update_resource(@user, account_update_params)
     end
 
 end

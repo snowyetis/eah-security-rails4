@@ -13,6 +13,10 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require jquery.isotope
 //= require jquery.niftymodals
+//= require jquery.easing.1.3
+//= require jquery-scrolltofixed
 //= require smart_listing
+//= require wow
 //= require_tree .

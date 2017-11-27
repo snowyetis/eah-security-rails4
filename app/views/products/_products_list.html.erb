@@ -1,5 +1,12 @@
-<%= render partial: 'product_top', locals: { product_top: @product_top } %>
-
-<%= render partial: 'product_middle', locals: { product_middle: @product_middle } %>
-
-<%= render partial: 'product_bottom', locals: { product_bottom: @product_bottom } %>
+<section class="main-section" id="service">
+  <%= render partial: 'products/product_top', locals: { product_top: @product_top } %>
+</section>
+<section class="main-section alabaster">
+  <%= render partial: 'products/product_middle', locals: { product_middle: @product_middle } %>
+</section>
+<section class="main-section" id="service2" >
+  <%= render partial: 'products/product_bottom', locals: { product_bottom: @product_bottom } %>
+</section>
+<section>
+  <%= render partial: 'services/shared/index' %>
+</section>

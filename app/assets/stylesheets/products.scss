@@ -1,98 +1,191 @@
 .main-content-product {
 	height: 100%;
 	overflow: auto;
-	// padding-left: 15px;
-	// padding-right: 15px;
-	// padding-top: 20px;
 }
 
 
-/* Header Styles
+
+/* Float Elements
 ---------------------------------*/
 
-.header {
-	text-align:center;
-	background:url(../img/pw_maze_black_2X.png) left top repeat;
-	padding:100px 0;
+.fl-lt {
+  float: left;
 }
 
-.logo {
-	width:130px;
-	margin:0 auto 35px;
+.fl-rt {
+  float: right;
 }
 
-.header h1 {
-	font-family: 'Montserrat',sans-serif;
-	font-size:50px;
-	font-weight:400;
-	letter-spacing: -1px;
-	margin:0 0 22px 0 ;
-	color:#888888;
+/* Clear Floated Elements
+---------------------------------*/
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
 }
 
-.we-create{
-	padding:0;
-	margin:35px 0 55px;
+.clearfix {
+  &:before {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+  &:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    clear: both;
+  }
 }
 
-.wp-pic{
-	margin-bottom:20px;
+.figure {
+  margin: 0px;
 }
 
-.we-create li{
-	display:inline-block;
-	font-family: 'Montserrat',sans-serif;
-	font-size:14px;
-	color: #bcbcbc;
-	text-transform: uppercase;
-	font-weight: 400;
-	margin:0 5px 0 0;
-	padding:0 0 0 15px;
+img {
+  max-width: 100%;
 }
 
-.we-create li:first-child{
-	background:none;
+a {
+  outline: 0px !important;
+  &:hover, &:active {
+    outline: 0px !important;
+  }
+}
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.1.0');
+	src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format("embedded-opentype"),
+	url('../fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* Primary Styles
+---------------------------------*/
+
+body {
+  background: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  color: #888888;
+  margin: 0;
+}
+
+h2 {
+  font-size: 34px;
+  color: #222222;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin: 0 0 15px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  color: #222222;
+  font-size: 16px;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+h6 {
+  font-size: 16px;
+  color: #888888;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 0 60px 0;
+}
+
+p {
+  line-height: 24px;
+  margin: 0;
+}
+
+.we-create {
+  padding: 0;
+  margin: 35px 0 55px;
+}
+
+.wp-pic {
+  margin-bottom: 20px;
+}
+
+.we-create li {
+  display: inline-block;
+  font-family: 'Montserrat',sans-serif;
+  font-size: 14px;
+  color: #bcbcbc;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 0 5px 0 0;
+  padding: 0 0 0 15px;
+  &:first-child {
+    background: none;
+  }
 }
 
 .start-button {
-	padding-left: 0px;
+  padding-left: 0px;
+  li a {
+    color: #fff;
+  }
 }
 
-.start-button li a{
-color: #fff;
-}
-
-.link{
-	padding:15px 35px;
-	background:#7cc576;
-	color:#fff !important;
-	font-size:16px;
-	font-weight:400;
-	font-family: 'Montserrat', sans-serif;
-	display:inline-block;
-	border-radius:3px;
-	text-transform:uppercase;
-	line-height:25px;
-	margin-bottom:20px;
-	transition:all 0.3s ease-in-out;
-	-moz-transition:all 0.3s ease-in-out;
-	-webkit-transition:all 0.3s ease-in-out;
-}
-
-.link:hover {
-	text-decoration:none;
-	color:#7cc576 !important;
-	background:#fff;
-}
-
-.link:active, .link:focus {
-	background: #7cc576;
-	text-decoration:none;
-	color:#fff !important;
+.link {
+  padding: 15px 35px;
+  background: #7cc576;
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  border-radius: 3px;
+  text-transform: uppercase;
+  line-height: 25px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  &:hover {
+    text-decoration: none;
+    color: #7cc576 !important;
+    background: #fff;
+  }
+  &:active, &:focus {
+    background: #7cc576;
+    text-decoration: none;
+    color: #fff !important;
+  }
 }
 
 /* Services
 ---------------------------------*/
+
+#service.main-section {
+	background: #eee;
+}
+
+#service2.main-section {
+	background: #eee;
+}
 
 .service-list {
   padding: 50px 0 0 0;
@@ -120,8 +213,9 @@ color: #fff;
 .main-section.alabaster {
 	padding: 50px 0 0 0;
 	font-size: 14px;
-  background: #fafafa;
-	margin-bottom: 40px;
+  // background: #fafafa;
+	background: #f5f1dc;
+	// margin-bottom: 40px;
 }
 
 /* Featured Work
@@ -169,13 +263,13 @@ color: #fff;
 
 .featured-box {
   &.magic {
-    background: url(../img/magic.png) left top no-repeat;
+    background: url(image_path('magic.png')) left top no-repeat;
   }
   &.packaged {
-    background: url(../img/packaged.png) left top no-repeat;
+    background: url(image_path('packaged.png')) left top no-repeat;
   }
   &.seo {
-    background: url(../img/seo.png) left top no-repeat;
+    background: url(image_path('seo.png')) left top no-repeat;
   }
 }
 
@@ -199,91 +293,6 @@ color: #fff;
     text-decoration: none;
     color: #111;
   }
-}
-
-// * Float Elements
-// ---------------------------------*/
-.fl-lt {float:left;}
-.fl-rt {float:right;}
-
-/* Clear Floated Elements
----------------------------------*/
-.clear {
-  clear: both;
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
-
-.clearfix:before,
-.clearfix:after {
-  content: '\0020';
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-.figure{ margin:0px;}
-
-img{ max-width:100%;}
-
-a, a:hover, a:active{ outline:0px !important}
-
-@font-face {
-  font-family: 'FontAwesome';
-  src: url('../fonts/fontawesome-webfont.eot?v=4.1.0');
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.1.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.1.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.1.0#fontawesomeregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* Primary Styles
----------------------------------*/
-body {
-	background:#fff;
-	font-family: 'Open Sans', sans-serif;
-	font-size:14px;
-	font-weight:normal;
-	color:#888888;
-	margin:0;
-}
-h2{
-	font-size:34px;
-	color:#222222;
-	font-family: 'Montserrat', sans-serif;
-	font-weight:700;
-	letter-spacing: -1px;
-	margin:0 0 15px 0;
-	text-align:center;
-	text-transform:uppercase;
-}
-h3{
-	font-family: 'Montserrat', sans-serif;
-	color:#222222;
-	font-size:16px;
-	margin:0 0 5px 0;
-	text-transform:uppercase;
-	font-weight:400;
-}
-h6{
-	font-size:16px;
-	color:#888888;
-	font-family: 'Open Sans', sans-serif;
-	font-weight:400;
-	text-align:center;
-	margin:0 0 60px 0;
-}
-p{
-	line-height:24px;
-	margin:0;
 }
 
 /* Animation Timers
