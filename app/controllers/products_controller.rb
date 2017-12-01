@@ -7,18 +7,18 @@ class ProductsController < ApplicationController
     if !current_user.blank?
       @quote = current_user.quotes.new
 
-      @product_top = Product.first
-      @product_middle =  Product.second
-      @product_bottom =  Product.third
-      
+      @product_top = Product.product_details.first
+      @product_middle =  Product.product_details.second
+      @product_bottom =  Product.product_details.third
+
       @questionaire = @quote.build_questionaire
       @quote_detail = @quote.build_quote_detail
     else
       @quote = Quote.new
 
-      @product_top = Product.first
-      @product_middle =  Product.second
-      @product_bottom =  Product.third
+      @product_top = Product.product_details.first
+      @product_middle =  Product.product_details.second
+      @product_bottom =  Product.product_details.third
 
       @questionaire = @quote.build_questionaire
       @quote_detail = @quote.build_quote_detail
