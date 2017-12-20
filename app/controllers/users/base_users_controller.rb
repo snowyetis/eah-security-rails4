@@ -1,5 +1,3 @@
-module Users
-  class BaseUsersController < Devise
+class Users::BaseUsersController
     # common behavior goes here ...
-  end
 end
