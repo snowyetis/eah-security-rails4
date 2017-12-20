@@ -7,7 +7,7 @@ add_breadcrumb "Home", :root_path
 
   # GET /resource/sign_up
   def new
-    add_breadcrumb "Create Account", new_user_registration_path
+    add_breadcrumb "Create Account"
     super
   end
 
@@ -28,7 +28,7 @@ add_breadcrumb "Home", :root_path
 
   # GET /resource/edit
   def edit
-    add_breadcrumb "Edit Account Details", new_user_registration_path
+    add_breadcrumb "Edit Account Details"
 
     super
   end
@@ -57,7 +57,7 @@ add_breadcrumb "Home", :root_path
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     # devise_parameter_sanitizer.for(:sign_up) << [:email, :password, :password_confirmation, :first_name, :last_name, :address, :city, :state, :zip, :affiliation]
-    accessible = [ :first_name, :last_name, :address, :city, :state, :zip, :affiliation, :email]
+    accessible = [ :first_name, :last_name, :address, :city, :state, :zip, :affiliation, :email, :role_id]
     accessible << [ :password, :password_confirmation ]
   end
 
@@ -77,7 +77,7 @@ add_breadcrumb "Home", :root_path
   end
 
   def user_params
-    accessible = [ :first_name, :last_name, :address, :city, :state, :zip, :affiliation, :email]
+    accessible = [ :first_name, :last_name, :address, :city, :state, :zip, :affiliation, :email, :role_id]
     accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
     params.require(:user).permit(accessible)
   end

@@ -1,4 +1,6 @@
 class Admins::RegistrationsController < Devise::RegistrationsController
+  load_and_authorize_resource
+
   before_filter :configure_sign_up_params, only: [:create]
   before_filter :configure_account_update_params, only: [:update, :approve_user]
   before_action :authenticate_admin!
@@ -6,10 +8,6 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper
-
- # before_filter do
- #   redirect_to new_user_session_path unless current_admin
- # end
 
  before_action :set_user, only: [:approve_user]
 
@@ -62,14 +60,16 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   end
 
   def index
-    add_breadcrumb "Administrator Home", admins_signed_up_path
+    add_breadcrumb "Administrator Home"
+
+    @products = Product.all
 
     get_approved_users
   end
 
   # GET /resource/sign_up
   def new
-    add_breadcrumb "Create Admin Account", admin_new_path
+    add_breadcrumb "Create Admin Account"
 
     super
   end
@@ -81,7 +81,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    add_breadcrumb "Edit Admin Account Details", edit_admin_registration_path
+    add_breadcrumb "Edit Admin Account Details"
 
     super
   end
@@ -110,7 +110,9 @@ class Admins::RegistrationsController < Devise::RegistrationsController
     # If you have extra params to permit, append them to the sanitizer.
     def configure_sign_up_params
       # devise_parameter_sanitizer.for(:sign_up) << :attribute
-      devise_parameter_sanitizer.permit(:sign_up)
+      # devise_parameter_sanitizer.permit(:sign_up)
+      accessible = [  :email, :admin, :role_id]
+      accessible << [ :password, :password_confirmation ]
     end
 
     # If you have extra params to permit, append them to the sanitizer.
@@ -143,6 +145,16 @@ class Admins::RegistrationsController < Devise::RegistrationsController
     def user_params
       params.require(:users).permit(:id, :approved)
       puts "Param set"
+    end
+
+    def admin_params
+      accessible = [  :email, :role_id]
+      accessible << [ :password, :password_confirmation ] unless params[:admin][:password].blank?
+      params.require(:admin).permit(accessible)
+    end
+
+    def set_admin
+      @admin = Admin.find(params[:id])
     end
 
 end

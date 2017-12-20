@@ -1,0 +1,57 @@
+<nav class="main-nav-outer" id="primary_nav" >
+  <div class="container">
+    <ul class="main-nav">
+      <li>
+        <a href="#header">Home</a>
+      </li>
+      <li class="dropdown">
+        <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">
+          Template Manager
+          <span class="angle-down s7-angle-down"></span>
+        </a>
+        <ul role="menu" class="dropdown-menu">
+          <li>
+            <%= link_to "Service Manager", admins_products_index_path %>
+          </li>
+          <li>
+            <% if admin_signed_in? %>
+              <%= link_to  "Product Manager", admins_products_index_path %>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <!-- ICON -->
+      <li class="small-logo">
+        <%= link_to "#header"  do %>
+          <%= image_tag "EAH-Brand.png", class: "logo" %>
+        <%  end %>
+      </li>
+      <li class="dropdown">
+        <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">
+          Admin Manager
+          <span class="angle-down s7-angle-down"></span>
+        </a>
+        <ul role="menu" class="dropdown-menu">
+              <li>
+                <%= link_to 'Create Admin',  new_admin_registration_path %>
+              </li>
+              <li>
+                <%= link_to 'Manage Admins',  new_admin_registration_path %>
+              </li>
+              <li>
+                <%= link_to 'Your Settings', edit_admin_registration_path %>
+              </li>
+              <li>
+                <%= link_to 'User Manager', admins_signed_up_path %>
+              </li>
+        </ul>
+      </li>
+      <li>
+        <%= link_to 'Sign out', destroy_admin_session_path, method: :delete %>
+      </li>
+    </ul>
+      <a class="res-nav_click hidden-xl hidden-lg" href="#">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </nav>

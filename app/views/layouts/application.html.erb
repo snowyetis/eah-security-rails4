@@ -10,9 +10,17 @@
 
 <body>
   <div class="am-wrapper am-nosidebar-left">
-    <!-- < render "layouts/shared/navbar" %> -->
-    <div class="am-content">
-      <div class="page-head">
+    <div class="am-content-<%=controller_name %>">
+      <div class="page-head-<%= controller_name %>">
+
+        <% if @admin_navbar %>
+          <%= render 'layouts/shared/admin_navbar' %>
+        <% end %>
+
+        <% if @show_top_nav_bar && @admin_navbar == false %>
+          <%= render 'layouts/shared/navbar' %>
+        <% end %>
+
         <ol class="breadcrumb">
           <%= render_breadcrumbs :tag => :li, :separator => "" %>
         </ol>
@@ -24,7 +32,5 @@
       </div>
     </div>
   </div>
-  <!--  if current_user.blank? && current_admin.blank?  -->
-
 </body>
 </html>

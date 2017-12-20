@@ -1,26 +1,18 @@
 class HomeController < ApplicationController
-  add_breadcrumb "Home", :home_index_path
 
   def index
-    if !current_user.blank?
+    if user_signed_in?
       @quote = current_user.quotes.new
-
-      @product_top = Product.first
-      @product_middle =  Product.second
-      @product_bottom =  Product.third
-
-      @questionaire = @quote.build_questionaire
-      @quote_detail = @quote.build_quote_detail
     else
       @quote = Quote.new
-
-      @product_top = Product.first
-      @product_middle =  Product.second
-      @product_bottom =  Product.third
-      
-      @questionaire = @quote.build_questionaire
-      @quote_detail = @quote.build_quote_detail
     end
+
+    @product_top = Product.first
+    @product_middle =  Product.second
+    @product_bottom =  Product.third
+    @questionaire = @quote.build_questionaire
+    @quote_detail = @quote.build_quote_detail
+
   end
 
   def submit_questionaire
@@ -44,16 +36,16 @@ class HomeController < ApplicationController
 
     private
 
-    def combo_params
-      params.require(:quote).permit(:quote_type ,:user_id, :pending, questionaire: [ :user_id, :quote_id, :product_type, :comments ])
-    end
+      def combo_params
+        params.require(:quote).permit(:quote_type ,:user_id, :pending, questionaire: [ :user_id, :quote_id, :product_type, :comments ])
+      end
 
-    def questionaire_params
-      params.require(:questionaire).permit(:user_id, :quote_id, :product_type, :comments)
-    end
+      def questionaire_params
+        params.require(:questionaire).permit(:user_id, :quote_id, :product_type, :comments)
+      end
 
-    def quote_params
-      params.require(:quote).permit(:quote_type, :user_id, :approved, :pending, :rejected)
-    end
+      def quote_params
+        params.require(:quote).permit(:quote_type, :user_id, :approved, :pending, :rejected)
+      end
 
 end

@@ -14,10 +14,20 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
 
+  def update
+    id = params[:id].to_i
+    session[:id] = User::ROLES.has_key?(id) ? id : 0
+    flash[:success] = "Your new role #{User::ROLES[id]} was set!"
+    redirect_to root_path
+  end
+
   # DELETE /resource/sign_out
   def destroy
     sign_out current_user if user_signed_in?
     super
+
+    current_user = nil
+    current_ability = nil
   end
 
   protected

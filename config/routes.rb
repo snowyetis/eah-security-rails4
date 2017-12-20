@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   unauthenticated :user do
-    root 'home#about'
+    root 'home#index'
   end
 
   # TODO: Define routes for the Admin auth and unauth paths. i.e. a dashboard or sign in???
@@ -31,6 +31,9 @@ Rails.application.routes.draw do
                         confirmations: 'users/confirmations'
                       }
 
+  resources :update, :path => "/users/sessions"
+
+
   devise_for :admins, controllers: {
                         sessions: 'admins/sessions',
                         registrations: 'admins/registrations',
@@ -39,14 +42,15 @@ Rails.application.routes.draw do
 
   devise_scope :admin do
     get 'admins/signed_up', to: 'admins/registrations#index'
+    get 'admins/products/index', to: 'admins/products#index'
     match 'admins/get_approved_users/:approved/:buttonId', to: 'admins/registrations#get_approved_users', via: [:get]
+
     # match 'admins/approve_user', to: 'admins/registrations#approve_user', via: [:put]
     # match 'admins/approve_all_users', to: 'admins/registrations#approve_all_users', via: [:put]
     put 'admins/approve_user', to: 'admins/registrations#approve_user'
+    post 'admins/products/create', to: 'admins/products#create'
     # patch "admins/:id", to: "admins/registrations#approve_user", as: "approve_user"
   end
 
-  # post "/registrations/:id" => "registrations#show"
-  # post "/hook" => "regstrations#hook"
 
 end

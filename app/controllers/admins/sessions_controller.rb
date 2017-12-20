@@ -28,6 +28,9 @@ before_action :set_admin_flag
   def destroy
     sign_out current_admin if admin_signed_in?
     super
+
+    current_admin = nil
+    current_ability = nil
   end
 
   protected

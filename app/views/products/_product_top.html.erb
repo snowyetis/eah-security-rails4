@@ -6,43 +6,43 @@
       <% end %>
     <h6>Subtitle Text</h6>
     <div class="row">
-      <div class="col-lg-5 col-sm-6 wow fadeInLeft delay-05s">
-        <div class="service-list">
-          <div class="service-list-col1">
-            <i class="fa-paw"></i>
+        <div class="col-lg-5 col-sm-6 wow fadeInLeft delay-05s">
+          <div class="service-list">
+            <div class="service-list-col1">
+              <i class="fa-paw"></i>
+            </div>
+            <div class="service-list-col2">
+                <h3><%= @product_top.product_details.first.product_detail_type %></h3>
+                <p><%= @product_top.product_details.first.model_description %></p>
+            </div>
           </div>
-          <div class="service-list-col2">
-            <h3><%= @product_top.product_details.first.product_detail_type %></h3>
-            <p><%= @product_top.product_details.first.model_description %></p>
+          <div class="service-list">
+            <div class="service-list-col1">
+              <i class="fa-gear"></i>
+            </div>
+            <div class="service-list-col2">
+                <h3><%= @product_top.product_details.second.product_detail_type %></h3>
+                <p><%= @product_top.product_details.second.model_description %></p>
+            </div>
           </div>
-        </div>
-        <div class="service-list">
-          <div class="service-list-col1">
-            <i class="fa-gear"></i>
+          <div class="service-list">
+            <div class="service-list-col1">
+              <i class="fa-apple"></i>
+            </div>
+            <div class="service-list-col2">
+                <h3><%= @product_top.product_details.third.product_detail_type %></h3>
+                <p><%= @product_top.product_details.third.model_description %></p>
+            </div>
           </div>
-          <div class="service-list-col2">
-            <h3><%= @product_top.product_details.second.product_detail_type %></h3>
-            <p><%= @product_top.product_details.second.model_description %></p>
+          <div class="service-list">
+            <div class="service-list-col1">
+              <i class="fa-medkit"></i>
+            </div>
+            <div class="service-list-col2">
+                <h3><%= @product_top.product_details.fourth.product_detail_type %></h3>
+                <p><%= @product_top.product_details.fourth.model_description %></p>
+            </div>
           </div>
-        </div>
-        <div class="service-list">
-          <div class="service-list-col1">
-            <i class="fa-apple"></i>
-          </div>
-          <div class="service-list-col2">
-            <h3><%= @product_top.product_details.third.product_detail_type %></h3>
-            <p><%= @product_top.product_details.third.model_description %></p>
-          </div>
-        </div>
-        <div class="service-list">
-          <div class="service-list-col1">
-            <i class="fa-medkit"></i>
-          </div>
-          <div class="service-list-col2">
-            <h3><%= @product_top.product_details.fourth.product_detail_type %></h3>
-            <p><%= @product_top.product_details.fourth.model_description %></p>
-          </div>
-        </div>
       </div>
       <figure class="col-lg-6 col-sm-5 pull-right text-right wow fadeInUp delay-02s">
         <%= image_tag File.join(@product_top.product_type.gsub(' ','_').downcase.to_s + '.jpg') %>

@@ -1,0 +1,68 @@
+<%= form_for(@products) do |f| %>
+  <%= f.fields_for(:product_details, html: { role: "form", class: "form" } ) do |q| %>
+  <div class="col-lg-5 col-sm-6 wow fadeInLeft delay-05s">
+    <div class="service-list">
+      <div class="service-list-col1">
+        <i class="fa-paw"></i>
+      </div>
+      <div class="service-list-col2">
+        <% if can? :manage, @products %>
+          <div class="form-group">
+            <%= q.text_field :product_detail_type, class: "form-control", placeholder: @products.product_details.first.product_detail_type  %>
+          </div>
+          <div class="form-group">
+            <%= text_area_tag 'productDetailTypeDesc', @products.product_details.first.model_description, class: "form-control", placeholder: @products.product_details.first.model_description %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="service-list">
+      <div class="service-list-col1">
+        <i class="fa-gear"></i>
+      </div>
+      <div class="service-list-col2">
+        <% if can? :manage, @products %>
+          <div class="form-group">
+            <%= text_field_tag 'productDetailType', @products.product_details.second.product_detail_type, class: "form-control", placeholder: @products.product_details.first.product_detail_type  %>
+          </div>
+          <div class="form-group">
+            <%= text_area_tag 'productDetailTypeDesc', @products.product_details.second.model_description, class: "form-control", placeholder: @products.product_details.first.model_description %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="service-list">
+      <div class="service-list-col1">
+        <i class="fa-apple"></i>
+      </div>
+      <div class="service-list-col2">
+        <% if can? :manage, @products %>
+          <div class="form-group">
+            <%= text_field_tag 'productDetailType', @products.product_details.third.product_detail_type, class: "form-control", placeholder: @products.product_details.first.product_detail_type  %>
+          </div>
+          <div class="form-group">
+            <%= text_area_tag 'productDetailTypeDesc', @products.product_details.third.model_description, class: "form-control", placeholder: @products.product_details.first.model_description %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="service-list">
+      <div class="service-list-col1">
+        <i class="fa-medkit"></i>
+      </div>
+      <div class="service-list-col2">
+        <% if can? :manage, @products %>
+          <div class="form-group">
+            <%= text_field_tag 'productDetailType', @products.product_details.fourth.product_detail_type, class: "form-control", placeholder: @products.product_details.fourth.product_detail_type  %>
+          </div>
+          <div class="form-group">
+            <%= text_area_tag 'productDetailTypeDesc', @products.product_details.fourth.model_description, class: "form-control", placeholder: @products.product_details.fourth.model_description %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-offset-9">
+      <%= link_to 'Update Template', edit_product_path(@products), class: 'btn btn-danger'  %>
+    </div>
+    <% end %>
+  <% end %>

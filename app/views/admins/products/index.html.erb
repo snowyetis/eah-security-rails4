@@ -1,0 +1,4 @@
+<% if can? :manage, @products  %>
+  <%= render partial: "layouts/shared/admin_navbar" %>
+  <%= render partial: "admins/products/shared/product_listing_template" %>
+<% end %>

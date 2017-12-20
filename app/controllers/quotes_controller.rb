@@ -1,23 +1,33 @@
 class QuotesController < ApplicationController
+  load_and_authorize_resource
+  before_action :authenticate_user!
   before_action :set_quote, only: [:show, :update, :destroy]
   # before_action :authenticate_admin!, except: [:index, :show]
-  add_breadcrumb "Quotes", :quotes_path
+
+  add_breadcrumb "Home", :home_index_path
 
   # GET /quotes
   # GET /quotes.json
   def index
-    add_breadcrumb "Our Services", quotes_path
+    add_breadcrumb "Your Quotes"
 
     if current_admin
       @quotes = Quote.all
       @users = User.all
     else
-      @quotes = current_user.quotes.all
+      if user_signed_in? && current_user != []
+        @quotes = current_user.quotes.all
+      else
+        respond_to do |format|
+          format.html { redirect_to home_index_url, notice: "There are no quotes created under your account" }
+          format.json { render notice: "There are no quotes created under your account", status: :unprocessable_entity }
+        end
+      end
     end
   end
 
   def show_quote
-    add_breadcrumb "View Quote", quote_path
+    add_breadcrumb "View Quote"
     respond_to do |format|
       format.js
     end
@@ -30,7 +40,7 @@ class QuotesController < ApplicationController
 
   # GET /quotes/new
   def new
-    add_breadcrumb "Create a Quote", new_quote_path
+    add_breadcrumb "Create a Quote"
 
     @quote = Quote.new
     @quote.quote_detail.questionaire.build
@@ -39,7 +49,7 @@ class QuotesController < ApplicationController
 
   # GET /quotes/1/edit
   def edit
-    add_breadcrumb "Edit a Quote", edit_quote_path
+    add_breadcrumb "Edit a Quote"
 
     @quote = Quote.find(params[:id])
     @questionaire = @quote.questionaire

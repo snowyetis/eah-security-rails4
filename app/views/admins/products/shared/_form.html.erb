@@ -1,0 +1,21 @@
+<% product_detail.each do |pd_value| %>
+  <tr>
+    <td>
+      <i class="fa fa-trash" />
+    </td>
+    <td>
+      <i class="fa fa-pencil" />
+    </td>
+    <td>
+      <%= pd.text_field :model_number, placeholder: pd_value.model_number  %>
+    </td>
+
+    <td>
+      <%= pd.text_area :model_description, placeholder: pd_value.model_description, rows: '6', cols:  '45'  %>
+    </td>
+
+    <td>
+      <%= pd.text_area :product_detail_type, placeholder: pd_value.product_detail_type, rows: '6', cols:  '45' %>
+    </td>
+  </tr>
+<% end %>

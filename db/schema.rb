@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127132309) do
+ActiveRecord::Schema.define(version: 20171205064956) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(version: 20171127132309) do
     t.datetime "updated_at",                            null: false
     t.string   "unconfirmed_email"
     t.boolean  "admin",                  default: true
+    t.integer  "role_id"
   end
-
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
   create_table "card_transactions", force: :cascade do |t|
     t.integer  "card_id"
@@ -183,12 +181,7 @@ ActiveRecord::Schema.define(version: 20171127132309) do
     t.string   "phone"
     t.string   "affiliation"
     t.boolean  "admin",                  default: false
+    t.integer  "role_id"
   end
-
-  add_index "users", ["approved"], name: "index_users_on_approved"
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
 
 end

@@ -1,34 +1,44 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_product, only: [:show]
   add_breadcrumb "Home", :root_path
 
   def index
-
-    if !current_user.blank?
+    if user_signed_in?
       @quote = current_user.quotes.new
-
-      @product_top = Product.product_details.first
-      @product_middle =  Product.product_details.second
-      @product_bottom =  Product.product_details.third
-
-      @questionaire = @quote.build_questionaire
-      @quote_detail = @quote.build_quote_detail
     else
       @quote = Quote.new
-
-      @product_top = Product.product_details.first
-      @product_middle =  Product.product_details.second
-      @product_bottom =  Product.product_details.third
-
-      @questionaire = @quote.build_questionaire
-      @quote_detail = @quote.build_quote_detail
     end
+
+    @product_top = Product.first
+    @product_middle =  Product.second
+    @product_bottom =  Product.third
+    @questionaire = @quote.build_questionaire
+    @quote_detail = @quote.build_quote_detail
 
     add_breadcrumb "Our Services", products_path
 
     respond_to do |format|
       format.js {}
       format.html
+    end
+  end
+
+  def new
+    @product = Product.new
+  end
+
+  def edit
+    if !current_admin.blank?
+      # @quote = Quote.all
+
+      @product = Product.product_details.all
+      # @product_top = Product.product_details.first
+      # @product_middle =  Product.product_details.second
+      # @product_bottom =  Product.product_details.third
+
+      # @questionaire = @quote.build_questionaire
+      # @quote_detail = @quote.build_quote_detail
     end
   end
 

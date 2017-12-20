@@ -1,5 +1,6 @@
 class ProductDetail < ActiveRecord::Base
   belongs_to :product
+  # has_many :quotes, through: :product
 
   :model_number
   :model_description
