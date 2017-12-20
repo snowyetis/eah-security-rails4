@@ -1,5 +1,3 @@
-module Admin
-  class BaseAdminsController < Devise
+class BaseAdminsController < ApplicationController
     # common behavior goes here ...
-  end
 end
