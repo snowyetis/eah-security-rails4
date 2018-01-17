@@ -1,9 +1,12 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource
+
   before_action :set_product, only: [:show]
   add_breadcrumb "Home", :root_path
 
   def index
+    add_breadcrumb "Our Services", products_path
+
     if user_signed_in?
       @quote = current_user.quotes.new
     else
@@ -15,8 +18,6 @@ class ProductsController < ApplicationController
     @product_bottom =  Product.third
     @questionaire = @quote.build_questionaire
     @quote_detail = @quote.build_quote_detail
-
-    add_breadcrumb "Our Services", products_path
 
     respond_to do |format|
       format.js {}

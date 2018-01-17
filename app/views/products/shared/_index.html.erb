@@ -17,11 +17,16 @@
     <% end %>
   </div>
 </header>
-<%= render 'layouts/shared/navbar' %>
+
+<% if !current_user.blank? && current_admin.blank? %>
+  <%= render 'layouts/shared/navbar' %>
+<% else %>
+  <%= render 'layouts/shared/admin_navbar' %>
+<% end %>
 
 <%= render partial: 'products/products_list', locals: { product_top: @product_top, product_middle: @product_middle, product_bottom: @product_bottom } %>
 
-<% if  current_user.blank? && current_admin.blank? %>
+<% if current_user.blank? && current_admin.blank? %>
   <section class="main-section" id="register">
     <%= render partial: 'users/shared/new' %>
   </section>

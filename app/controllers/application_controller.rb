@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   before_action :is_product_page
   before_action :is_home_page
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = exception.message
+    redirect_to root_url
+  end
+
   def current_ability
     @current_ability ||= case
     when current_user

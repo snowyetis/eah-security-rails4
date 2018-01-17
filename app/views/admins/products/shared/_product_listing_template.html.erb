@@ -1,8 +1,12 @@
 <div class="panel panel-info">
   <div class="panel-heading">Edit Products</div>
   <div class="panel-body">
+    <div class="col-xs-12 sm-pt-10 sm-pb-15">
+      <%= link_to "Add Product", admins_products_new_path, class: 'btnCreateProduct btn btn-primary', remote: true, data: { toggle: 'modal', target: 'create_product_modal' } %>
+    </div>
     <table class="table table-bordered table-striped table-hover" id="registrations-table"> <!-- Main Table -->
       <thead>
+        <th></th>
         <th>Product Type</th>
         <th>Price</th>
         <th>Date Created</th>
@@ -12,51 +16,56 @@
         <% @products.each do |product| %>
           <tr class="accordion-toggle" data-toggle="collapse" data-target="#<%= product.product_details[0].model_number %>">
             <td class="hide"><%= hidden_field_tag product.id %></td>
+            <td><center><i class="fa fa-arrow-down"><i></cemter></td>
             <td><%= product.product_type %></td>
             <td><%= product.price %></td>
             <td><%= product.created_at %></td>
             <td><%= product.updated_at %></td>
           </tr>
           <tr>
-          <td class="accordion-body collapse" id="<%= product.product_details[0].model_number  %>">
-            <!-- Nested Table [Product Detail] -->
-            <table class="table">
-              <thead>
-                <th>Delete</th>
-                <th>Update</th>
-                <th>Model Number</th>
-                <th>Model Description</th>
-                <th>Product Detail Type</th>
-              </thead>
-              <tbody>
-                <tr>
-                  <%= form_tag admins_products_create_path method: :post do %>
-                    <%= hidden_field_tag 'page', (params[:page].nil? ? 1 : params[:page]) %>
-                      <%= form_for(product) do |p| %>
-                        <%= p.fields_for :product_detail do |pd| %>
-                          <%= render partial: "admins/products/shared/form", locals: { pd: pd, product_detail: product.product_details } %>
+            <td class="accordion-body collapse" id="<%= product.product_details[0].model_number  %>">
+              <!-- Nested Table [Product Detail] -->
+              <table class="table">
+                <thead>
+                  <th>Delete</th>
+                  <th>Update</th>
+                  <th>Model Number</th>
+                  <th>Model Description</th>
+                  <th>Product Detail Type</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <%= form_tag admins_products_create_path method: :post do %>
+                      <%= hidden_field_tag 'page', (params[:page].nil? ? 1 : params[:page]) %>
+                        <%= form_for(product) do |p| %>
+                          <%= p.fields_for :product_detail do |pd| %>
+                            <%= render partial: "admins/products/shared/table_form", locals: { pd: pd, product_detail: product.product_details } %>
+                          <% end %>
                         <% end %>
-                      <% end %>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        <div class="col-lg-6 col-md-6 col-xs-12">
-                          <%= submit_tag "Delete Product", class: 'btn btn-warning' %>
-                        </div>
-                      </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
                           <div class="col-lg-6 col-md-6 col-xs-12">
-                            <%= submit_tag "Update Products", class: 'btn btn-primary' %>
+                            <%= submit_tag 'Delete Product', class: 'btn btn-warning',  data: { confirm: 'Are you sure you would like to delete the selected records?' } %>
                           </div>
-                      </td>
-                  <% end %>
-                </tr>
-              </tbody>
-            </table>
-          </td>
+                        </td>
+                        <td>
+                          <div class="col-lg-6 col-md-6 col-xs-12">
+                            <%= submit_tag 'Update Products', class: 'btn btn-primary', name: 'mass_product_update' %>
+                          </div>
+                        </td>
+                    <% end %>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+</div>
+<div class="model-panel">
+  <%= render partial: "admins/products/shared/create_product_modal" %>
 </div>

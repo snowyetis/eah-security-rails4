@@ -1,6 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
   before_filter :configure_sign_in_params, only: [:create]
-  # Prevent admin from hittinf user.
+
+  # Prevent admin from hitting user
  before_filter :authenticate_admin!
  before_filter :set_admin_flag
 

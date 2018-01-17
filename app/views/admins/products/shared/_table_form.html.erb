@@ -1,0 +1,25 @@
+<% product_detail.each do |pd_value| %>
+  <tr>
+    <td>
+      <%= link_to pd_value, remote: true do %>
+        <i class="fa fa-trash fa-2x"></i>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to pd_value, remote: true do %>
+        <i class="fa fa-pencil fa-2x"></i>
+      <% end %>
+    </td>
+    <td>
+      <%= pd.text_field :model_number, placeholder: pd_value.model_number, class: 'form-control'  %>
+    </td>
+
+    <td>
+      <%= pd.text_area :model_description, placeholder: pd_value.model_description, rows: '6', cols:  '45',  class: 'form-control'  %>
+    </td>
+
+    <td>
+      <%= pd.text_area :product_detail_type, placeholder: pd_value.product_detail_type, rows: '6', cols:  '45', class: 'form-control' %>
+    </td>
+  </tr>
+<% end %>

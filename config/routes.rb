@@ -43,8 +43,8 @@ Rails.application.routes.draw do
   devise_scope :admin do
     get 'admins/signed_up', to: 'admins/registrations#index'
     get 'admins/products/index', to: 'admins/products#index'
+    get 'admins/products/new', to: 'admins/products#new'
     match 'admins/get_approved_users/:approved/:buttonId', to: 'admins/registrations#get_approved_users', via: [:get]
-
     # match 'admins/approve_user', to: 'admins/registrations#approve_user', via: [:put]
     # match 'admins/approve_all_users', to: 'admins/registrations#approve_all_users', via: [:put]
     put 'admins/approve_user', to: 'admins/registrations#approve_user'

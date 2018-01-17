@@ -1,33 +1,38 @@
 class Admins::ProductsController < ApplicationController
   load_and_authorize_resource
 
+  # TODO Change upon creation of Admin Home page.
+  add_breadcrumb "Home", :root_path
+
   before_action :authenticate_admin!
 
-  # before_action :update, :only => [:get_bulk_products, :save_bulk_products]
-
   def index
+    add_breadcrumb "Administration Product Editor"
+
     @products = Product.includes(:product_details)
-    # @products = Product.all
-    # @products = Product.group(:product_id)
-    # @products = Product.joins(:product_details).group("product_id")
   end
 
   def new
     add_breadcrumb "Create a Product"
-    @product = Product.new
 
-    @product.product_detail.build
+    @product = Product.new
+    @product.product_details.build
   end
 
   def edit
+    add_breadcrumb "Create a Product"
+
     if !current_admin.blank?
-
       @product = Product.product_details.all
-
-      # @quote = Quote.find(params[:id])
-      # @questionaire = @quote.questionaire
-      # @quote_detail = @quote.quote_detail
     end
+  end
+
+  def update
+
+  end
+
+  def create
+
   end
 
   def save_bulk_products
