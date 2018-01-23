@@ -1,15 +1,21 @@
 <div id="create_product_modal" role="dialog"  class="modal fade">
   <div class="modal-content">
-    <div class="modal-header">
-      <button type="button" data-dismiss="modal" aria-hidden="true" class="close modal-close">
-        <i class="icon s7-close"></i>
-      </button>
-      <h3 class="modal-title">Add a new Product</h3>
-    </div>
-    <div class="modal-body">
-    </div>
-    <div class="modal-footer">
-      <button type="button" data-dismiss="modal" class="btn btn-default modal-close">Cancel</button>
-    </div>
+    <%= form_for(@product, url: admins_products_create_path, html: {role: "form", class: "form" }) do |f| %>
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close modal-close">
+          <i class="icon s7-close"></i>
+        </button>
+        <h3 class="modal-title">Add a new Product</h3>
+      </div>
+      <div class="modal-body">
+        <%= render partial: "admins/products/shared/form", locals: {f: f} %>
+      </div>
+      <div class="modal-footer">
+        <div class="form-group">
+          <%= f.submit "Add Product", class: "btn btn-primary" %>
+          <button type="button" data-dismiss="modal" class="btn btn-default modal-close">Cancel</button>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="panel panel-primary">
       <!-- <div class="panel-heading"> -->
-        <h2 class="animated fadeInDown delay-09s"> Register for Access to EAHS Locksmith Inc</h2>
+        <h2 class=""> Register for Access to EAHS Locksmith Inc</h2>
         <br>
         <p>
           <center>
@@ -15,47 +15,47 @@
       <%= form_for(resource, as: resource_name, url: user_registration_path(resource), html: {role: "form", class: "form" }) do |f| %>
         <%= devise_error_messages! %>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-06s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.label :first_name  %>
             <%= f.text_field :first_name, class: "form-control" %>
           </div>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-06s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.label :last_name %>
             <%= f.text_field :last_name, class: "form-control" %>
           </div>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-07s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.label :address %>
             <%= f.text_field :address, class: "form-control" %>
           </div>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-07s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.label :city %>
             <%= f.text_field :city, class: "form-control" %>
           </div>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-08s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.label :state  %>
             <%= f.text_field :state, class: "form-control" %>
           </div>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-08s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.label :zip  %>
             <%= f.text_field :zip, class: "form-control" %>
           </div>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-08s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.label :affiliation %>
             <%= f.text_field :affiliation, class: "form-control" %>
           </div>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-09s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, class: "form-control" %>
           </div>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-09s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.label :password %>
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -63,16 +63,16 @@
             <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
           </div>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-09s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
           </div>
 
-          <div class="form-group wow fadeInRight delay-12s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
+          <div class="form-group wow fadeInRight delay-09s animated" style="visibility: visible; animation-name: fadeInRight; -webkit-animation-name: fadeInRight;">
             <%= f.submit "Register", class: "btn btn-space btn-primary" %>
           </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 </div>

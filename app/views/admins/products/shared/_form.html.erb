@@ -1,0 +1,11 @@
+  <% if can? :manage, @product %>
+    <p>Create your product group here. Enter the name you wish to title your product group</p>
+    <div class="form-group">
+      <div class="col-xs-3">
+        <%= f.label :product_type %>
+      </div>
+      <div class="col-xs-9 pull-right">
+        <%= f.text_field :product_type, class: "form-control" %>
+      </div>
+    </div>
+  <% end %>

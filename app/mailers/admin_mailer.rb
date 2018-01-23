@@ -10,7 +10,7 @@ class AdminMailer < ApplicationMailer
   def new_user_approved(email)
     @email = email
     @url =  "https://eah-security.herokuapp.com/users/sign_in"
-    mail(to: @email, subject: "A Message Regarding your Access to EAH Security")
+    mail(to: @email, subject: "A Message Regarding your Access to EAHS Security")
   end
 
 end

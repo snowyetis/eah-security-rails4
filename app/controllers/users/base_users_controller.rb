@@ -1,3 +1,0 @@
-class Users::BaseUsersController
-    # common behavior goes here ...
-end

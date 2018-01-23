@@ -1,7 +1,7 @@
 <header class="header" id="header">
   <div class="container">
     <figure class="logo animated fadeInDown delay-07s">
-      <%= link_to "#" do %>
+      <%= link_to root_path do %>
         <%= image_tag "EAH-Brand.png" %>
       <% end %>
     </figure>
@@ -9,7 +9,7 @@
     <ul class="we-create animated fadeInUp delay-1s">
       <li>Welcome to EAHS Locksmith Inc</li>
       <p>
-        EAH Locksmith, Inc has over 40 years of combined experience and offers a variety of services.
+        EAHS Locksmith, Inc has over 40 years of combined experience and offers a variety of services.
       </p>
     </ul>
     <% if current_user.blank? %>
@@ -18,10 +18,13 @@
   </div>
 </header>
 
-<% if !current_user.blank? && current_admin.blank? %>
-  <%= render 'layouts/shared/navbar' %>
-<% else %>
-  <%= render 'layouts/shared/admin_navbar' %>
+
+<% if !@show_top_nav_bar %>
+  <% if can? :view, Home %>
+    <%= render 'layouts/shared/admin_navbar' %>
+  <% else %>
+    <%= render 'layouts/shared/navbar' %>
+  <% end %>
 <% end %>
 
 <%= render partial: 'products/products_list', locals: { product_top: @product_top, product_middle: @product_middle, product_bottom: @product_bottom } %>
@@ -31,7 +34,3 @@
     <%= render partial: 'users/shared/new' %>
   </section>
 <% end %>
-
-<%= render 'quotes/locksmith' %>
-<%= render 'quotes/security' %>
-<%= render 'quotes/fire_door_inspection' %>

@@ -7,20 +7,17 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-
 <body>
   <div class="am-wrapper am-nosidebar-left">
     <div class="am-content-<%=controller_name %>">
       <div class="page-head-<%= controller_name %>">
-
-        <% if @admin_navbar %>
-          <%= render 'layouts/shared/admin_navbar' %>
+        <% if @show_top_nav_bar %>
+          <% if can? :view, Home %>
+            <%= render 'layouts/shared/admin_navbar' %>
+          <% else %>
+            <%= render 'layouts/shared/navbar' %>
+          <% end %>
         <% end %>
-
-        <% if @show_top_nav_bar && @admin_navbar == false %>
-          <%= render 'layouts/shared/navbar' %>
-        <% end %>
-
         <ol class="breadcrumb">
           <%= render_breadcrumbs :tag => :li, :separator => "" %>
         </ol>

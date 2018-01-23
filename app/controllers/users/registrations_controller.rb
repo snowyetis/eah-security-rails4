@@ -1,8 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-before_filter :configure_sign_up_params, only: [:create]
-before_filter :configure_account_update_params, only: [:update]
-# before_action :authenticate_user!, except: [:about]
-add_breadcrumb "Home", :root_path
+  before_filter :configure_sign_up_params, only: [:create]
+  before_filter :configure_account_update_params, only: [:update]
+  before_action :authenticate_user!, only: [:edit]
+
+  add_breadcrumb "Home", :root_path
 
 
   # GET /resource/sign_up

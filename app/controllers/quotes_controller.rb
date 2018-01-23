@@ -68,7 +68,7 @@ class QuotesController < ApplicationController
       redirect_to home_index_path
     else
 
-        @quote = current_user.quotes.build(quote_params)
+      @quote = current_user.quotes.build(quote_params)
 
       respond_to do |format|
         if @quote.save

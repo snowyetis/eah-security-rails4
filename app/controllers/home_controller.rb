@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
+  before_action :hide_nav, only: [:exit, :pending]
 
   def index
+    set_middle_nav
     if user_signed_in?
       @quote = current_user.quotes.new
     else

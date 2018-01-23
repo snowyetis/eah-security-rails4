@@ -33,7 +33,6 @@ Rails.application.routes.draw do
 
   resources :update, :path => "/users/sessions"
 
-
   devise_for :admins, controllers: {
                         sessions: 'admins/sessions',
                         registrations: 'admins/registrations',
@@ -42,14 +41,18 @@ Rails.application.routes.draw do
 
   devise_scope :admin do
     get 'admins/signed_up', to: 'admins/registrations#index'
+    match 'admins/get_approved_users/:approved/:buttonId', to: 'admins/registrations#get_approved_users', via: [:get]
+    put 'admins/approve_user', to: 'admins/registrations#approve_user'
+
     get 'admins/products/index', to: 'admins/products#index'
     get 'admins/products/new', to: 'admins/products#new'
-    match 'admins/get_approved_users/:approved/:buttonId', to: 'admins/registrations#get_approved_users', via: [:get]
-    # match 'admins/approve_user', to: 'admins/registrations#approve_user', via: [:put]
-    # match 'admins/approve_all_users', to: 'admins/registrations#approve_all_users', via: [:put]
-    put 'admins/approve_user', to: 'admins/registrations#approve_user'
     post 'admins/products/create', to: 'admins/products#create'
-    # patch "admins/:id", to: "admins/registrations#approve_user", as: "approve_user"
+    delete 'admins/products/:id', to: 'admins/products#destroy', as: 'destroy_admin_product'
+
+    get 'admins/product_details/:id/edit', to: 'admins/product_details#edit'
+    post 'admins/product_details/create', to: 'admins/product_details#create'
+    put 'admins/product_details/update/:id', to: 'admins/product_details#update', as: 'update_admin_product_detail'
+    delete 'admins/product_details/destroy/:id', to: 'admins/product_details#destroy', as: 'destroy_admin_product_detail'
   end
 
 

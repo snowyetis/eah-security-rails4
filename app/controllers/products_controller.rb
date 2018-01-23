@@ -1,10 +1,12 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource
 
+  before_action :set_top_nav, except: [:index]
   before_action :set_product, only: [:show]
   add_breadcrumb "Home", :root_path
 
   def index
+    set_middle_nav
     add_breadcrumb "Our Services", products_path
 
     if user_signed_in?
@@ -31,15 +33,8 @@ class ProductsController < ApplicationController
 
   def edit
     if !current_admin.blank?
-      # @quote = Quote.all
 
       @product = Product.product_details.all
-      # @product_top = Product.product_details.first
-      # @product_middle =  Product.product_details.second
-      # @product_bottom =  Product.product_details.third
-
-      # @questionaire = @quote.build_questionaire
-      # @quote_detail = @quote.build_quote_detail
     end
   end
 

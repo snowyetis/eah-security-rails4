@@ -1,9 +1,13 @@
 class User < ActiveRecord::Base
+  # Creation before
+  before_validation :normalize_name, on: :create
+  # and after steps
+  after_create :send_admin_mail
+
   has_many :quotes
   has_many :quote_details, through: :quotes
   has_many :questionaires
 
-  # ROLES = %i[admin moderator author banned]
   ROLES = %i[user guest banned]
 
   def roles=(roles)
@@ -40,8 +44,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  after_create :send_admin_mail
-
   def send_admin_mail
     AdminMailer.new_user_waiting_for_approval(self).deliver
   end
@@ -55,5 +57,11 @@ class User < ActiveRecord::Base
     end
     recoverable
   end
+
+  private
+
+    def normalize_name
+      self.name = name.downcase.titleize
+    end
 
 end

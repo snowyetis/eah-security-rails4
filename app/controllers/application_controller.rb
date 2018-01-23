@@ -5,8 +5,7 @@ class ApplicationController < ActionController::Base
   respond_to :html, :json
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :is_product_page
-  before_action :is_home_page
+  before_action :set_top_nav
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = exception.message
@@ -24,30 +23,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def is_product_page
-    puts original_url
-    if original_url.downcase().include? "products"
-      @show_top_nav_bar = false
-      @product_home = true
-      @root_home = false
-    else
-      @show_top_nav_bar = true
-      @product_home = false
-      @root_home = false
-    end
+  def set_middle_nav
+    @show_top_nav_bar = false
+    @hide_nav = false
   end
 
-  def is_home_page
-    puts original_url
-    if original_url.downcase.include? "home"
-      @show_top_nav_bar = false
-      @product_home = false
-      @root_home = true
-    else
-      @show_top_nav_bar = true
-      @product_home = false
-      @root_home = false
-    end
+  def set_top_nav
+    @show_top_nav_bar = true
+    @hide_nav = false
+  end
+
+  def hide_nav
+    @show_top_nav_bar = false
+    @hide_nav = true
   end
 
   protected
@@ -77,24 +65,8 @@ class ApplicationController < ActionController::Base
       home_exit_path
     end
 
-    def is_admin(resource_or_scope)
-      if resource_or_scope.admin
-        @admin_navbar = true
-      end
-
-      if resource_or_scope.admin == false
-        @admin_navbar = false
-      end
-    end
-
     def original_url
       self.request.original_url
     end
-
-  # def current_user
-  #   User.new(session[:id])
-  # end
-
-  # helper_method :current_user
 
 end
