@@ -1,6 +1,12 @@
 <div class="panel panel-info">
-  <div class="panel-heading">Edit Products</div>
+  <div class="panel-heading">Product Manager</div>
   <div class="panel-body">
+    <div class="col-xs-12 sm-pt-10 sm-pb-15">
+      <p>
+        Add product and product detail records using the Product Manager.
+        You can update and delete your products and their details here, also.
+      </p>
+    </div>
     <div class="col-xs-12 sm-pt-10 sm-pb-15">
       <%= link_to "Add Product", admins_products_new_path, class: 'btnCreateProduct btn btn-primary', remote: true, data: { toggle: 'modal', target: 'create_product_modal' } %>
     </div>
@@ -29,10 +35,10 @@
                 <% end %>
               </center>
             </td>
-            <td><%= product.product_type %></td>
-            <td><%= product.price %></td>
-            <td><%= product.created_at %></td>
-            <td><%= product.updated_at %></td>
+            <td colspan="2"><%= product.product_type %></td>
+            <td colspan="2"><%= product.price %></td>
+            <td colspan="2"><%= product.created_at %></td>
+            <td colspan="2"><%= product.updated_at %></td>
           </tr>
           <tr>
             <td class="accordion-body collapse" id="<%= product.product_details[0].try(:model_number) %>">
