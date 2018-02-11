@@ -49,9 +49,10 @@ Rails.application.routes.draw do
     post 'admins/products/create', to: 'admins/products#create'
     delete 'admins/products/:id', to: 'admins/products#destroy', as: 'destroy_admin_product'
 
-    get 'admins/product_details/:id/edit', to: 'admins/product_details#edit'
+    get 'admins/products/:product_id/product_details/:id/edit', to: 'admins/product_details#edit', as: 'edit_admin_product_detail'
     post 'admins/product_details/create', to: 'admins/product_details#create'
-    put 'admins/product_details/update/:id', to: 'admins/product_details#update', as: 'update_admin_product_detail'
+    # put 'admins/products/:product_id/product_details/:id', to: 'admins/product_details#update', as: 'update_admin_product_detail'
+    put 'admins/product_details/:id', to: 'admins/product_details#update', as: 'update_admin_product_detail'
     delete 'admins/product_details/destroy/:id', to: 'admins/product_details#destroy', as: 'destroy_admin_product_detail'
   end
 

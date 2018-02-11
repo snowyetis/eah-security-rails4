@@ -10,6 +10,8 @@ class Admins::ProductsController < ApplicationController
 
     @product = Product.new
     @products = Product.includes(:product_details)
+    
+    # @product = Product.find_by(id: @quote.product_id)
   end
 
   def new

@@ -1,0 +1,11 @@
+$('#edit_product_detail_<%= @product_detail.id %>').on('ajax:error', function(event, xhr, status, error) {
+  // insert the failure message inside the "#account_settings" element
+  $('#messageBar-controller-products').append("HI");
+  console.log("edit error");
+});
+$('#messageBar-controller-products').on('ajax:success', function(event, xhr, status, error) {
+  // insert the failure message inside the "#account_settings" element
+  $(this).append("HI");
+  console.log("edit success");
+});
+$("#product_modal").modal("hide");

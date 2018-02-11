@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
       @quote = Quote.new
     end
 
+    # TODO Verify if this is needed still... It should not be
     @product_top = Product.first
     @product_middle =  Product.second
     @product_bottom =  Product.third
@@ -33,7 +34,6 @@ class ProductsController < ApplicationController
 
   def edit
     if !current_admin.blank?
-
       @product = Product.product_details.all
     end
   end

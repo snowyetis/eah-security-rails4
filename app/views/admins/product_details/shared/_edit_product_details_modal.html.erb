@@ -1,0 +1,23 @@
+
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <%= form_for(@product_detail, url: update_admin_product_detail_path(@product_detail.id), method: :put, remote: true,  html: {role: "form", class: "form" }) do |f| %>
+            <div class="modal-header">
+              <button type="button" data-dismiss="modal" aria-hidden="true" class="close modal-close">
+                <i class="icon s7-close"></i>
+              </button>
+              <h3 class="modal-title">Edit Product Details</h3>
+            </div>
+            <div class="modal-body">
+              <%= render partial: 'admins/product_details/shared/form', locals: {f: f} %>
+            </div>
+            <div class="modal-footer">
+              <div class="form-group">
+                <%= f.submit 'Edit Product', class: 'btn btn-primary'%>
+                <button type="button" data-dismiss="modal" class="btn btn-default modal-close">Cancel</button>
+              </div>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>

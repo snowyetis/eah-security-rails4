@@ -1,0 +1,3 @@
+// Load modal partial and show it
+$("#product_modal").html("<%= escape_javascript(render '/admins/product_details/shared/edit_product_details_modal') %>")
+$("#product_modal").modal("show")

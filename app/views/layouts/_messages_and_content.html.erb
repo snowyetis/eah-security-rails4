@@ -1,6 +1,6 @@
 <% if flash.any? %>
   <% flash.each do |name, msg| %>
-      <div id="messageBar-controller-<%= params[:controller].gsub('/','-') %>" role="alert" class="alert alert-<%= name == 'notice' ? 'success' : 'danger' %> alert-icon alert-dismissible">
+      <div id="messageBar-controller-<%= params[:controller].gsub('/','-') %>" role="alert" class=" alert alert-<%= name == 'notice' ? 'primary' : 'warning' %> alert-icon alert-dismissible">
         <% if msg.is_a?(String) %>
           <div class="icon">
             <span class="s7-check"></span>

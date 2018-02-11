@@ -208,6 +208,7 @@ DEPENDENCIES
   jquery
   jquery-rails
   jquery-turbolinks
+  kaminari
   newrelic_rpm
   pg
   popper_js (~> 1.11.1)

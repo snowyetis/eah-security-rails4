@@ -1,30 +1,30 @@
 <% product_detail.each do |pd_value| %>
   <tr>
-    <td>
-      <%= link_to admins_product_details_create_path, method: :post, remote: true do %>
-        <i class="fa fa-plus fa-2x"></i>
-      <% end %>
+    <td class="hidden">
+      <%= pd.hidden_field :id, value: pd_value.id %>
+    </td>
+    <td class="hidden">
+      <%= pd.hidden_field :product_id, value: pd_value.product_id %>
     </td>
     <td>
-      <%= link_to destroy_admin_product_detail_path(pd_value.id), method: :delete, remote: true do %>
+      <%= link_to destroy_admin_product_detail_path(pd_value.id),  data: { confirm: 'Are you sure?' }, method: :delete, remote: true do %>
         <i class="fa fa-trash fa-2x"></i>
       <% end %>
     </td>
     <td>
-      <%= link_to update_admin_product_detail_path(pd_value.id), method: :put, remote: true do %>
+      <%= link_to edit_admin_product_detail_path(pd_value.product_id, pd_value.id), remote: true do %>
         <i class="fa fa-pencil fa-2x"></i>
       <% end %>
     </td>
     <td>
-      <%= pd.text_field :model_number, value: pd_value.model_number, class: 'form-control'  %>
+      <%= pd_value.model_number %>
+    </td>
+    <td>
+      <%= pd_value.model_description %>
     </td>
 
     <td>
-      <%= pd.text_area :model_description, value: pd_value.model_description, rows: '6', cols:  '45',  class: 'form-control'  %>
-    </td>
-
-    <td>
-      <%= pd.text_area :product_detail_type, value: pd_value.product_detail_type, rows: '6', cols:  '45', class: 'form-control' %>
+      <%= pd_value.product_detail_type %>
     </td>
   </tr>
 <% end %>

@@ -1,0 +1,17 @@
+<% if can? :manage, @product_detail %>
+  <div id="product_detail_modal_record">
+    <p>Edit Product <%= @product_detail.model_number %></p>
+    <div class="form-group">
+      <%= f.label :model_number %>
+      <%= f.text_field :model_number, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :model_description %>
+      <%= f.text_field :model_description, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :product_detail_type %>
+      <%= f.text_field :product_detail_type, class: "form-control" %>
+    </div>
+  </div>
+<% end %>

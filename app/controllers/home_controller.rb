@@ -9,6 +9,7 @@ class HomeController < ApplicationController
       @quote = Quote.new
     end
 
+    # TODO Verify if this is needed still... It should not be
     @product_top = Product.first
     @product_middle =  Product.second
     @product_bottom =  Product.third

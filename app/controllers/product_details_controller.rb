@@ -10,6 +10,10 @@ class ProductDetailsController < ApplicationController
   # GET /product_details/1
   # GET /product_details/1.json
   def show
+    respond_to do |format|
+      format.js {}
+      format.html
+    end
   end
 
   # GET /product_details/new

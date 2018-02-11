@@ -50,7 +50,7 @@ class QuotesController < ApplicationController
   # GET /quotes/1/edit
   def edit
     add_breadcrumb "Edit a Quote"
-
+    # TODO Add to before_action, right?!
     @quote = Quote.find(params[:id])
     @questionaire = @quote.questionaire
     @quote_detail = @quote.quote_detail
