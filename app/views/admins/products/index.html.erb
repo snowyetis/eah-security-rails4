@@ -1,5 +1,3 @@
-<%= javascript_include_tag "admins/products.coffee" %>
-
 <% if can? :manage, @products  %>
   <%= render partial: "admins/products/shared/product_listing_template" %>
 <% end %>
