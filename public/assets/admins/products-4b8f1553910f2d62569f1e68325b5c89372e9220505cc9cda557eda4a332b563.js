@@ -1,0 +1,1 @@
+(function(){$(document).on("ready",function(){return $(".btnCreateProduct").on("click",function(){return function(){return $("#create_product_modal").modal("show")}}(this))})}).call(this);
