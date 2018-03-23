@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205064956) do
+ActiveRecord::Schema.define(version: 20180323090047) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(version: 20171205064956) do
     t.string   "affiliation"
     t.boolean  "admin",                  default: false
     t.integer  "role_id"
+    t.string   "name"
   end
 
 end

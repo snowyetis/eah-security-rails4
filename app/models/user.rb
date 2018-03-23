@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   private
 
     def normalize_name
-      self.name = name.downcase.titleize
+      self.name = first_name.downcase.titleize + " " + last_name.downcase.titleize
     end
 
 end

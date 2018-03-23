@@ -1,9 +1,15 @@
 <nav class="main-nav-outer" id="primary_nav" >
   <div class="container">
     <ul class="main-nav">
+      <% if controller.controller_name == "home" %>
         <li>
           <a href="#header">Home</a>
         </li>
+      <% else %>
+        <li>
+          <%= link_to "Home", root_path %>
+        </li>
+      <% end %>
         <li>
           <%= link_to "Services", "#service" %>
         </li>

@@ -1,24 +1,38 @@
 <header class="header" id="header">
   <div class="container">
-    <figure class="logo animated fadeInDown delay-07s">
+    <figure class="lrg-logo animated fadeInDown delay-07s">
       <%= link_to root_path do %>
         <%= image_tag "EAH-Brand.png" %>
       <% end %>
     </figure>
     <h1 class="animated fadeInDown delay-07s">EAHS</h1>
     <ul class="we-create animated fadeInUp delay-1s">
-      <li>Welcome to EAHS Locksmith Inc</li>
-      <p>
-        EAHS Locksmith, Inc has over 40 years of combined experience and offers a variety of services.
-      </p>
+      <li><h2>Welcome to EAHS Locksmith Inc</h2></li>
+      <h3>
+        EAHS Locksmith, Inc has over 40 years of combined experience and offers a variety of solutions.
+      </h3>
     </ul>
     <% if current_user.blank? %>
       <a class="link animated fadeInUp delay-1s servicelink" href="#register">Register Now</a>
     <% end %>
+    <hr />
+      <div class="row">
+        <h4>Proud Member of</h4>
+        <ul style="list-style: none;" class="sm-pt-30 sm-pb-30">
+          <div class="col-xs-4">
+            <li><%= image_tag "aloa-logo" %></li>
+          </div>
+          <div class="col-xs-4">
+            <li><%= image_tag "ILAhead" %></li>
+          </div>
+          <div class="col-xs-4">
+            <li><%= image_tag "IAIL-Logo" %></li>
+          </div>
+        </ul>
+    </div>
   </div>
+  <hr />
 </header>
-
-
 <% if !@show_top_nav_bar %>
   <% if can? :view, Home %>
     <%= render 'layouts/shared/admin_navbar' %>
@@ -26,9 +40,7 @@
     <%= render 'layouts/shared/navbar' %>
   <% end %>
 <% end %>
-
 <%= render partial: 'products/products_list', locals: { product_top: @product_top, product_middle: @product_middle, product_bottom: @product_bottom } %>
-
 <% if current_user.blank? && current_admin.blank? %>
   <section class="main-section" id="register">
     <%= render partial: 'users/shared/new' %>

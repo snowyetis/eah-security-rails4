@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   respond_to do |format|
       if @user.save
-        format.html { redirect_to home_index_path, notice: 'User was successfully created.' }
+        format.html { redirect_to home_index_path, notice: 'Your access request has been sent to an admin. Upon approval, you will receive an e-mail.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
