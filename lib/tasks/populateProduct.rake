@@ -3,10 +3,10 @@ namespace :fillProduct do
   task data: :environment do
 
     ProductDetail.delete_all
-    ActiveRecord::Base.connection.reset_pk_sequence!('product_details')
+    # ActiveRecord::Base.connection.reset_pk_sequence!('product_details')
 
     Product.delete_all
-    ActiveRecord::Base.connection.reset_pk_sequence!('products')
+    # ActiveRecord::Base.connection.reset_pk_sequence!('products')
 
     @product = Product.create!(product_type: "locksmith", price: "420.50")
     @product.product_details.create!(product_id: @product.id, product_detail_type: "DEPENDIBILITY", model_description: "Hardware Replacement")

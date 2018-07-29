@@ -8,19 +8,11 @@
            <%= f.text_field :quote_type, class: "form-control" %>
          </div>
          <div class="form-group">
-             <%= f.label :status, class: "col-sm-6" %>
-             <div class="col-sm-12 col-lg-12">
-               <div class="am-checkbox inline">
-                 <label>pending:</label> <%= f.check_box :pending, class: "form-control"  %>
-               </div>
-               <div class="am-checkbox inline">
-                 <label>rejected:</label><%= f.check_box :rejected, class: "form-control" %>
-               </div>
-               <div class="am-checkbox inline">
-                 <label>approved:</label><%= f.check_box :approved, class: "form-control" %>
-             </div>
-           </div>
+         <%= f.label :status, class: "col-sm-6" %>
+         <div class="col-sm-12 col-lg-12">
+            <%= f.collection_select :status_type_id, StatusType.order(:name), :id, :name %>
          </div>
+        </div>
        <% end %>
        <div class="form-group">
          <%= f.hidden_field :user_id, value: @quote.user_id %>

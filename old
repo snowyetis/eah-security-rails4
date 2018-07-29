@@ -1,245 +1,493 @@
-<div class="col-lg-12 panel__wrapper--b panel__bg--b panel__wrapper panel__bg--b-mktg">
-  <div class="panel__inner panel__inner--b">
-    <div class="col-md-6 col-xs-12">
-      <div class="panel panel-default tall-panel panel-block">
-          <div class="panel-body panel__header-inner panel__header-text">
-            <h3>
-              Locksmithing
-           </h3>
-           <p>
-             We support all of your locksmithing needs. Including emergency services.
-          </p>
-            <span class="header__clear-button--blue header__clear-button">
-              <a id="locksmith_button">Learn More</a>
-          </span>
-          </div>
-      </div>
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-heading text-center">
+      <h2>Unlimited Features, Unlimited Fun</h2>
+      <p class="text-muted">Check out what you can do with this app theme!</p>
+      <hr>
     </div>
-    <div class="col-md-6 col-xs-12">
-      <div class="panel panel-default half-panel panel-block">
-          <div class="panel-body panel__header-inner panel__header-text">
-             <h3>
-               Safes
-             </h3>
-             <p>
-               Protect your home, business or organization with a large selection
-               of security solutions.
-             </p>
-             <span class="header__clear-button--blue header__clear-button">
-              <a id="security_button">Learn More</a>
-             </span>
-          </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-xs-12">
-      <div class="panel panel-default half-panel panel-block">
-          <div class="panel-body panel__header-inner panel__header-text">
-            <h3>
-              Security Systems
-            </h3>
-            <p>From cameras to alarms. Let us secure your home or business</p>
-            <span class="header__clear-button--blue header__clear-button">
-              <a  id="fire_door_inspection_button">Learn More</a>
-            </span>
+    <div class="row">
+      <div class="col-lg-4 my-auto">
+        <div class="device-container">
+          <div class="device-mockup iphone6_plus portrait white">
+            <div class="device">
+              <div class="screen">
+                <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
+                <!-- <img src="img/demo-screen-1.jpg" class="img-fluid" alt=""> -->
+                <% @products.last(1).each do |product| %>
+                  <div id="productGallery">
+                    <%= render partial: 'products_list', locals: {product: product}  %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="button">
+                <!-- You can hook the "home button" to some JavaScript events or just remove it -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <% @products.first(2).each do |product| %>
+      <div class="col-lg-8 my-auto">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="feature-item">
+                <i class="icon-screen-smartphone text-primary"></i>
+                <!-- <h3>Device Mockups</h3> -->
+                <!-- <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p> -->
+                <div id="productGallery">
+                  <%= render partial: 'products_list', locals: {product: product}  %>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="feature-item">
+                <i class="icon-camera text-primary"></i>
+                <!-- <h3>Flexible Use</h3>
+                <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p> -->
+                <div id="productGallery">
+                  <%= render partial: 'products_list', locals: {product: product}  %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="feature-item">
+                <i class="icon-present text-primary"></i>
+                <h3>Free to Use</h3>
+                <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="feature-item">
+                <i class="icon-lock-open text-primary"></i>
+                <h3>Open Source</h3>
+                <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<div class="row">
+  <h2>Product Overview</h2>
+
+    <div class="col-xs-12">
+
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-6">
+
+    </div>
+    <div id="showProduct">
+    </div>
+</div>
+<div class="row">
+</div>
+
+<%= render 'quotes/locksmith' %>
+<%= render 'quotes/security' %>
+<%= render 'quotes/fire_door_inspection' %>
+
+
+
+
+<div class="photo">
+  <%= image_tag "Locksmith-Services", id: "imgBanner", class: "img-responsive" %>
+</div>
+<div class="row pricing-tables">
+  <div class="col-md-6 col-lg-6">
+    <div class="pricing-table pricing-table-primary">
+      <div class="pricing-table-title">Locksmithing</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
+        <!-- <li>Basic Keys - Simple Services</li>
+        <li>Hardware Replacement</li>
+        <li>Access Control - Design - Repair</li>
+        <li>High Security Locks - Highend Services</li>
+        <li>24/7 support</li> -->
+      </ul>
+      <!-- <a class="btn btn-primary" id="locksmith_button">Learn More</a> -->
+      <% if admin_signed_in? || user_signed_in? %>
+        <%= link_to "Certified Fire Door Inspection",  product_path(4), class: "btn btn-primary" %>
+      <% end %>
+    </div><!--//content-->
+  </div><!--//item-inner-->
+  <div class="col-md-6 col-lg-6">
+    <div class="pricing-table pricing-table-primary">
+      <div class="pricing-table-title">Certified Fire Door Inspection</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
+        <!-- <li>Basic Keys - Simple Services</li>
+        <li>Hardware Replacement</li>
+        <li>Access Control - Design - Repair</li>
+        <li>High Security Locks - Highend Services</li>
+        <li>24/7 support</li> -->
+      </ul>
+      <!-- <a class="btn btn-primary" id="locksmith_button">Learn More</a> -->
+      <% if admin_signed_in? || user_signed_in? %>
+        <%= link_to "Certified Fire Door Inspection",  product_path(4), class: "btn btn-primary" %>
+      <% end %>
+    </div><!--//content-->
+  </div><!--//item-inner-->
+  <div class="col-md-6 col-lg-6">
+    <div class="pricing-table pricing-table-warning">
+      <div class="pricing-table-title">Safes</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
+        <!-- <li>Servicing</li>
+        <li>Combination Change</li>
+        <li> Opening and Repair</li>
+        <li>Moving</li>
+        <li>Sales</li>
+        <li>24/7 support</li> -->
+      </ul>
+      <!-- <a class="btn btn-warning" id="security_button">Learn More</a> -->
+      <% if admin_signed_in? || user_signed_in? %>
+        <%= link_to "Safes", product_path(3), class: "btn btn-warning" %>
+      <% end %>
+    </div><!--//content-->
+  </div><!--//item-inner-->
+  <div class="col-md-6 col-lg-6">
+    <div class="pricing-table pricing-table-success">
+      <div class="pricing-table-title">Cameras and Security Assessments</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
+        <!-- <li>Security Assessments</li>
+        <li>Security Systems</li>
+        <li>Camera Systems</li>
+        <li>24/7 support</li>
+        <li>&nbsp;</li> -->
+      </ul>
+      <!-- <a class="btn btn-success" id="fire_door_inspection_button">Learn More</a> -->
+      <% if admin_signed_in? || user_signed_in? %>
+        <%= link_to "Cameras and Secruity Assessments", product_path(2), class: "btn btn-success" %>
+      <% end %>
+    </div><!--//content-->
+  </div><!--//item-inner-->
+</div><!--//item-->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="mid-row-header">
+      <h2 class="section-header-text">
+        About Us
+      </h2>
+      <p class="section-header-subtext">
+        EAH Locksmith, Inc has over 40 years of combined experience and offers a variety of services.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row row-background margin-top-medium-indent-left">
+  <div class="col-md-6 col-xs-12">
+    <h2>
+      Contact Us
+    </h2>
+    <div class="col-sm-6">
+      <i class="fa fa-phone pull-left" aria-hidden="true"></i>216-555-5544
     </div>
   </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <ul class="sin-estilo">
-        <li class="sin-estilo">
-          <%= image_tag "EAH-Brand",  class: "img-small brand-holder" %>
-          <%= link_to "EAH Security", home_index_path, class: "navbar-brand sin-estilo" %>
-        </li>
-      </ul>
-    </div>
-    <div id="nav" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <% if admin_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to "Quotes", quotes_path %>
-              </li>
-              <hr />
-              <li>
-                <%= link_to 'Settings', edit_admin_registration_path %>
-              </li>
-              <li>
-                <%= link_to 'User Index', admins_signed_up_path %>
-              </li>
-              <li>
-                <%= link_to 'Sign out', destroy_admin_session_path, method: :delete %>
-              </li>
-            </ul>
-          </li>
-        <% end %>
-        <% if user_signed_in? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as - <%= current_user.email %><b class="caret"></b></a>
-          <ul class="dropdown-login">
-            <li>
-              <%= link_to "View Open Quotes", quotes_path %>
-            </li>
-            <hr/>
-            <li>
-              <%= link_to "Edit Account Details", edit_user_registration_path %>
-            </li>
-            <li>
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-            </li>
-          </ul>
-        </li>
-        <% end %>
-        <% if current_user.blank? && current_admin.blank? %>
-          <li class="hidden-xs"><p class="navbar-text text-center">|</p></li>
-          <li class="dropdown">
-            <a href="#" class="data-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
-            <ul class="dropdown-login">
-              <li>
-                <%= render "users/sessions/new" %>
-              </li>
-            </ul>
-            </li>
-          </ul>
-        <% end %>
-      </ul>
-    </div>
+
+
+<div class="photo">
+      <%= link_to product_path(product) do %>
+        <%= image_tag product.product_type.gsub(' ','_').downcase.to_s, class: "img-responsive img-fullWidth" %>
+      <% end %>
   </div>
-</nav>
-
-
-<%= link_to product_path(id: product.id),  class: "btn btn-default", remote: true do %>
-    <h4 class="panel-title"><%= product.product_type %></h4>
-<% end %>
-
-
-
-<h2>Users Awaiting Approval</h2>
-<h3>Filters</h3>
-<div class="col-xs-6">
-  <ul id="filterTabs" class="nav nav-pills">
-    <li class="filter-pill <%= 'active' if  @approvedClass %>" role="tab">
-      <%= link_to "All Users", action: "index", id: 'btnApprove' %>
-    </li>
-    <li class="filter-pill <%= 'active' if @approvedClass == false %>" role="tab" >
-      <%= link_to "Users Awaiting Approval", action: "index", approved: "false", id: 'btnNoApprove' %>
-    </li>
-  </ul>
-</div>
-
-admin index js erb
-$('#notice').show();
-
-<div role="alert" class="alert alert-notice">
-    <div class="icon">
-      <span class="s7-check"></span>
+<br />
+<div class="bottom">
+    <div class="user-info">
+      Description of product here. Description of product here. Description of product here. Description of product here.
+      Description of product here. Description of product here. Description of product here. Description of product here.
+      Description of product here. Description of product here. Description of product here. Description of product here.
+      Description of product here. Description of product here. Description of product here. Description of product here.
     </div>
-    <div class="message">
-      <button type="button" data-dismiss="alert" aria-label="Close" class="close">
-        <span aria-hidden="true" class="s7-close"></span>
-      </button>
-          <p id="notice" ><%= notice %></p>
-    </div>
+    <%= button_tag 'Create your Quote', id: product.product_type.gsub(' ','_').downcase.to_s, class: 'btn btn-primary', remote: true %>
+    <!-- <a class="btn btn-cta btn-cta-primary" id="locksmith_button">Learn More</a> -->
 </div>
 
 
 
-<nav class="navbar navbar-expand-lg navbar-light fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <div class="page-title">
-        <span><%= link_to 'EAHS', root_path, class: 'navbar-brand' %></span>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EAHSecurity</title>
+  <%= stylesheet_link_tag    'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="am-wrapper am-nosidebar-left">
+    <nav class="navbar navbar-default am-top-header">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <div class="page-title">
+            <span><%= link_to 'EAHS', root_path, class: 'navbar-brand' %></span>
+          </div>
+        </div>
+        <div id="am-navbar-collapse" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav am-nav-left">
+            <li><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'Our Services', products_path %></li>
+            <% if  !current_user.blank? || !current_admin.blank? %>
+            <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Services <span class="angle-down s7-angle-down"></span></a>
+              <ul role="menu" class="dropdown-menu">
+                  <% if admin_signed_in? %>
+                    <li>
+                      <%= link_to "Quotes", quotes_path %>
+                    </li>
+                    <hr />
+                    <li>
+                      <%= link_to 'Settings', edit_admin_registration_path %>
+                    </li>
+                    <li>
+                      <%= link_to 'Approve User', admins_signed_up_path %>
+                    </li>
+                    <li>
+                      <%= link_to 'Sign out', destroy_admin_session_path, method: :delete %>
+                    </li>
+                  <% end %>
+                  <% if user_signed_in? %>
+                    <li>
+                      <%= link_to "View Open Quotes", quotes_path %>
+                    </li>
+                    <hr/>
+                    <li>
+                      <%= link_to "Edit Account Details", edit_user_registration_path %>
+                    </li>
+                    <li>
+                      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+            <% if current_user.blank? && current_admin.blank? %>
+              <% if @adminFlag %>
+                <li>
+                  <%= link_to 'Sign Up',  new_admin_registration_path %>
+                </li>
+                  <% else %>
+                <li>
+                  <%= link_to 'Sign Up',  new_user_registration_path %>
+                </li>
+              <% end %>
+              <li class="dropdown">
+                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Sign In
+                <span class="angle-down s7-angle-down"></span></a>
+                <ul role="menu" class="dropdown-menu">
+                    <% if @adminFlag %>
+                      <li style="width: 400px;">
+                        <%= render "admins/sessions/new" %>
+                      </li>
+                    <% else %>
+                      <li style="width: 400px;">
+                        <%= render "users/sessions/new" %>
+                      </li>
+                    <% end %>
+                  </ul>
+              </li>
+            <% end %>
+          </ul>
+          <ul class="nav navbar-nav pull-right">
+            <br />
+            <br />
+          <li>
+          <% if user_signed_in? %>
+              <li>
+                Signed In As: &nbsp; <%= label_tag current_user.email %>
+              </li>
+          <% end %>
+        </li>
+        </div>
+      </div>
+    </nav>
+    <div class="am-content">
+      <div class="page-head">
+        <ol class="breadcrumb">
+          <%= render_breadcrumbs :tag => :li, :separator => "" %>
+        </ol>
+      </div>
+      <div class="main-content-<%= controller.controller_name %>">
+        <%= render "layouts/messages_and_content" %>
+        <%= yield %>
       </div>
     </div>
-    <!-- <div id="am-navbar-collapse" class="collapse navbar-collapse"> -->
-    <div class="navbar-collapse collapse" id="navbarResponsive" style="">
-      <!-- <ul class="nav navbar-nav am-nav-left"> -->
-      <ul class="navbar-nav ml-auto">
-        <li><%= link_to 'Home', root_path, class: 'nav-item' %></li>
-        <% if  !current_user.blank? || !current_admin.blank? %>
-        <li><%= link_to 'Our Services', products_path %></li>
-        <li class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Services <span class="angle-down s7-angle-down"></span></a>
-          <ul role="menu" class="dropdown-menu">
-              <% if admin_signed_in? %>
-                <li>
-                  <%= link_to "Quotes", quotes_path %>
-                </li>
-                <hr />
-                <li>
-                  <%= link_to 'Settings', edit_admin_registration_path %>
-                </li>
-                <li>
-                  <%= link_to 'Approve User', admins_signed_up_path %>
-                </li>
-                <li>
-                  <%= link_to 'Sign out', destroy_admin_session_path, method: :delete %>
-                </li>
-              <% end %>
-              <% if user_signed_in? %>
-                <li>
-                  <%= link_to "View Open Quotes", quotes_path %>
-                </li>
-                <hr/>
-                <li>
-                  <%= link_to "Edit Account Details", edit_user_registration_path %>
-                </li>
-                <li>
-                  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-                </li>
-              <% end %>
-            </ul>
-          </li>
+  </div>
+  <!--  if current_user.blank? && current_admin.blank?  -->
+
+</body>
+</html>
+
+
+
+<%= form_for(@products) do |f| %>
+  <%= f.fields_for(:product_details, html: { role: "form", class: "form" } ) do |q| %>
+  <div class="col-lg-5 col-sm-6 wow fadeInLeft delay-05s">
+    <div class="service-list">
+      <div class="service-list-col1">
+        <i class="fa-paw"></i>
+      </div>
+      <div class="service-list-col2">
+        <% if can? :manage, @products %>
+          <div class="form-group">
+            <%= q.text_field :product_detail_type, class: "form-control", placeholder: @products.product_details.first.product_detail_type  %>
+          </div>
+          <div class="form-group">
+            <%= text_area_tag 'productDetailTypeDesc', @products.product_details.first.model_description, class: "form-control", placeholder: @products.product_details.first.model_description %>
+          </div>
         <% end %>
-        <% if current_user.blank? && current_admin.blank? %>
-          <% if @adminFlag %>
-            <li>
-              <%= link_to 'Sign Up',  new_admin_registration_path %>
-            </li>
-              <% else %>
-            <li>
-              <%= link_to 'Sign Up',  new_user_registration_path %>
-            </li>
-          <% end %>
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">Sign In
-            <span class="angle-down s7-angle-down"></span></a>
-            <ul role="menu" class="dropdown-menu">
-                <% if @adminFlag %>
-                  <li style="width: 400px;">
-                    <%= render "admins/sessions/new" %>
-                  </li>
-                <% else %>
-                  <li style="width: 400px;">
-                    <%= render "users/sessions/new" %>
-                  </li>
-                <% end %>
-              </ul>
-          </li>
+      </div>
+    </div>
+    <div class="service-list">
+      <div class="service-list-col1">
+        <i class="fa-gear"></i>
+      </div>
+      <div class="service-list-col2">
+        <% if can? :manage, @products %>
+          <div class="form-group">
+            <%= text_field_tag 'productDetailType', @products.product_details.second.product_detail_type, class: "form-control", placeholder: @products.product_details.first.product_detail_type  %>
+          </div>
+          <div class="form-group">
+            <%= text_area_tag 'productDetailTypeDesc', @products.product_details.second.model_description, class: "form-control", placeholder: @products.product_details.first.model_description %>
+          </div>
         <% end %>
-      </ul>
-      <ul class="nav navbar-nav pull-right">
-        <br />
-        <br />
-      <li>
-      <% if user_signed_in? %>
-          <li>
-            Signed In As: &nbsp; <%= label_tag current_user.email %>
-          </li>
-      <% end %>
+      </div>
+    </div>
+    <div class="service-list">
+      <div class="service-list-col1">
+        <i class="fa-apple"></i>
+      </div>
+      <div class="service-list-col2">
+        <% if can? :manage, @products %>
+          <div class="form-group">
+            <%= text_field_tag 'productDetailType', @products.product_details.third.product_detail_type, class: "form-control", placeholder: @products.product_details.first.product_detail_type  %>
+          </div>
+          <div class="form-group">
+            <%= text_area_tag 'productDetailTypeDesc', @products.product_details.third.model_description, class: "form-control", placeholder: @products.product_details.first.model_description %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="service-list">
+      <div class="service-list-col1">
+        <i class="fa-medkit"></i>
+      </div>
+      <div class="service-list-col2">
+        <% if can? :manage, @products %>
+          <div class="form-group">
+            <%= text_field_tag 'productDetailType', @products.product_details.fourth.product_detail_type, class: "form-control", placeholder: @products.product_details.fourth.product_detail_type  %>
+          </div>
+          <div class="form-group">
+            <%= text_area_tag 'productDetailTypeDesc', @products.product_details.fourth.model_description, class: "form-control", placeholder: @products.product_details.fourth.model_description %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-sm-offset-9">
+      <%= link_to 'Update Template', edit_product_path(@products), class: 'btn btn-danger'  %>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+<% else %>
+  <li>
+    <li>
+      <%= link_to "Home", root_path %>
     </li>
+    <li>
+      <%= link_to "Services", products_path %>
+    </li>
+    <li>
+        <%= link_to "Products", products_path %>
+    </li>
+  </li>
+<% end %>
+<% if admin_signed_in? %>
+  <li>
+    <%= link_to "Quotes", quotes_path %>
+  </li>
+  <li>
+    <%= link_to 'Settings', edit_admin_registration_path %>
+  </li>
+  <li>
+    <%= link_to 'Approve User', admins_signed_up_path %>
+  </li>
+<% end %>
+$(document).on 'ready', ->
+  $('#certified_fire_door_inspection').on 'click', (e) =>
+    $('#fire_door_inspection').modal 'show'
+  $('#cameras_and_security_assessments').on 'click', (e) =>
+    $('#security_modal').modal 'show'
+  $('#locksmith').on 'click', (e) =>
+    $('#locksmith_modal').modal 'show'
+
+    <% if can? :view, Home %>
+      <%= render 'layouts/shared/navbar' %>
+    <% else %>
+      <%= render 'layouts/shared/admin_navbar' %>
+    <% end %>
+
+
+
+    $(document).ready =>
+      console.log 'Works!'
+    $('#edit_product_detail_<%= @product_detail.id %>').on 'ajax:sucess', (e, data, status, xhr) ->
+      $('.modal-dialog').modal('hide')
+
+$("#product_modal_<%= @product_detail.id %>").append("<%= escape_javascript(render '/admins/product_details/shared/edit_product_details_modal', collection: pd.product_details, as: :pd_for_modal")
+
+<% @products.each_with_index do |pd, index| %>
+    <%= render partial: 'admins/product_details/shared/edit_product_details_modal', collection: pd.product_details, as: :pd_for_modal %>
+<% end %>
+
+<div class="paginator" id="product-details-paginator-<%= pd_for_modal.id %>">
+  <%= link_to 'Edit next record', edit_admin_product_detail_path(pd_for_modal.product_id, pd_for_modal.id), remote: true, class: 'more-product-detail-forms', data: {product_id: "#{pd_for_modal.product_id}", product_detail_id: "#{pd_for_modal.id}", type: "html"} %>
+</div>
+
+<div id="product_detail_modal_<%= pd_for_modal.id %>" class="modal fade">
+  <div class="modal-dialog edit-pds-modal" id="product_details_<%= pd_for_modal.id %>">
+    <div class="modal-content">
+        <%= form_for(pd_for_modal, url: update_admin_product_detail_path(pd_for_modal.id), method: :put, remote: true,  html: {role: "form", class: "form" }) do |f| %>
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close modal-close">
+              <i class="icon s7-close"></i>
+            </button>
+            <h3 class="modal-title">Edit Product Details</h3>
+          </div>
+          <div class="modal-body">
+            <%= render partial: 'admins/product_details/shared/form', locals: {f: f} %>
+          </div>
+          <div class="modal-footer">
+            <div class="form-group">
+              <%= f.submit 'Edit Product', class: 'btn btn-primary'%>
+              <button type="button" data-dismiss="modal" class="btn btn-default modal-close">Cancel</button>
+            </div>
+          </div>
+        <% end %>
     </div>
   </div>
-</nav>
+</div>
+
+// Configure paginator custom form pager
+$("#paginator").html("<%= escape_javascript(link_to_next_form(@product_details_for_modal_paged, 'Next Product Detail Record', remote: true, id: 'next_form'))");
+// If only one product detail record is available do not show page numbers
+if (!$("#next_form").length) { $("#paginator").remove(); }
+
+$(document).on 'ready', ->
+  $('.more-product-detail-forms').on 'click', (e) ->
+    $(this).on 'ajax:sucess', (event, data, status, xhr) ->
+      productId = $(this).data('product_id')
+      productDetailId = $(this).data('product_detail_id')
+      $('#edit_product_detail_' + productDetailId).html(data)
+      $('#product-details-paginator-' + productDetailId).html '<a id=\'more-product-details-detail-forms\' data-pd-id=' + productId + 'data-type=\'html\' data-remote=\'true\' href="/admins/products/' + productId +  '/product_details/'+ productDetailId + '/edit>Next Product Detail Record</a>'

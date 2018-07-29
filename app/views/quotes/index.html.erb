@@ -42,21 +42,7 @@
       <% end %>
       <td><%= quote.created_at.to_formatted_s(:short) %></td>
       <td>
-        <% if quote.pending %>
-        <center>
-          <label class="label label-warning">Pending</label>
-        </center>
-        <% end %>
-        <% if quote.rejected %>
-        <center>
-          <label  class="label label-danger">Rejected</label>
-        </center>
-        <% end %>
-        <% if quote.approved %>
-        <center>
-          <label  class="label label-success">Approved</label>
-        </center>
-        <% end %>
+        
       </td>
       <td>
         <center>

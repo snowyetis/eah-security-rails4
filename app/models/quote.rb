@@ -6,21 +6,19 @@ class Quote < ActiveRecord::Base
   has_one :questionaire
   has_many :products
   has_many :requester_types
+  has_many :status_types
 
   accepts_nested_attributes_for :questionaire
   accepts_nested_attributes_for :quote_detail
 
   :quote_type
   :user_id
-  :approved
-  :pending
-  :rejected
+  :status_type_id
   :created_at
   :updated_at
 
   def default_values
-    self.rejected = rejected.presence || 'false'
-    self.approved = approved.presence || 'false'
+    self.status_type_id = 1
   end
 
 end

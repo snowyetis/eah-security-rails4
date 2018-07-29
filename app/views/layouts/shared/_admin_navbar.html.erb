@@ -7,12 +7,12 @@
       <% if admin_signed_in? %>
         <li class="dropdown">
           <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">
-            Template Manager
+            Products & Services Manager
             <span class="angle-down s7-angle-down"></span>
           </a>
           <ul role="menu" class="dropdown-menu">
             <li>
-              <%= link_to "Service Manager", admins_products_index_path %>
+              <%= link_to "Customer Quotes", quotes_path %>
             </li>
             <li>
                 <%= link_to  "Product Manager", admins_products_index_path %>

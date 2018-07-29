@@ -1,8 +1,6 @@
 class QuotesController < ApplicationController
   load_and_authorize_resource
-  before_action :authenticate_user!
   before_action :set_quote, only: [:show, :update, :destroy]
-  # before_action :authenticate_admin!, except: [:index, :show]
 
   add_breadcrumb "Home", :home_index_path
 

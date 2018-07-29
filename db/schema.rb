@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323090047) do
+ActiveRecord::Schema.define(version: 20180325094057) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20180323090047) do
     t.boolean  "admin",                  default: true
     t.integer  "role_id"
   end
+
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
 
   create_table "card_transactions", force: :cascade do |t|
     t.integer  "card_id"
@@ -104,19 +107,27 @@ ActiveRecord::Schema.define(version: 20180323090047) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "quote_status_types", force: :cascade do |t|
+    t.string   "status_type_name", null: false
+    t.string   "description"
+    t.string   "created_by"
+    t.string   "updated_by"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "quotes", force: :cascade do |t|
     t.string   "quote_type"
     t.integer  "user_id"
-    t.boolean  "approved"
-    t.boolean  "pending"
-    t.boolean  "rejected"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "product_id"
     t.integer  "requester_type_id"
+    t.integer  "quote_status_type_id"
   end
 
   add_index "quotes", ["product_id"], name: "index_quotes_on_product_id"
+  add_index "quotes", ["quote_status_type_id"], name: "index_quotes_on_quote_status_type_id"
   add_index "quotes", ["requester_type_id"], name: "index_quotes_on_requester_type_id"
 
   create_table "registrations", force: :cascade do |t|
@@ -181,8 +192,13 @@ ActiveRecord::Schema.define(version: 20180323090047) do
     t.string   "phone"
     t.string   "affiliation"
     t.boolean  "admin",                  default: false
-    t.integer  "role_id"
     t.string   "name"
   end
+
+  add_index "users", ["approved"], name: "index_users_on_approved"
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
 
 end

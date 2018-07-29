@@ -30,7 +30,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :lockable
 
-  :email
+  validates :email, presence: true, uniqueness: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :zip, presence: true
+  validates :state, presence: true
+  validates :password, presence: true
+  validates :password_confirmation, presence: true
 
   def active_for_authentication?
     super && approved?
