@@ -1,28 +1,29 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.4'
+gem 'activemerchant'
 gem 'bootstrap-sass', '~> 3.3.6'
-# gem 'bootstrap', '~> 4.0.0.alpha6'
-gem 'sass-rails', '~> 5.0'
-gem 'sprockets-rails'
-gem 'uglifier', '>= 1.3.0'
+gem 'breadcrumbs_on_rails'
+gem 'bundler', '~> 2.0.0.pre.2'
+gem 'cancancan'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'devise'
+gem 'faker'
+gem 'font-awesome-sass'
+gem 'jbuilder', '~> 2.0'
 gem 'jquery'
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
-gem 'popper_js', '~> 1.11.1'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'devise'
-gem 'cancancan'
-gem 'rolify'
-gem 'font-awesome-sass'
-gem 'activemerchant'
-gem 'faker'
-gem 'populator'
-gem 'breadcrumbs_on_rails'
-gem 'smart_listing'
+gem 'json', '~> 1.8.5'
 gem 'kaminari'
+gem 'popper_js', '~> 1.11.1'
+gem 'populator'
+gem 'rails', '4.2.4'
+gem 'rolify'
+gem 'sass-rails', '~> 5.0'
+gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'smart_listing'
+gem 'sprockets-rails'
+gem 'uglifier', '>= 1.3.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -32,8 +33,8 @@ gem 'kaminari'
 # gem 'capistrano-rails', group: :development
 
 group :production do
-  gem 'unicorn'
   gem 'pg'
+  gem 'unicorn'
 end
 
 group :development, :test do
@@ -49,4 +50,4 @@ group :development do
   gem 'spring'
 end
 
-ruby "2.3.1"
+ruby '2.5.0'
