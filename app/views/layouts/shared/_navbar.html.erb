@@ -52,20 +52,17 @@
           </li>
         <% end %>
         <% if current_user.blank? &&  !@adminFlag %>
-          <li>
-            <%= link_to 'Sign In', user_session_path %>
-          </li>
-          <!-- <li class="dropdown">
+          <li class="dropdown">
             <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">
               Sign In
               <span class="angle-down s7-angle-down"></span>
             </a>
-            <ul role="menu" class="dropdown-menu"> -->
-              <!-- <li style="width: 600px;"> -->
-                <!-- <%= render "users/sessions/new" %> -->
-              <!-- </li> -->
-            <!-- </ul> -->
-          <!-- </li> -->
+            <ul role="menu" class="dropdown-menu">
+              <li style="width: 600px;">
+                <%= render "users/sessions/new" %>
+              </li>
+            </ul>
+          </li>
         <% end %>
         <% if user_signed_in? %>
         <li>
