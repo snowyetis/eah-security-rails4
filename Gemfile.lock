@@ -218,7 +218,7 @@ DEPENDENCIES
   activemerchant
   bootstrap-sass (~> 3.3.6)
   breadcrumbs_on_rails
-  bundler
+  bundler (~> 2.0.0.pre.2)
   byebug
   cancancan
   coffee-rails (~> 4.1.0)
