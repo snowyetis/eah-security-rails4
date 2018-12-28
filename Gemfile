@@ -18,6 +18,7 @@ gem 'kaminari'
 gem 'popper_js', '~> 1.11.1'
 gem 'populator'
 gem 'rails', '4.2.4'
+gem 'railties', '4.2.4'
 gem 'rolify'
 gem 'sass-rails', '~> 5.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
