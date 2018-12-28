@@ -2,7 +2,7 @@
 lock "3.7.1"
 
 set :application, ""
-set :repo_url, "https://github.com/snowyetis/EAH-Security.git"
+set :repo_url, "https://github.com/snowyetis/EAH-Security-rails4.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
