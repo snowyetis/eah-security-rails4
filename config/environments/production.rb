@@ -27,7 +27,7 @@ Rails.application.configure do
   #   enable_starttls_auto: true
   # }
 
-  config.action_mailer.default_url_options = { host: 'eah-security.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'eah-security-rails4.herokuapp.com' }
 
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.perform_deliveries = true
