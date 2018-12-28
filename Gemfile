@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'activemerchant'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'breadcrumbs_on_rails'
-gem 'bundler'
 gem 'cancancan'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
@@ -50,4 +49,4 @@ group :development do
   gem 'spring'
 end
 
-ruby '2.5.1'
+ruby '2.3.4'
